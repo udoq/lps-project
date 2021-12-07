@@ -1,0 +1,48 @@
+[
+    {
+      "fragentext": "Was ist gelb?",
+      "antworten": [
+        {"text": "Tomaten", "correct": false},
+        {"text": "Bananen", "correct": true},
+        {"text": "Birnen", "correct": false},
+        {"text": "Zitronen", "correct": true}
+      ]
+    },
+    {
+      "fragentext": "Was ist blau?",
+      "antworten": [
+        {"text": "Bäume", "correct": false},
+        {"text": "Wiesen", "correct": true},
+        {"text": "Meer", "correct": true},
+        {"text": "Himmel", "correct": true}
+      ]
+    },
+    {
+      "fragentext": "Was ist rot?",
+      "antworten": [
+        {"text": "Kirschen", "correct": true},
+        {"text": "Orangen", "correct": false},
+        {"text": "Birnen", "correct": false},
+        {"text": "Trauben", "correct": false},
+        {"text": "Himbeeren", "correct": true}
+      ]
+    },
+    {
+      "fragentext": "Was schmeckt süß?",
+      "antworten": [
+        {"text": "Wirsing", "correct": false},
+        {"text": "Schokolade", "correct": true},
+        {"text": "Honig", "correct": true},
+        {"text": "Kartoffeln", "correct": false}
+      ]
+    },
+    {
+      "fragentext": "Was schmeckt sauer?",
+      "antworten": [
+        {"text": "Erdbeeren", "correct": false},
+        {"text": "Limetten", "correct": true},
+        {"text": "Marmelade", "correct": false},
+        {"text": "Zitronen", "correct": true}
+      ]
+    }
+]
