@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-import { MyDataStructur } from '../my-data-structur';
+import { QuestionsIOService } from '../questions-io.service';
 
 @Component({
   selector: 'app-learning',
@@ -10,16 +8,25 @@ import { MyDataStructur } from '../my-data-structur';
 })
 export class LearningComponent implements OnInit {
 
-  myData: MyDataStructur[] = [];
+  allQuestions : any = [];
   aktuelleFrage: number = 0;
   selectedItems: boolean[] = [];
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private myService: QuestionsIOService) { }
 
   ngOnInit(): void {
-    this.http.get<MyDataStructur[]>("assets/fragen.json")
-    .subscribe((data) => this.myData = data);
+//    this.http.get<MyDataStructur[]>("assets/fragen.json")
+//    .subscribe((data) => this.myData = data);
+//    this.myData = this.myService.getData();
+    this.getAllQuestions();
+  }
+
+  getAllQuestions() {
+    this.myService.getData()
+    .subscribe(res=>{
+      this.allQuestions = res;
+    })
   }
 
 }

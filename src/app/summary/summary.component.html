@@ -1,28 +1,26 @@
 
-<div class="flex items-center justify-center h-screen bg-gray-200">
-  <div class="container">
+<!--
+<div class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+  <div class="flex items-center justify-center h-screen bg-gray-200">
+    <div class="container">
 
-      <div class="flex justify-center p-4 mb-10">
-        <h1 class="text-xl text-blue-500">Bootstrap 4 Inspired Simple List Group</h1>
-      </div>
-      <div class="flex justify-center">
-            <div class="bg-white shadow-xl rounded-lg w-1/2">
-                <ul class="divide-y divide-gray-300" *ngFor="let question of questions">
-                    <li class="p-4 hover:bg-gray-50 cursor-pointer"> {{ question.fragentext }}</li>
-                </ul>
-            </div>
+        <div class="flex justify-center p-4 mb-10">
+          <h1 class="text-xl text-blue-500">Bootstrap 4 Inspired Simple List Group</h1>
         </div>
+        <div class="flex justify-center">
+              <div class="bg-white shadow-xl rounded-lg w-1/2">
+                  <ul class="divide-y divide-gray-300" *ngFor="let question of questions">
+                      <li class="p-4 hover:bg-gray-50 cursor-pointer"> {{ question.fragentext }}</li>
+                  </ul>
+              </div>
+          </div>
+    </div>
   </div>
 </div>
+-->
 
-<div class="md:col-span-5 text-right">
-  <div class="inline-flex items-end">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white text-sm py-3 px-6 rounded"
-    (click)="nextQuestion()">
-      Submit
-    </button>
-  </div>
-</div>
+
+<app-question></app-question>
 
 
 <h2>
@@ -34,6 +32,14 @@
         {{ antwort.text }}
 </div>
 
+<div class="md:col-span-5 text-right">
+  <div class="inline-flex items-end">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white text-sm py-3 px-6 rounded"
+    (click)="nextQuestion()">
+      Submit
+    </button>
+  </div>
+</div>
 
 
 

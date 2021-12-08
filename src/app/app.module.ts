@@ -8,6 +8,7 @@ import { LearningComponent } from './learning/learning.component';
 import { TestingComponent } from './testing/testing.component';
 import { TryingComponent } from './trying/trying.component';
 import { SummaryComponent } from './summary/summary.component';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SummaryComponent } from './summary/summary.component';
     LearningComponent,
     TestingComponent,
     TryingComponent,
-    SummaryComponent
+    SummaryComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
