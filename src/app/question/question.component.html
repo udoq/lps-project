@@ -1,21 +1,9 @@
 
-<div class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
-
 
   <div class='flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
-
-
-  <div class="bg-blue-200  mx-auto my-2">
-
-    <h2 class="bg-dark-800 p-4 text-center font-black">Meine Fragen</h2>
-    <button class="border-solid border-4 border-light-blue-500  text-left accordion p-4 font-black bg-yellow-500 hover:bg-red-700 focus:bg-red-700 rounded-sm">Section 1</button>
-
-    <button class="border-solid border-4 border-light-blue-500 text-left accordion p-4 font-black bg-yellow-500 hover:bg-red-700 focus:bg-red-700 rounded-sm">Section 2</button>
-
-    <button class="border-solid border-4 border-light-blue-500 text-left accordion p-4 font-black bg-yellow-500 hover:bg-red-700 focus:bg-red-700 rounded-sm">Section 3</button>
-
+    <button class="w-full border-solid border-4 border-light-blue-500  text-left  p-4  bg-yellow-500 hover:bg-red-700 focus:bg-red-700 rounded-sm"
+      (click)="buttonClicked()">
+      <markdown> {{question}} </markdown>
+    </button>
   </div>
 
-  </div>
-
-</div>

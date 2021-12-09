@@ -10,6 +10,8 @@ import { TryingComponent } from './trying/trying.component';
 import { SummaryComponent } from './summary/summary.component';
 import { QuestionComponent } from './question/question.component';
 
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,21 @@ import { QuestionComponent } from './question/question.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MarkdownModule.forRoot({
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          gfm: true,
+          tables: true,
+          breaks: true,
+        //  pedantic: false,
+        //  sanitize: false,
+        //  smartLists: true,
+        //  smartypants: false,
+        },
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

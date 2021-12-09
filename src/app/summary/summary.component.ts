@@ -33,4 +33,8 @@ export class SummaryComponent implements OnInit {
   }
 
 
+  showSingleQuestion() {
+    console.log('Event empfangen');
+  }
+
 }

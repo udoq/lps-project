@@ -1,11 +1,32 @@
 [
-    {
-      "fragentext": "Was ist gelb?",
+  {
+    "fragentext": "Spalte 1 | Spalte 2 | Spalte 3 <br> -------- | -------- | -------- <br> Inhalt   | Inhalt   | Inhalt <br> Inhalt   | Inhalt   | Inhalt",
+    "antworten": [
+      {"text": "1", "correct": false},
+      {"text": "2", "correct": true},
+      {"text": "3", "correct": false},
+      {"text": "4", "correct": true}
+    ]
+  },
+  {
+      "fragentext": "Was ist   gelb?",
       "antworten": [
         {"text": "Tomaten", "correct": false},
         {"text": "Bananen", "correct": true},
         {"text": "Birnen", "correct": false},
         {"text": "Zitronen", "correct": true}
+      ]
+    },
+    {
+      "fragentext": "Choose the **best** answer. <br><br>In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. There are 86400 seconds in a day.<br>Examine this result:<br><br>DATE<br>--------------------------------<br>02-JAN-2020",
+      "antworten": [
+        {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3'MONTH + INTERVAL '7'DAY –INTERVAL '360' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": false},
+        {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3'MONTH + INTERVAL '7'DAY –INTERVAL '360' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": false},
+        {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '5'DAY –INTERVAL '86410' SECOND, 'DD-MM-YYYY') AS \\“date\\” FROM DUAL;", "correct": false},
+        {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '4'DAY –INTERVAL '120' SECOND, 'DD-MM-YYYY') AS \\“date\\” FROM DUAL;", "correct": false},
+        {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '6'DAY –INTERVAL '120' SECOND, 'DD-MM-YYYY') AS \\“date\\” FROM DUAL;", "correct": false},
+        {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '5'DAY –INTERVAL '120' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": true},
+        {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '5'DAY –INTERVAL '120' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": true}
       ]
     },
     {
@@ -15,6 +36,18 @@
         {"text": "Wiesen", "correct": true},
         {"text": "Meer", "correct": true},
         {"text": "Himmel", "correct": true}
+      ]
+    },
+    {
+      "fragentext": "Examine the Bricks table:<br><br> | Color | Shape | Weight | <br> |-----|-----|-----|-----| <br> | red | cube | 5 |<br>| red | zylinder | 10 |<br>| blue | cube | 15 |<br>| blue | cylinder | 20 |<br><br>You write this query:<br>SELECT *<br>FROM bricks b1 CROSS JOIN bricks b2<br>WHERE b1.weight < b2.weight;<br><br>How many rows will the query return?",
+
+      "antworten": [
+        {"text": "0", "correct": false},
+        {"text": "4", "correct": true},
+        {"text": "10", "correct": true},
+        {"text": "6", "correct": true},
+        {"text": "16", "correct": true},
+        {"text": "1", "correct": true}
       ]
     },
     {
