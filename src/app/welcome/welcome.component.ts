@@ -13,7 +13,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  startQuiz() {
+  setName() {
     localStorage.setItem("name", this.nameKey.nativeElement.value);
   }
 
