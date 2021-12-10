@@ -33,8 +33,8 @@ export class SummaryComponent implements OnInit {
   }
 
 
-  showSingleQuestion() {
-    console.log('Event empfangen');
+  showSingleQuestion(id: number) {
+    console.log('Event empfangen. ID: ' + id);
   }
 
 }

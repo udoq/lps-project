@@ -11,6 +11,8 @@ import { SummaryComponent } from './summary/summary.component';
 import { QuestionComponent } from './question/question.component';
 
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+import { HeaderComponent } from './header/header.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
     TestingComponent,
     TryingComponent,
     SummaryComponent,
-    QuestionComponent
+    QuestionComponent,
+    HeaderComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

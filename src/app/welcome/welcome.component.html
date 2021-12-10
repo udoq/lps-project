@@ -1,0 +1,9 @@
+<div class="container bg-light py-5">
+  <h1 class="display-5 fw-bold">Welcome to exam preparation</h1>
+  <p class="col-md-8 fs-4"> This preparation contains 10 questions</p>
+  <div class="name col-md-4 my-3">
+    <label for="">Enter your name:</label>
+    <input #name type="text" class="form-control">
+  </div>
+  <button class="button btn-primary btn-lg" routerLink="/quiz" (click)="startQuiz()">Start Prep</button>
+</div>
