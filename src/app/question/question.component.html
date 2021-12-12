@@ -1,8 +1,16 @@
 
-  <div class='flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+  <!-- <div class='flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
   <button class="w-full border-solid border-4 border-light-blue-500  text-left  p-4  bg-yellow-500 hover:bg-red-700 focus:bg-red-700 rounded-sm"
       (click)="buttonClicked()">
       <markdown> {{question}} </markdown>
     </button>
-  </div>
+  </div> -->
 
+  <div class='flex max-w-sm w-full bg bg-blue-400 mx-auto'>
+    <ul class="bg-white w-full mb-1 mx-1 p-6 text-left  hover:bg-blue-300">
+      <li class=""
+          (click)="buttonClicked()">
+          <markdown> {{question}} </markdown>
+      </li>
+    </ul>
+  </div>
