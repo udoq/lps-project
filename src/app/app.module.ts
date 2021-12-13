@@ -13,6 +13,8 @@ import { QuestionComponent } from './question/question.component';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { HeaderComponent } from './header/header.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { QAndAComponent } from './q-and-a/q-and-a.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     SummaryComponent,
     QuestionComponent,
     HeaderComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    QAndAComponent
   ],
   imports: [
     BrowserModule,

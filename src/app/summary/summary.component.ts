@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-summary',
@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SummaryComponent implements OnInit {
 
   @Input() questions: any;
+  @Output() questionClicked = new EventEmitter<number>();
+
 
   aktuelleFrage: number = 0;
   selectedItems: boolean[] = [];
@@ -34,7 +36,7 @@ export class SummaryComponent implements OnInit {
 
 
   showSingleQuestion(id: number) {
-    console.log('Event empfangen. ID: ' + id);
+    this.questionClicked.emit(id);
   }
 
 }

@@ -8,7 +8,7 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
   @Input() question: String = '';
-  @Output() questionClicked = new EventEmitter<string>();
+  @Output() questionClicked = new EventEmitter();
 
 
 
@@ -17,9 +17,8 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buttonClicked() {
-    console.log('Button Clicked');
-    this.questionClicked.emit('Hier kommt das Event')
+  questionSelected() {
+    this.questionClicked.emit()
   }
 
 }

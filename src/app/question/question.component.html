@@ -7,10 +7,10 @@
   </div> -->
 
   <div class='flex max-w-sm w-full bg bg-blue-400 mx-auto'>
-    <ul class="bg-white w-full mb-1 mx-1 p-6 text-left  hover:bg-blue-300">
+    <ul class="bg-white w-full mb-0.5 p-6 text-left  hover:bg-blue-100">
       <li class=""
-          (click)="buttonClicked()">
-          <markdown> {{question}} </markdown>
+          (click)="questionSelected()">
+          <markdown class="px-10"> {{question}} </markdown>
       </li>
     </ul>
   </div>

@@ -10,15 +10,13 @@ export class LearningComponent implements OnInit {
 
   allQuestions : any = [];
   aktuelleFrage: number = 0;
-  selectedItems: boolean[] = [];
+  bDetails: boolean = false;
+  testString: string = 'Klappt das?';
 
 
   constructor(private myService: QuestionsIOService) { }
 
   ngOnInit(): void {
-//    this.http.get<MyDataStructur[]>("assets/fragen.json")
-//    .subscribe((data) => this.myData = data);
-//    this.myData = this.myService.getData();
     this.getAllQuestions();
   }
 
@@ -28,5 +26,17 @@ export class LearningComponent implements OnInit {
       this.allQuestions = res;
     })
   }
+
+  showSingleQuestion(id: number) {
+    console.log('Events: checked with #' + id);
+    this.aktuelleFrage = id;
+  }
+
+
+  onClickMe() {
+    this.aktuelleFrage++;
+    console.log('Aktuelle Frage: ' + this.aktuelleFrage)
+  }
+
 
 }

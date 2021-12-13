@@ -1,7 +1,7 @@
 [
   {
     "id": 0,
-    "fragentext": "Spalte 1 | Spalte 2 | Spalte 3 <br> -------- | -------- | -------- <br> Inhalt   | Inhalt   | Inhalt <br> Inhalt   | Inhalt   | Inhalt",
+    "fragentext": "Spalte1 | Spalte2 | Spalte3 \n -------- | -------- | -------- \n Inhalt   | Inhalt   | Inhalt \n Inhalt   | Inhalt   | Inhalt",
     "antworten": [
       {"text": "1", "correct": false},
       {"text": "2", "correct": true},
