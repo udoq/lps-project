@@ -1,15 +1,5 @@
 [
   {
-    "id": 0,
-    "fragentext": "Spalte1 | Spalte2 | Spalte3 \n -------- | -------- | -------- \n Inhalt   | Inhalt   | Inhalt \n Inhalt   | Inhalt   | Inhalt",
-    "antworten": [
-      {"text": "1", "correct": false},
-      {"text": "2", "correct": true},
-      {"text": "3", "correct": false},
-      {"text": "4", "correct": true}
-    ]
-  },
-  {
     "id": 1,
     "fragentext": "Was ist   gelb?",
     "antworten": [
@@ -21,7 +11,7 @@
   },
   {
     "id": 2,
-    "fragentext": "Choose the **best** answer. <br><br>In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. There are 86400 seconds in a day.<br>Examine this result:<br><br>DATE<br>--------------------------------<br>02-JAN-2020",
+    "fragentext": "Choose the **best** answer. \n\n In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. There are 86400 seconds in a day. \n Examine this result: \n\n DATE \n\n 02-JAN-2020",
     "antworten": [
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3'MONTH + INTERVAL '7'DAY –INTERVAL '360' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": false},
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3'MONTH + INTERVAL '7'DAY –INTERVAL '360' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": false},
@@ -44,7 +34,7 @@
   },
   {
     "id": 4,
-    "fragentext": "Examine the Bricks table:<br><br> | Color | Shape | Weight | <br> |-----|-----|-----|-----| <br> | red | cube | 5 |<br>| red | zylinder | 10 |<br>| blue | cube | 15 |<br>| blue | cylinder | 20 |<br><br>You write this query:<br>SELECT *<br>FROM bricks b1 CROSS JOIN bricks b2<br>WHERE b1.weight < b2.weight;<br><br>How many rows will the query return?",
+    "fragentext": "Examine the Bricks table: \n\n Color | Shape | Weight \n -----|-----|----- \n red | cube | 5 \n red | zylinder | 10 \n blue | cube | 15  \n  blue | cylinder | 20  \n\n\n You write this query: \n SELECT * \n FROM bricks b1 CROSS JOIN bricks b2 \n WHERE b1.weight < b2.weight; \n\n How many rows will the query return?",
 
     "antworten": [
       {"text": "0", "correct": false},

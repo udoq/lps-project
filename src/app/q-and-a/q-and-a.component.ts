@@ -15,6 +15,7 @@ export class QAndAComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('Q&A: ' + this.QandA.fragentext);
   }
 
 }

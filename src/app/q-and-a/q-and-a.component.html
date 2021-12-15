@@ -1,3 +1,7 @@
+<div class="pb-10">
 <app-question [question]="QandA.fragentext"></app-question>
+</div>
 
-
+<ul>
+  <li *ngFor="let antwort of QandA.antworten">{{antwort.text}}</li>
+</ul>

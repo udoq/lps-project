@@ -7,7 +7,7 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-  @Input() question: String = '';
+  @Input() question: string = '';
   @Output() questionClicked = new EventEmitter();
 
 
@@ -15,6 +15,7 @@ export class QuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.question);
   }
 
   questionSelected() {
