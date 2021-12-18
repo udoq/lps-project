@@ -14,6 +14,7 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { HeaderComponent } from './header/header.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { QAndAComponent } from './q-and-a/q-and-a.component';
+import { AnswerComponent } from './answer/answer.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { QAndAComponent } from './q-and-a/q-and-a.component';
     QuestionComponent,
     HeaderComponent,
     WelcomeComponent,
-    QAndAComponent
+    QAndAComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,
