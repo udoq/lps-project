@@ -1,0 +1,16 @@
+<div>
+  <div class="bg-white w-full text-left">
+    <app-question class="w-full" [question]="allQuestions[aktuelleFrage].fragentext"></app-question>
+  </div>
+
+  <div class="bg-white w-full text-left">
+    <app-answer [answers]="allQuestions[aktuelleFrage].antworten"></app-answer>
+  </div>
+
+  <div>
+    <button class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none" (click)="onClickFirst()">First</button>
+    <button class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none" (click)="onClickPrev()">Prev</button>
+    <button class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none" (click)="onClickNext()">Next</button>
+    <button class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none" (click)="onClickLast()">Last</button>
+  </div>
+</div>

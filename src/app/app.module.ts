@@ -4,29 +4,25 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LearningComponent } from './learning/learning.component';
-import { TestingComponent } from './testing/testing.component';
-import { TryingComponent } from './trying/trying.component';
 import { SummaryComponent } from './summary/summary.component';
 import { QuestionComponent } from './question/question.component';
 
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { HeaderComponent } from './header/header.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { QAndAComponent } from './q-and-a/q-and-a.component';
+import { NavigatorComponent } from './navigator/navigator.component';
+import { AnswerComponent } from './answer/answer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LearningComponent,
-    TestingComponent,
-    TryingComponent,
     SummaryComponent,
     QuestionComponent,
     HeaderComponent,
     WelcomeComponent,
-    QAndAComponent
+    NavigatorComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,
