@@ -5,8 +5,10 @@
     <div *ngFor="let answer of answers, let i = index" >
         <ul class="w-full mt-4 text-left bg-white ">
           <li class="">
-            <input class="sr-only peer" type="radio" name="answers" id="{{ 'answer' + i }}">
-            <label [ngClass]="{ 'bg-green-100': answer.correct && bShowAnswers }" class="flex p-5 w-full border rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" for="{{ 'answer' + i }}">
+            <input (change)="gotAnswer(answer, $event)" class=" " type="checkbox" name="answers" id="{{ 'answer' + i }}">
+            <label [ngClass]="{ 'bg-green-100': answer.correct && bShowAnswers }"
+
+              lass="p-2 w-full cursor-pointer focus:outline-none hover:bg-purple-400 " for="{{ 'answer' + i }}">
               {{answer.text}}
             </label>
           </li>
@@ -18,3 +20,4 @@
     </div>
   </div>
 </div>
+

@@ -16,6 +16,8 @@ export class NavigatorComponent implements OnInit {
   bSelbstest: boolean = false;
   bPruefung: boolean = false;
 
+  numModus: number = 2;
+
   constructor(private myService: QuestionsIOService) { }
 
   ngOnInit(): void {
@@ -39,6 +41,15 @@ export class NavigatorComponent implements OnInit {
   }
   onClickLast() {
     this.aktuelleFrage=this.allQuestions.length-1;
+  }
+
+  report (success: boolean) {
+    if (success) {
+      console.log('Das war gut')
+      alert('Super');
+    } else {
+      console.log('Das war wohl nichts')
+    }
   }
 
 }
