@@ -34,15 +34,19 @@ export class NavigatorComponent implements OnInit {
 
   onClickFirst() {
     this.aktuelleFrage=0;
+    window.scroll(0,0);
   }
   onClickPrev() {
     this.aktuelleFrage--;
+    window.scroll(0,0);
   }
   onClickNext() {
     this.aktuelleFrage++;
+    window.scroll(0,0);
   }
   onClickLast() {
     this.aktuelleFrage=this.allQuestions.length-1;
+    window.scroll(0,0);
   }
 
   report (success: boolean) {

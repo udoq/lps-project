@@ -1,6 +1,6 @@
 [
   {
-    "fragentext": "Choose the best answer. \n <br> In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. There are 86400 seconds in a day. \n Examine this result: \n <br> DATE \n ------------------ \n 02-JAN-2020",
+    "fragentext": "Choose the best answer. \n <br> In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. There are 86400 seconds in a day. \n Examine this result: \n <br> DATE \n --- \n 02-JAN-2020",
     "antworten": [
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3'MONTH + INTERVAL '7'DAY –INTERVAL '360' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": false},
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '5'DAY –INTERVAL '86410' SECOND, 'DD-MM-YYYY') AS \\“date\\” FROM DUAL;", "correct": false},
@@ -19,7 +19,7 @@
     ]
   },
   {
-    "fragentext": "Examine the Bricks table: \n<br> Color | Shape | Weight \n -----|-----|----- \n red | cube | 5 \n red | zylinder | 10 \n blue | cube | 15  \n  blue | cylinder | 20  \n\n\n You write this query: \n SELECT * \n FROM bricks b1 CROSS JOIN bricks b2 \n WHERE b1.weight < b2.weight; \n<br> How many rows will the query return?",
+    "fragentext": "Examine the Bricks table: \n --- \n | Color | Shape | Weight | \n |---|---|---| \n | red | cube | 5 | \n | red | zylinder | 10 | \n | blue | cube | 15 |  \n | blue | cylinder | 20  | \n---\n You write this query: \n SELECT * \n FROM bricks b1 CROSS JOIN bricks b2 \n WHERE b1.weight < b2.weight; \n---\n How many rows will the query return?",
 
     "antworten": [
       {"text": "0", "correct": false},
@@ -41,7 +41,7 @@
     ]
   },
   {
-    "fragentext": "Choose Two \n Examine the description of the EMPLOYEES table: \n <br> Name | Null? | Type \n -----|-----|----- \n EMPLOYEE_ID | NOT NULL | NUMBER(6) \n SALARY | | NUMBER(8,2) \n DEPARTMENT_ID | | NUMBER(4) \n <br> Which two queries return the highest salary in the table?",
+    "fragentext": "Choose Two \n Examine the description of the EMPLOYEES table: \n---\n | Name | Null? | Type |\n |---|---|---| \n |EMPLOYEE_ID | NOT NULL | NUMBER(6)| \n |SALARY | | NUMBER(8,2)| \n |DEPARTMENT_ID | | NUMBER(4)| \n---\n  Which two queries return the highest salary in the table?",
     "antworten": [
       {"text": "SELECT MAX(salary) \n FROM employees \n GROUP BY department_id \n HAVING MAX(salary) = MAX(MAX(salary));", "correct": false},
       {"text": "SELECT MAX(salary) \n FROM employees \n GROUP BY department_id", "correct": false},
@@ -51,7 +51,7 @@
     ]
   },
   {
-    "fragentext": "Examine this Statement: \n<br> SELECT last_name \n FROM employees \n ORDER BY CASE WHEN salary = (SELECT MAX(salary) FROM employees) \n THEN 'A' \n ELSE last_name \n END, last_name DESC; \n<br> Which two statements are true? ",
+    "fragentext": "Examine this Statement: \n\n SELECT last_name \n FROM employees \n ORDER BY CASE WHEN salary = (SELECT MAX(salary) FROM employees) \n THEN 'A' \n ELSE last_name \n END, last_name DESC; \n<br> Which two statements are true? ",
     "antworten": [
       {"text": "All remaining employees names will appear in descending order.", "correct": false},
       {"text": "The names of employees earning the maximum salary will appear first in descending order.", "correct": false},
@@ -59,6 +59,46 @@
       {"text": "All remaining employee name will appear in ascending order.", "correct": true},
       {"text": "All remaining employee name will appear in an unspecified Order. ", "correct": false},
       {"text": "The names of employees earning the maximum salary will appear first in an unspecified order.", "correct": true}
+    ]
+  },
+  {
+    "fragentext": "Examine this statement, which executes successfully. \n\n  SELECT d.department_name, ROUND(AVG(NULLIF(e.salary,0))) AS avgsal, \n MAX(e.salary) AS maxsal \n FROM employees e \n JOIN departments d \n ON (e.department_id=d.department_id) GROUP BY d.department_name \n ORDER BY 2; \n\n In which order are the rows displayed?",
+    "antworten": [
+      {"text": "sorted by AVGSAL", "correct": true},
+      {"text": "sorted by MAXSAL", "correct": false},
+      {"text": "sorted by DEPARTMENT_NAME", "correct": false},
+      {"text": "sorted by DEPARTMENT_NAME and MAXSAL", "correct": false},
+      {"text": "sorted by DEPARTMEN_NAME and AVGSAL", "correct": false}
+    ]
+  },
+  {
+    "fragentext": "Which two are true?",
+    "antworten": [
+      {"text": "CONCAT joins two character string together.", "correct": true},
+      {"text": "CONCAT joins two or more character strings together.", "correct": false},
+      {"text": "INSTR finds the offset within a character string, starting from position 0.", "correct": false},
+      {"text": "INSTR find the offset within a string of a single character only.", "correct": false},
+      {"text": "FLOOR returns the largest positive integer less then or equal to a specified number.", "correct": false},
+      {"text": "FLOOR returns the largest integer less than or equal to a specified number.", "correct": true}
+    ]
+  },
+  {
+    "fragentext": "Examine the description of the COUNTRIES table: \n---\n |Name|Null?|Type| \n |---|---|---| \n Country_ID|NOT NULL|CHAR(2)| \n |COUNTRY_NAME||VARCHAR2(40)| \n---\n Examine the description of the DEPARTMENTS table: \n---\n |Name|Null?|Type| \n |---|---|---| \n |DEPARTMENT_ID|NOT NULL|NUMBER(4)| \n |DEPARTMENT_NAME|NOT NULL|VARCHAR2(30)| \n |LOCATION_ID||NUMBER(4) \n---\n\n Examine the description of the LOCATIONS table: \n\n |Name|Null?|Type| \n |---|---|---| \n |LOCATION_ID|NOT NULL|NUMBER(4)| \n |ADDRESS||VARCHAR(140)| \n |Country_ID||CHAR(2)| \n---\n Which two queries will return a list of countries with no departments?",
+    "antworten": [
+      {"text": "SELECT country_id, country_name\nFROM countries\nINTERSECT\nSELECT l.country_id, c.country_name\nFROM locations l\nJOIN countries c on l.country_id = c.country_id\nJOIN departments d ON d.location_id = l.location_id;", "correct": false},
+      {"text": "SELECT country_id, country_name\nFROM countries\nJOIN locations USING (country_id)\nJOIN departments USING (location_id)\nWHERE department_id IS NULL;", "correct": false},
+      {"text": "SELECT country_id, country_name\nFROM countries\nWHERE country_id NOT IN (\nSELECT country_id\nFROM countries\nJOIN locations USING (country_id)\nJOIN departments USING (location_id)\n);", "correct": true},
+      {"text": "SELECT country_id, country_name\nFROM countries\nMINUS\nSELECT l.country_id, c.country_name\nFROM locations l\nJOIN countries c on l.country_id=c.country_id\nJOIN departments d on d.location_id=l.location_id;", "correct": true}
+    ]
+  },
+  {
+    "fragentext": "XXX",
+    "antworten": [
+      {"text": "AAA", "correct": false},
+      {"text": "BBB", "correct": false},
+      {"text": "CCC", "correct": false},
+      {"text": "DDD", "correct": false},
+      {"text": "EEE", "correct": false}
     ]
   }
 ]

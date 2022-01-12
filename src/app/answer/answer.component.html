@@ -2,41 +2,44 @@
   <div class="rounded-xl">
 
     <ng-container *ngIf="anzahlRichtigeAntwortenSoll > 1">
-      <div *ngFor="let answer of answers; let i = index">
+      <div [ngClass]="{ 'text-green-600': answer.correct && bShowAnswers }"
+        *ngFor="let answer of answers; let i = index">
         <ul class="w-full mt-4 text-left bg-white">
           <li class="">
             <input (change)="gotAnswer(answer, $event)" class=" " type="checkbox" name="answers"
               id="{{ 'answer' + i }}" />
-            <label [ngClass]="{ 'bg-green-100': answer.correct && bShowAnswers }"
-              class="p-2 w-full cursor-pointer focus:outline-none hover:bg-purple-400 " for="{{ 'answer' + i }}">
-              {{ answer.text }}
+            <label class="p-2 w-full cursor-pointer focus:outline-none " for="{{ 'answer' + i }}">
+              <!-- {{ answer.text }} -->
+              <markdown [data]="answer.text"></markdown>
             </label>
           </li>
         </ul>
       </div>
     </ng-container>
     <ng-container *ngIf="anzahlRichtigeAntwortenSoll == 1">
-      <div *ngFor="let answer of answers; let i = index">
+      <div [ngClass]="{ 'text-green-600': answer.correct && bShowAnswers }"
+        *ngFor="let answer of answers; let i = index">
         <ul class="w-full mt-4 text-left bg-white">
           <li class="">
             <input (change)="gotAnswer(answer, $event)" class=" " type="radio" name="answers" id="{{ 'answer' + i }}" />
-            <label [ngClass]="{ 'bg-green-100': answer.correct && bShowAnswers }"
-              class="p-2 w-full cursor-pointer focus:outline-none hover:bg-purple-400 " for="{{ 'answer' + i }}">
-              {{ answer.text }}
+            <label class="p-2 w-full cursor-pointer focus:outline-none " for="{{ 'answer' + i }}">
+              <!-- {{ answer.text }} -->
+              <markdown [data]="answer.text"></markdown>
             </label>
           </li>
         </ul>
       </div>
     </ng-container>
     <ng-container *ngIf="anzahlRichtigeAntwortenSoll == 0">
-      <div *ngFor="let answer of answers; let i = index">
+      <div [ngClass]="{ 'text-green-600': answer.correct && bShowAnswers }"
+        *ngFor="let answer of answers; let i = index">
         <ul class="w-full mt-4 text-left bg-white">
           <li class="">
             <input (change)="gotAnswer(answer, $event)" class=" " type="checkbox" name="answers"
               id="{{ 'answer' + i }}" />
-            <label [ngClass]="{ 'bg-green-100': answer.correct && bShowAnswers }"
-              class="p-2 w-full cursor-pointer focus:outline-none hover:bg-purple-400 " for="{{ 'answer' + i }}">
-              {{ answer.text }}
+            <label class="p-2 w-full cursor-pointer focus:outline-none " for="{{ 'answer' + i }}">
+              <!-- {{ answer.text }} -->
+              <markdown [data]="answer.text"></markdown>
             </label>
           </li>
         </ul>
