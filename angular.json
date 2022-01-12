@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "assets/output.css"
+              "src/tailwind.css"
             ],
             "scripts": []
           },
@@ -96,7 +96,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "assets/output.css"
+              "src/tailwind.css"
             ],
             "scripts": []
           }
