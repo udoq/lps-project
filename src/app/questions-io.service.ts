@@ -12,5 +12,6 @@ export class QuestionsIOService {
 
   getData() {
     return this.http.get<any>("assets/fragen.json")
+    // return this.http.get<any>("https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/lpsapp-pjpqp/service/lps_api/incoming_webhook/webhook0")
   }
 }

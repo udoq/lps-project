@@ -17,14 +17,11 @@ export class SummaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('Start SummaryComponent')
-    console.log(this.questions[0]?.fragentext);
   }
 
   setAnswers(e: any, id: number) {
 
     this.selectedItems[id] = e.target.checked;
-    console.log(this.selectedItems);
   }
 
   nextQuestion() {

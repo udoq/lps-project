@@ -1,0 +1,4280 @@
+﻿Questions 
+Question 1: 
+ 
+Choose the best answer. 
+ 
+In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. 
+There are 86400 seconds in a day. 
+Examine this result: 
+ 
+DATE 
+-------------------------------- 
+02-JAN-2020 
+ 
+Which statement returns this? 
+ 
+A) SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3' MONTH + INTERVAL '7' DAY – INTERVAL '360' SECOND, 'DD-MM-YYYY') AS "date" FROM DUAL; 
+ 
+B) SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2' MONTH + INTERVAL '5' DAY – INTERVAL '86410' SECOND, 'DD-MM-YYYY') AS “date” FROM DUAL; 
+ 
+C) SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2' MONTH + INTERVAL '4' DAY – INTERVAL '120' SECOND, 'DD-MM-YYYY') AS “date” FROM DUAL; 
+ 
+D) SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2' MONTH + INTERVAL '6' DAY – INTERVAL '120' SECOND, 'DD-MM-YYYY') AS “date” FROM DUAL; 
+ 
+E) SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2' MONTH + INTERVAL '5' DAY – INTERVAL '120' SECOND, 'DD-MM-YYYY') AS "date" FROM DUAL; 
+ 
+
+ 
+Question 2: 
+ 
+Choose the best answer. 
+ 
+You must find the number of employees whose salary is lower than employee 110. Which statement fails to do this? 
+ 
+A) SELECT COUNT(*) FROM employees e 
+JOIN employees a 
+ON e.salary < a.salary 
+WHERE a.employee_id=110; 
+B) SELECT COUNT(*) 
+FROM employees e 
+WHERE e.salary < (SELECT a.salary FROM employees a WHERE e.employee_id=110); 
+C) SELECT COUNT(*) 
+FROM employees 
+WHERE salary < (SELECT salary FROM employees WHERE employee_id=110); 
+D) SELECT COUNT(*) 
+FROM employees e 
+JOIN (SELECT salary FROM employees WHERE employee_id=110) a 
+ON e.salary < a.salary; 
+ 
+
+Question 3: 
+ 
+Examine the Bricks table: 
+ 
+Color  
+Shape  	Weight 
+--------- 
+---------- ----------- 
+Red  
+cube  	5 
+Red  
+cylinder 10 
+Blue  
+cube  	15 
+Blue  
+cylinder 20 
+You write this query: 
+SELECT *  
+FROM bricks b1 CROSS JOIN bricks b2 
+WHERE b1.weight < b2.weight; 
+ 
+How many rows will the query return? 
+A) 0 
+B) 4 
+C) 10 
+D) 6 
+E) 16 
+F) 1 
+ 
+
+ 
+Question 4: 
+ 
+Which two statements are true about Entity Relationships? A) A relationship can be mandatory for both entities. 
+B) A table name can be specified just once when selecting data from a table having a selfreferencing relationship. 
+C) A many-to-many relationship can be implemented only using foreign keys. 
+D) A one-to-many relationship in one direction is a one-to-one relationship in the other direction. 
+E) A one-to-one relationship is always a self-referencing relationship. 
+ 
+
+ 
+Question 5: 
+ 
+Choose Two 
+Examine the description of the EMPLOYEES table: 
+Name 	Null? 	Type 
+
+EMPLOYEE_ID 	NOT NULL 	NUMBER(6) 
+SALARY 	 	NUMBER(8,2) 
+DEPARTMENT_ID 	 	NUMBER(4) 
+ 
+Which two queries return the highest salary in the table? 
+A) SELECT MAX(salary) 
+FROM employees 
+GROUP BY department_id 
+HAVING MAX(salary) = MAX(MAX(salary)); 
+ 
+B) SELECT MAX(salary) 
+FROM employees 
+GROUP BY department_id 
+ 
+C) SELECT MAX(salary) 
+FROM employees; 
+ 
+D) SELECT MAX(MAX(salary)) 
+FROM employees 
+GROUP BY department_id 
+ 
+E) SELECT department_id, MAX(salary) 
+FROM employees 
+GROUP BY department_id 
+
+ 
+Question 6: 
+ 
+Examine this Statement: 
+SELECT last_name 
+FROM employees 
+ORDER BY CASE WHEN salary = (SELECT MAX(salary) FROM employees) 
+THEN 'A' 
+ELSE last_name 
+END, last_name DESC; 
+ 
+Which two statements are true? 
+A) All remaining employees names will appear in descending order. 
+B) The names of employees earning the maximum salary will appear first in descending order. 
+C) The Names of employees earning the maximum salary will appear first in ascending order. 
+D) All remaining employee name will appear in ascending order. 
+E) All remaining employee name will appear in an unspecified Order. 
+F) The names of employees earning the maximum salary will appear first in an unspecified order. 
+ 
+
+ 
+Question 7: 
+ 
+Examine this statement, which executes successfully. 
+ 
+SELECT d.department_name, ROUND(AVG(NULLIF(e.salary,0))) AS avgsal, 
+MAX(e.salary) AS maxsal 
+FROM employees e 
+JOIN departments d 
+ON (e.department_id=d.department_id) GROUP BY d.department_name 
+ORDER BY 2; 
+ 
+In which order are the rows displayed? 
+A) sorted by AVGSAL 
+B) sorted by MAXSAL 
+C) sorted by DEPARTMENT_NAME 
+D) sorted by DEPARTMENT_NAME and MAXSAL 
+E) sorted by DEPARTMEN_NAME and AVGSAL 
+ 
+
+ 
+Question 8: 
+ 
+Which two are true? 
+ 
+A) CONCAT joins two character string together. 
+B) CONCAT joins two or more character strings together. 
+C) INSTR finds the offset within a character string, starting from position 0. 
+D) INSTR find the offset within a string of a single character only 
+E) FLOOR returns the largest positive integer less then or equal to a specified number. 
+F) FLOOR returns the largest integer less than or equal to a specified number. 
+ 
+
+ 
+Question 9: 
+ 
+Examine the description of the COUNTIRES table: 
+Name  	 	 	Null?  	 
+Type 
+--------------  	---------  
+--------------------- 
+Country_ID  	 	NOT NULL  
+CHAR(2) 
+COUNTRY_NAME 	 	 	 	 
+ 
+Examine the description of the DEPARTMENTS table 
+VARCHAR2(40) 
+Name  	 	 	Null?  	 
+Type 
+--------------  	---------  
+------------- 
+DEPARTMENT_ID 	 	NOT NULL  
+NUMBER(4) 
+DEPARTMENT_NAME  	NOT NULL  
+VARCHAR2(30) 
+LOCATION_ID  	 	 	 	 
+ 
+Examine the description of the LOCATIONS table: 
+NUMBER(4) 
+Name  	 	 	Null?  	 
+Type 
+--------------  	---------  
+-------------------- 
+LOCATION_ID  	 	NOT NULL  
+NUMBER(4) 
+ADDRESS 	 	 	 	 	 
+VARCHAR(140) 
+Country_ID  	 	 	 	 
+CHAR(2) 
+ 
+Which two queries will return a list of countries with no departments? 
+ 
+A) SELECT country_id, country_name 
+ 	FROM countries 
+ 	INTERSECT 
+ 	SELECT l.country_id, c.country_name 
+ 	FROM locations l 
+ 	JOIN countries c on l.country_id = c.country_id 
+ 	JOIN departments d ON d.location_id = l.location_id; 
+ 
+B) SELECT country_id, country_name 
+ 	FROM countries 
+ 	JOIN locations USING (country_id) 
+ 	JOIN departments USING (location_id) 
+ 	WHERE department_id IS NULL; 
+ 
+C) SELECT country_id, country_name 
+ 	FROM countries 
+ 	WHERE country_id NOT IN ( 
+SELECT country_id 
+FROM countries 
+JOIN locations USING (country_id) 
+JOIN departments USING (location_id) 
+); 
+ 
+D) SELECT country_id, country_name  
+FROM countries 
+MINUS 
+SELECT l.country_id, c.country_name 
+FROM locations l 
+JOIN countries c on l.country_id=c.country_id 
+JOIN departments d on d.location_id=l.location_id; 
+
+ 
+Question 10: 
+ 
+Which three are true about system and object privileges? 
+ 
+A) Adding a foreign key constraint pointing to a table in another schema requires the REFERENCES object privilege. 
+ 
+B) WITH GRANT OPTION cannot used when granting an object privilege to PUBLIC 
+ 
+C) Revoking an object privilege that was granted with the WITH GRANT OPTION clause has a cascading effect. 
+ 
+D) WITH GRANT OPTION can be used when granting an object privilege to both users and roles. 
+ 
+E) Revoking a system privilege that was granted WITH ADMIN OPTION as a cascading effect. 
+ 
+F) Adding a primary key constraint to an existing table in another schema requires a system privilege. 
+ 
+
+ 
+Question 11: 
+ 
+Examine the description of EMPLOYEES table: 
+Name  	 	Null? 	 	 	Type 
+------------------ 	 
+------------ 
+ 
+---------- 
+EMPLOYEE_NAME 
+NOT NULL 
+ 
+VARCHAR(5) 
+HIRE_DATE 	 
+ 	 
+ 
+DATE 
+SALARY  	 
+ 	 
+ 
+NUMBER(7,2) 
+ 
+The session time zone is the same as the database server. 
+ 
+Which two statements will list only the employees who have been working with the company for more than five years? 
+ 
+A) SELECT employee_name FROM employees  
+WHERE (SYSTIMESTAMP – hire_date) / 365 > INTERVAL '1825' DAY; 
+B) SELECT employee_name FROM employees  
+WHERE (SYSDATE – hire_date) / 12 > 5; 
+C) SELECT employee_name FROM employees  WHERE (CURRENT_DATE -hire_date ) / 12 > 5; 
+D) SELECT employee_name FROM employees  WHERE (CURRENT_DATE – hire_date) / 365 > 5 
+E) SELECT employee_name FROM employees  
+WHERE (SYSTIMESTAMP – hire_date) / 12 > INTERVAL '5' YEAR; 
+F) SELECT employee_name FROM employees WHERE (SYSDATE – hire_date) / 365 > 5 
+ 
+
+ 
+Question 12: 
+ 
+Which two statements are true about CURRENT_TIMESTAMP? 
+ 
+A) The time is in the time zone of DBTIMEZONE. 
+B) The date is in the time zone of DBTIMEZONE. 
+C) It always returns the same value as SYSTIMESTAMP. 
+D) It returns the same date as CURRENT_DATE. 
+E) The value varies depending on the setting of SESSIONTIMEZONE. 
+F) It returns a value of data type TIMESTAMP. 
+ 
+
+Question 13: 
+ 
+Which two is true about unused columns? 
+ 
+A) A query can return data from unused columns, but no DML is possible on those columns. 
+B) Unused columns retain their data until they are dropped. 
+C) A Primary Key column cannot be set unused. 
+D) Once a column has been set to unused, a new column with the same name can be added to the 
+table. 
+E) The DESCRIBE command displays unused columns. 
+F) A foreign key column cannot be set to unused. 
+ 
+
+ 
+Question 14: 
+ 
+Which two are true about the MERGE statement? 
+ 
+A) The WHEN NOT MATCHED clause can be used to specify the deletions to be performed. 
+B) The WHEN MATCHED clause can be used to specify the inserts to be performed. 
+C) The WHEN MATCHED clause can be used to specify the updates to be performed. 
+D) The WHEN NOT MATCHED clause can be used to specify the updates to be performed. 
+E) The WHEN NOT MATCHED clause ca be used to specify the inserts to be performed. 
+ 
+
+Question 15: 
+ 
+You and your colleague Andrew have these privileges on the EMPLOYEE_Records table: 
+1. SELECT 
+2. INSERT 
+3. UPDATE 
+4. DELETE 
+You connect to the database instance and perform an update to some of the rows in EMPLOYEE_RECORDS, but do not commit yet.  
+ 
+Andrew connects to the database instance and queries the table. 
+ 
+No other user accessing the table. 
+ 
+Which two statements are true at this point? 
+ 
+A) Andrew will be able to see the changes you have made. 
+B) Andrew will be unable to see the changes you have made. 
+C) Andrew Will be unable to perform any INSERTS, UPDATES, or DELETES on the table. 
+D) Andrew will be able to modify any rows in the table that have not been modified by your transaction. 
+E) Andrew will be able to SELECT from the table, but be unable to modify any existing rows. 
+ 
+
+Question 16: 
+ 
+You currently have an active transaction in your session and have been granted SELECT access to V$TRANSACTION. 
+ 
+EXECUTING: 
+SELECT xid, status FROM v$transaction; 
+ 
+in your session returns: 
+ 
+XID   	 	 
+ 
+Status 
+------------ 	 
+ 
+------------ 
+0A00070000A07000  
+ 
+ACTIVE 
+ 
+In which three situations will re-executing this query still return a row but with different XID, indicating a new transaction has started? 
+ 
+A) after successfully executing a DML statement following a failed DML statement 
+B) after successfully executing a COMMIT or ROLLBACK followed by a DML statement 
+C) after successfully execute a CREATE TABLE as SELECT statement followed by a SELECT FOR UPDATE statement 
+D) after successfully executing a COMMIT or ROLLBACK followed by a SELECT statement 
+E) after successfully executing a CREATE TABLE statement followed by a CREATE INDEX statement 
+F) after successfully executing a TRUNCATE statement followed by a DML statement 
+ 
+
+ 
+ 
+Question 17: 
+ 
+Examine the description of Employees table: 
+
+Name  	 	 	Null?  	 
+Type 
+------------ 	 	------- 	 
+---------- 
+EMPLOYEE_ID  	 	NOT NULL  
+NUMBER(38) 
+SALARY 	 	 	NOT NULL  
+NUMBER(38) 
+DEPARTMENT_ID 	 	NOT NULL  
+NUMBER(38) 
+ 
+Which statement increases each employees's SALARY by the minimum for their DEPARTMENTS? 
+ 
+A) UPDATE employees e1 
+ 	SET salary = salary + (SELECT MIN(salary) FROM employee e2); B) UPDATE employees e1 
+ 	SET salary = salary +  
+ 	 	(SELECT MIN (e1.salary) 
+FROM employees e2) 
+WHERE e1.department_id=e2.department_id); 
+C) UPDATE employees e1 
+ 	SET salary = 
+ 	 	(SELECT e1.salary + MIN(e2.salary) 
+FROM employees e2 
+WHERE e1.department_id=e2.department_id); 
+D) UPDATE employees e1 
+SET salary =   
+(SELECT e2.salary + MIN (e2.salary) 
+FROM employees e2 
+WHERE e1.department_id=e2.department_id 
+GROUP BY e2.department_id); 
+ 
+
+ 
+Question 18: 
+Which is the default column or columns for sorting output from compound queries using SET operators such as INTERSECT in a SQL statement? 
+ 
+A) the first column in the last SELECT of the compound query 
+B) the first NUMBER of VARCHAR2 column in the last SELECT of the compound query 
+C) the first NUMBER column in the first SELECT of the compound query 
+D) the first VARCHAR2 column in the first SELECT of the compound query E) the first column in the first SELECT of the compound query 
+ 
+
+ 
+Question 19: 
+Examine the description of the BOOKS table: 
+Name  	 
+ 
+Null?  
+ 
+Type 
+------------ 
+ 
+------- 
+ 
+---------- 
+BOOK_ID 	 
+ 
+NOT NULL 
+ 
+NUMBER(4) 
+BOOK_TITLE  
+ 
+ 	 
+ 
+VARCHAR2(250) 
+PRICE  	 
+ 
+ 	 
+ 
+NUMBER(5,2) 
+PURCHASE_DATE 
+ 
+ 	 
+ 
+DATE 
+AUTHOR_NAME  
+ 
+ 	 
+ 
+VARCHAR(30) 
+ 
+Examine these requirements: 
+1. Display book titles for books purchased before January 17, 2007 costing less than 500 or more the 1000. 
+2. Sort the titles by date of purchase, starting with the most recently purchased book. 
+Which two queries can be used? 
+A) SELECT book_title 
+ 	FROM books 
+ 	WHERE (price < 500 OR > 1000) 
+ 	AND (purchase_date < '17-JAN-2007') 
+ 	ORDER by purchase_date DESC; 
+B) SELECT book_title 
+ 	FROM books 
+ 	WHERE (price < 500 OR price > 1000) 
+ 	AND (purchase_date < '17-JAN-2007') 
+ 	ORDER by purchase_date DESC; 
+C) SELECT book_title 
+ 	FROM books 
+ 	WHERE (price NOT BETWEEN 500 AND 1000) 
+ 	AND (purchase_date < '17-JAN-2007') 
+ 	ORDER by purchase_date DESC; 
+D) SELECT book_title 
+ 	FROM books 
+ 	WHERE (price IN(500,100)) 
+ 	AND (purchase_date < '17-JAN-2007') 
+ 	ORDER by purchase_date ASC; 
+E) SELECT book_title 
+ 	FROM books 
+ 	WHERE (price NOT BETWEEN 500 AND 1000) 
+ 	AND (purchase_date < '17-JAN-2007') 
+ 	ORDER by purchase_date; 
+ 
+
+ 
+Question 20: 
+Examine the description of EMPLOYEES table: 
+Name  	 
+ 
+Null?  
+ 
+Type 
+------------ 
+ 
+------- 
+ 
+---------- 
+EMPLOYEE_ID  
+ 
+NOT NULL 
+ 
+NUMBER(6) 
+EMPLOYEE_NAME 
+ 
+NOT NULL 
+ 
+VARCHAR2(100) 
+SALARY 	 
+ 
+NOT NULL 
+ 
+NUMBER 
+COMMISSION  
+ 
+ 	 
+ 
+NUMBER 
+ 
+Which three queries return all rows for which SALARY + COMMISSION is greater than 20000? 
+ 
+A) SELECT * FROM employees WHERE NVL(salary+commission,0) >=20000 B) SELECT * FROM employees WHERE NVL2(salary + commission, salary+commission, salary) >=20000; 
+C) SELECT * FROM employees WHERE salary + NVL(commission,0) >=20000; 
+D) SELECT * FROM employees WHERE COALESCE(salary, commission) >=20000; 
+E) SELECT * FROM employees WHERE salary + NULLIF(commission,0) >=20000; 
+F) SELECT * FROM employees WHERE salary + NVL2(commission, commission,0) 
+>=20000; 
+ 
+
+ 
+Question 21: 
+Which two join conditions in a FROM clause are non-equijoins? 
+A) table 1 JOIN table2 USING(column1, column2) 
+B) table1 NATURAL JOIN table2 
+C) table 1 JOIN table2 ON (table1.column = table2.column) WHERE table2.column LIKE 'A%' 
+D) table 1 JOIN table 2 ON (table1 >=table2.column) 
+E) table1 JOIN table2 on (table1.column BETWEEN table2.column1 AND table2.column2) 
+ 
+
+ 
+Question 22: 
+You must find the number of employees whose salary is lower than employee 110. Which statement fails to do this? 
+ 
+A) SELECT COUNT(*) 
+ 	FROM employees e 
+ 	JOIN employees a 
+ 	ON e.salary < a.salary WHERE a.employee_id=110; 
+B) SELECT COUNT(*) 
+ 	FROM employees e 
+ 	WHERE e.salary < (SELECT a.salary FROM employees a WHERE e.employee_id = a.employee_id) 
+C) SELECT COUNT(*) 
+ 	FROM employees 
+ 	WHERE salary < (SELECT salary from employees WHERE employee_id=110); 
+D) SELECT COUNT(*) 
+ 	FROM employees e 
+ 	JOIN (SELECT salary FROM employees WHERE employee_id=110) a 
+ 	ON e.salary < a.salary; 
+ 
+
+ 
+Question 23 
+Examine the description of the EMPLOYEES table: 
+Name  	 
+ 
+Null?  
+ 
+Type 
+------------ 
+ 
+------- 
+ 
+---------- 
+EMP_NO 	 
+ 
+NOT NULL 
+ 
+NUMBER(5) 
+LAST_NAME  
+ 
+ 	 
+ 
+VARCHAR2(10) 
+DEPT_NO 	 
+ 
+NOT NULL 
+ 
+NUMBER(5) 
+SALARY 	 
+ 
+ 	 
+ 
+NUMBER(6,2) 
+ 
+You write this failing statement: 
+ 
+SELECT dept_no AS department_id, MAX(salary) as max_sal 
+ 	FROM employees 
+WHERE salary > 10000 
+GROUP BY department_id 
+ORDER BY max_sal; 
+ 
+Which clause causes the error? 
+A) WHERE 
+B) ORDER BY 
+C) GROUP BY 
+D) SELECT 
+ 
+
+ 
+Question 24: 
+ 
+Which statement is true about using functions in WHERE and HAVING? 
+ 
+A) Using single-row functions in the HAVING clause requires subquery. 
+B) Using aggregate functions in the WHERE clause requires a subquery. 
+C) Using single-row functions in the WHERE clause requires a subquery. 
+D) Using aggregate functions in the HAVING clause requires a subquery. 
+ 
+
+ 
+Question 25: 
+ 
+Which three are true about granting object privileges on table, views and sequences? 
+A) DELETE can be granted on tables, views and sequences. 
+B) REFERENCES can be granted only on tables and views. 
+C) INSERT can bet granted to tables, views and sequences. 
+D) UPADTE can be granted only on tables and views. 
+E) SELECT can be granted only tables and views. 
+F) ALTER can be granted only in tables and sequences. 
+ 
+
+ 
+Question 26: 
+Examine the data in the COLORS table: 
+RGB_HEX_VALUE 
+ 
+COLOR_NAME 
+------------- 
+ 
+---------- 
+FF0000 	 
+ 
+red 
+00FF00 	 
+ 
+green 
+0000FF 	 
+ 
+blue 
+ 
+Examine the data in the BRICKS table: 
+ 
+BRICK_ID  
+ 
+COLOR_RGB_HEX_VALUE 
+------------- 
+ 
+---------- 
+ 	 	1 
+ 
+FF0000 
+ 	 	2 
+ 
+00FF00 
+ 	 	3 
+ 
+FFFFFF 
+ 
+Which two queries return all the rows from COLORS? 
+A) SELECT * FROM colors c 
+ 	LEFT JOIN bricks b 
+ 	USING (rgb_hex_value); 
+B) SELECT *  FROM bricks b 
+FULL JOIN colors c 
+ON b.color_rgb_hex_value=c.rgb_hex_value; 
+C) SELECT *  
+ 	FROM colors c 
+ 	LEFT JOIN bricks b 
+ 	ON b.color_rgb_hex_value = c.rgb_hex_value 
+ 	WHERE b.brick_id >0; 
+D) SELECT * 
+ 	FROM bricks b 
+ 	RIGHT JOIN colors c 
+ 	ON b.color_rgb_hex_value = c.rgb_hex_value; 
+E) SELECT * 
+ 	FROM bricks b 
+ 	JOIN colors c 
+ 	ON b.color_rgb_hex_value = c.rgb_hex_value; 
+ 
+
+ 
+Question 27 
+ 
+Which two are true about virtual columns? 
+ 
+A) They can be referenced in the SET clause on an UPDATE statement as the name of the column to be updated. 
+B) They cannot have a data type explicit specified. 
+C) They can be referenced in the column expression of another virtual column. 
+D) They can be indexed. 
+E) They can be referenced in the WHERE clause of an UPDATE or DELETE statement. 
+ 
+
+ 
+Question 28 
+ 
+Examine the description of the CUSTOMERS table: 
+ 
+NAME  	 
+ 
+NULL?  
+ 
+TYPE 
+------------- 
+ 
+--------- 
+ 
+---------- 
+CUST_ID 	 
+ 
+NOT NULL 
+ 
+VARCHAR2(6) 
+FIRST_NAME  
+ 
+ 	 
+ 
+VARCHAR2(50) 
+LAST_NAME  
+ 
+NOT NULL 
+ 
+VARCHAR2(50) 
+ADDRESS 	 
+ 
+ 	 
+ 
+VARCHAR2(50) 
+CITY  	 
+ 
+ 	 
+ 
+VARCHAR2(50) 
+ 
+You want to display details of all customers who reside in cities starting with the letter 'D' followed by at least two characters. 
+ 
+Which query can be used? 
+A) SELECT * FROM customers WHERE city ='D__%'; 
+B) SELECT * FROM customers WHERE city LIKE 'D__%'; 
+C) SELECT * FROM customers WHERE city LIKE 'D__'; 
+D) SELECT * FROM customers WHERE city ='%D__'; 
+ 
+
+ 
+Question 29 
+ 
+In the Promotion table, the PROMO_BEGIN_DATE column is of data type DATE and the default date format is DD-MON-RR. 
+ 
+Which two statement are true about expressions using PROMO_BEGIN_DATE contained in a query? 
+ 
+A) PROMO_BEGIN_DATE – SYSDATE will return a number. 
+B) TO_DATE(PROMO_BEGIN_DATE * 5) will return a date. 
+C) TO_NUMBER(PROMO_BEGIN_DATE) -5 will return a number. 
+D) PROMO_BEGIN_DATE – SYSDATE will return an error. 
+E) PROMO_BEGIN_DATE – 5 will return a date. 
+ 
+
+ 
+Question 30 
+ 
+Which two will execute successfully? 
+ 
+A) SELECT COALESCE (0, SYSDATE) FROM DUAL; 
+B) SELECT COALESCE ('DATE', SYSDATE) FROM DUAL; 
+C) SELECT NVL('DATE', 200) FROM (SELECT NULL AS "DATE" FROM DUAL); 
+D) SELECT COALESCE('DATE', SYSDATE) FROM (SELECT NULL AS "DATE" FROM DUAL); E) SELECT NVL('DATE', SYSDATE) FROM DUAL; 
+ 
+
+ 
+Question 31 
+ 
+Which three statements are true about GLOBAL TEMPORARY TABLES? 
+ 
+A) A TRUNCATE command issued in a session causes all rows in a GLOBAL TEMPORARY TABLE for the issuing session to be deleted 
+B) Any GLOBAL TEMPORARY TABLE rows existing at session termination will deleted 
+C) A DELETE command on a GLOBAL TEMPORARY TABLE cannot be rolled back. 
+D) A GLOBAL TEMPORARY TABLE's definition is available to multiple sessions. 
+E) GLOBAL TEMPORARY TABLE rows inserted by a session are available to any other session whose user has been granted select on the table. 
+F) GLOBAL TEMPORARY TABLE space allocation occurs at session start. 
+
+ 
+Question 32: 
+ 
+A session's NLS_DATE_FORMAT is set to DD Mon YYYY. 
+Which two queries return the value 1 Jan 2019? 
+ 
+A) SELECT TO_CHAR('2019-01-01') FROM DUAL; 
+B) SELECT '2019-01-01' FROM DUAL; 
+C) SELECT TO_DATE('2019,01,01') FROM DUAL; 
+D) SELECT TO_DATE('2019-01-1', 'YYYY-MM-DD') FROM DUAL; 
+E) SELECT DATE '2019-01-01' FROM DUAL; 
+
+ 
+Question 33: 
+Which three are true about dropping columns from a table? 
+ 
+A) A column that is referenced by another column in any other table cannot be dropped. 
+B) A primary key column cannot be dropped. 
+C) A column must be set as unused before is dropped from a table. 
+D) Multiple columns can be dropped simultaneously using the ALTER TABLE command. 
+E) A column drop is implicitly committed. 
+F) A column can be removed only if it contains no data. 
+
+ 
+Question 34: 
+Which two are true about external tables that use the ORACLE_DATAPUMP access driver? 
+ 
+A) Creating an external table create a directory object. 
+B) Creating an external table creates a dump file that can be used by an external table in the same or a different database. 
+C) When creating an external table, data can be selected only from a table whose rows are stored in database blocks. 
+D) When creating an external table, data can be selected from another external table or from a table whose rows are stored in database blocks. 
+E) Creating an external table creates a dump file that can be used only by an external table in the same database. 
+
+ 
+Question 35: 
+ 
+The PRODUCT_INFORMATION table has a UNIT_PRICE column of data type NUMBER(8,2). EVALUATE this SQL statement: 
+ 
+SELECT TO_CHAR(unit_price, '$9,999') FROM product_information; 
+ 
+Which two statements are true about the output? 
+ 
+A) A row whose UNIT_PRICE column contains the value 10235.99 will displayed as ########. 
+B) A row whose UNIT_PRICE column contains the value 10235.99 will displayed as $1,0236. 
+C) A row whose UNIT_PRICE column contains the value 1023.99 will be displayed as $1,023. 
+D) A row whose UNIT_PRICE column contains the value 1023.99 will be displayed as $1,024. 
+E) A row whose UNIT_PRICE column contains the value 10235.99 will be displayed as $1,023. 
+ 
+
+ 
+Question 36: 
+Examine the description of the PRODUCT_STATUS table: 
+Name  	 
+ 
+Null?  	 
+Type 
+------------- 
+ 
+-----------  
+------------ 
+PROD_ID 	 
+ 
+NOT NULL  
+NUMBER(2) 
+STATUS 	 
+ 
+NOT NULL  
+VARCHAR2(15) 
+ 
+The STATUS column contains the value IN STOCK or OUT OF STOCK for each row. 
+ 
+Which two queries will execute successfully? 
+ 
+A) SELECT prod_id “CURRENT AVAILABILITY” || q'('s not available)' FROM product_status WHERE status = 'OUT OF STOCK'; 
+B) SELECT prod_id || q'('s not available)' “CURRENT AVAILABILITY” FROM product_status WHERE status = 'OUT OF STOCK'; 
+C) SELECT prod_id q's not available” FROM product_status WHERE status ='OUT OF STOCK'; 
+D) SELECT prod_id || q'('s not available)' 'CURRENT AVAILABILITY' FROM product_status WHERE status ='OUT OF STOCK'; 
+E) SELECT prod_id || q” 's not available” FROM product_status WHERE status ='OUT OF STOCK'; F)SELECT prod_id || q'('s not available)' FROM product_status WHERE status ='OUT OF STOCK'; 
+
+Question 37: 
+ 
+Examine this partial command: CREATE TABLE cust(  cust_id NUMBER(2),  credit_limit NUMBER(10) 
+) ORGANIZATION EXTERNAL; 
+ 
+Which two clauses are required for this command to execute successfully? 
+ 
+A) the DEFAULT DIRECTORY clause 
+B) the LOCATION clause 
+C) the REJECT LIMIT clause 
+D) the ACCESS PARAMETERS claue 
+E) the access driver TYPE clause 
+ 
+
+ 
+Question 38: 
+Examine the description of the CUSTOMERS table: 
+Name  	 
+ 
+Null?  	 
+Type 
+------------- 
+ 
+-----------  
+------------ 
+CUSTNO 	 
+ 
+NOT NULL  
+NUMBER(3) 
+CUSTNAME  
+ 
+NOT NULL  
+VARCHAR2(25) 
+CUSTADDRESS  
+ 
+ 	 	 
+VARCHAR2(35) 
+CUST_CREDIT_LIMIT  	 	 	 	NUMBER(5) 
+ 
+CUSTNO is the PRIMARY KEY. 
+You must determine if any customers details have den entered more than once using a different CUSNO, by listing all duplicate names. 
+Which two methods can you use to get the required result? 
+A) RIGHT OUTER JOIN with self join 
+B) subquery 
+C) self join 
+D) FULL OUTER JOIN with self join 
+E) LEFT OUTER JOIN with self join 
+ 
+
+ 
+Question 39: 
+Examine this query: 
+SELECT employee_id, first_name, salary 
+ 	FROM employees  
+WHERE hire_date > '&1'; 
+ 
+Which two methods should you use to prevent prompting for a hire date value when this query is executed? 
+A) Execute the SET VERIFY ON command before executing the query. 
+B) Store the query in a script and pass the substitution value to the script when executing it. 
+C) Execute the SET VERITFY OFF command before executing the query. 
+D) Use the UNDIFINE command before executing the query. 
+E) Use the DEFINE command before executing the query. 
+F) Replace '&1' with '&&1' in the query. 
+ 
+
+ 
+Question 40: 
+Which set of command will prompt only once for the name of the table to use in the query? 
+ 
+A) DEFINE x='employees' 
+ 	PROMPT Enter table name &x 
+ 	SELECT employee_id from &x WHERE last_name = 'King'; 
+ 
+B) PROMPT Enter table name &&x 
+ 	SELECT employee_id from &x WHERE last_name = 'King'; 
+ 
+C) PROMPT Enter table name &x 
+ 	SELECT employee_id from &&x WHERE last_name = 'King'; 
+ 
+D) PROMPT Enter table name &x 
+ 	SELECT employee_id from &x WHERE last_name = 'King'; 
+ 
+
+ 
+Question 41: 
+Which two statements are true about the ORDER BY clause? 
+A) Only columns that are specified in the SELECT list can be used in the ORDER BY clause. 
+B) In a character sort, the values are case-sensitive. 
+C) NULLS are not included in the sort operation. 
+D) Numeric values are displayed in descending order if they have decimal positions. 
+E) Colum aliases can be used in the ORDER BY clause. 
+ 
+
+ 
+Question 42: 
+Examine these statements: 
+CREATE TABLE dept( 
+ 	deptno NUMBER PRIMARY KEY 
+ 	, dname VARCHAR(10) 
+ 	, mgr NUMBER 
+ 	, CONSTRAINT dept_fkey FOREIGN KEY (mgr) REFERENCES emp(empno) 
+); 
+ 
+CREATE TABLE emp( empno NUMBER PRIMARY KEY 
+, ename VARCHAR2(10) 
+, deptno NUMBER 
+, CONSTRAINT emp_fkey FOREIGN KEY (deptno) REFERENCES dept (deptno) DISABLE  ); 
+ALTER TABLE emp MODIFY CONSTRAINT emp_fkey ENABLE; 
+ 
+Which two are true? 
+A)The DEPT_FKEY constraint definition must removes from the CREATE TABLE DEPT statement, and be added with an ALTER TABLE statement once both tables are created, for two CREATE TABLE statements to execute successfully in the order shown. 
+B) Both foreign key constraint definitions must be remove from the CREATE TABLE statements, and be added with ALTER TABLE statements once both table are creates, for the two CREATE TABLE statements to execute successful in the order shown. 
+C)The DEPTNO column in the EMP table will be able to contain NULL values. 
+D) All three statements excute successfully in the order shown. 
+E) The MGR column in the DEPT table will not be able to contain NULL values 
+F) The CREATE TABLE EMP statement must precede the CREATE TABLE DEP statement for all three statements to execute successfully. 
+
+ 
+Question 43: 
+Which three are true about the CREATE TABLE command? 
+A) The owner of the table must have the UNLIMITED TABLESPACE system privilege. 
+B) The owner of the table should have space quota available on the tablespace where the table is defined. 
+C) A user must have the CREATE ANY TABLE privilege to create tables. 
+D) It implicitly executes a commit. 
+E) It implicitly rolls back any pending transactions 
+F) It can include the CREATE ... INDEX statement for creating an index to enforce the primary key constraint. 
+ 
+
+ 
+Question 44: 
+Examine the description of the EMPLOYEES table: 
+Name  	 
+Null?  
+ 
+Type 
+------------- 
+------- 
+ 
+---------- 
+EMPLOYEE_ID  
+NOT NULL 
+ 
+NUMBER(4) 
+LAST_NAME  
+ 	 
+ 
+VARCHAR2(10) 
+HIRE_DATE  
+ 	 
+ 
+DATE 
+SALARY 	 
+ 	 
+ 
+NUMBER(6,2) 
+ 
+Examine these requirements: 
+1. Display the last name, date of hire and the number of years of service for each employee. 
+2. If the employee has been employed 5 or more years but less than 15, display "5+ years of service". 
+3. If the employee has been employed 10 or more years but less than 15, display "10+ years of service". 
+4. If the employee has been employed 15 or more years, display "15 + years of service". 
+5. If none of these conditions matches, display "<5 years of service". 
+6. Sort the result by the HIRE_DATE column. 
+ 
+Which statement satisfies all the requirements? 
+ 
+A) SELECT last_name, hire_date 
+(CASE WHEN (SYSDATE – TO_YMINTERVAL('5-0')) >= hire_date THEN '5+ years of service' 
+WHEN (SYSDATE – TO_YMINTERVAL('10-0')) >= hire_date THEN '10+ years of service' 
+WHEN (SYSDATE – TO_YMINTERVAL('15-0')) => hire_date THEN '15+ years of service' 
+ELSE '<5 years of service' 
+END) AS years 
+ORDER BY hire_date; 
+B) SELECT last_name, hire_date 
+(CASE WHEN (SYSDATE – hire_date) >= TO_YMINTERVAL('5-0') THEN '5+ years of service' 
+WHEN (SYSDATE – hire_date) >= TO_YMINTERVAL('10-0') THEN '10+ years of service' 
+WHEN (SYSDATE – hire_date) => TO_YMINTERVAL('15-0') THEN '15+ years of service' 
+ELSE '<5 years of service' 
+END) AS years 
+ORDER BY hire_date; 
+ 
+C) SELECT last_name, hire_date 
+(CASE WHEN (SYSDATE – TO_YMINTERVAL('15-0')) >= hire_date THEN '15+ years of service' 
+WHEN (SYSDATE – TO_YMINTERVAL('10-0')) >= hire_date THEN '10+ years of service' 
+WHEN (SYSDATE – TO_YMINTERVAL('5-0')) => hire_date THEN '5+ years of service' 
+ELSE '<5 years of service' 
+END) AS years 
+ORDER BY hire_date; 
+ 
+D) SELECT last_name, hire_date 
+(CASE WHEN (SYSDATE – hire-date) >= TO_YMINTERVAL('15-0') THEN '15+ years of service' 
+WHEN (SYSDATE – hire_date) >= TO_YMINTERVAL('10-0') THEN '10+ years of service' 
+WHEN (SYSDATE – hire_date) => TO_YMINTERVAL('5-0') THEN '5+ years of service' 
+ELSE '<5 years of service' 
+END) AS years 
+ORDER BY hire_date; 
+ 
+
+ 
+Question 45: 
+ 
+Which two are true about transactions in the Oracle Database? 
+A) A session can see uncommitted updates made by the same user in a different session. 
+B) A DDL statement issued by a session with an uncommitted transaction automatically commits that transaction. 
+C) DML statements always starts new transaction. 
+D) DDL statements automatically commit only data dictionary updates caused by executing the DDL. 
+E) An uncommitted transaction is automatically committed when the user exits SQL*Plus. 
+ 
+
+ 
+Question 46: 
+Which two statements are true about the result of using the INTERSECT operator in compound queries? 
+A) Column names in each SELECT in the compound query can be different. 
+B) The number of columns in each SELECT in the compound query can be different. 
+C) INTERSECT returns rows common to both side of the compound query. 
+D) INTERSECT ignores NULLs. 
+E) Reversing the order of intersected tables can sometimes affect the output. 
+ 
+
+ 
+Question 47: 
+1. MANAGER is an existing role with no privileges or roles. 
+2. EMP is an existing role containing the CREATE TABLE privilege. 
+3. EMPLOYEES is an existing table in the HR schema. 
+Which two commands execute successfully? 
+A) GRANT CREATE TABLE, emp TO manager; 
+B) GRANT CREATE SEQUENCE to manager, emp; 
+C) GRANT CREATE ANY SESSION, CREATE ANY TABLE to manager; 
+D) GRANT SELECT, INSERT ON hr.employess to manager WITH GRANT OPTION; 
+E) GRANT CREATE TABLE, SELECT ON hr.employees TO manager; 
+ 
+
+ 
+Question 48: 
+Examine the description of the EMPLOYEES table: 
+ 
+Name  	 
+Null?  
+ 
+Type 
+------------- 
+------- 
+ 
+---------- 
+EMP_ID 	 
+NOT NULL 
+ 
+NUMBER 
+EMP_NAME  
+ 	 
+ 
+VARCHAR2(10) 
+DEPT_ID 	 
+ 	 
+ 
+NUMBER(2) 
+SALARY 	 
+ 	 
+ 
+NUMBER(8,2) 
+JOIN_DATE  
+ 	 
+ 
+DATE 
+ 
+NLS_DATE_FORMAT is set to DD-MON-YY 
+ 
+Which query requires explicit data type conversion? 
+A) SELECT join_date + '20' FROM employees; 
+B) SELECT salary + '120.50' FROM employees; 
+C) SELECT SUBSTR(join_date, 1, 2) – 10 FROM employees; 
+D) SELECT join_date || ' ' || salary FROM employees; 
+E) SELECT join_date FROM employees WHERE join_date > '10-02-2018'; 
+ 
+
+ 
+Question 49: 
+Examine the description of the CUSTOMERS table: 
+Name  	 	Null?  
+ 
+Type 
+------------- 	------- 
+ 
+---------- 
+CUST_ID 	 	NOT NULL 
+ 
+VARCHAR2(2) 
+CUST_LAST_NAME  	 
+ 
+VARCHAR2(30) 
+CITY  	 	 	 
+ 
+VARCHAR2(10) 
+CUST_CREDIT_LIMIT  	 
+ 
+NUMBER(6,2) 
+ 
+You need to display last names and credit limits of all customers whose last name starts with A or B in lower or upper case, and whose credit limit is below 1000. 
+ 
+Examine this partial query: 
+ 
+SELECT cust_last_name, cust_credit_limit FROM CUSTOMERS  
+Which two WHERE conditions give the reqired result? 
+ 
+A) WHERE (INITCAP(cust_last_name) LIKE 'A%' OR INITCAP(cust_last_name) LIKE 
+'B%') AND cust_credit_limit < 1000; 
+B) WHERE (UPPER(cust_last_name) LIKE INITCAP('A') OR UPPER(cust_last_name) 
+LIKE INITCAP('B')) AND ROUND (cust_credit_limit) < ROUND (1000); 
+C) WHERE (UPPER(cust_last_name) LIKE 'A%' OR UPPER(cust_last_name) LIKE 
+'B%') AND ROUND (cust_credit_limit) < 1000; 
+D) WHERE UPPER(cust_last_name) IN ('A%', 'B%') AND cust_credit_limit < 1000; 
+E) WHERE UPPER(cust_last_name) BETWEEN UPPER('A%' AND 'B%') AND ROUND (cust_credit_limit ) < 1000; 
+ 
+
+ 
+Question 50: 
+ 
+Examine this query: 
+ 
+SELECT 2 FROM DUAL d1 CROSS JOIN DUAL d2 CROSS JOIN DUAL d3;  
+What is returned upon execution? 
+ 
+A) 1 row 
+B) 6 rows 
+C) 0 rows 
+D) an error 
+E) 3 rows 
+F) 8 rows 
+ 
+
+ 
+Question 51: 
+ 
+Which two statements are true about Oracle synonyms? 
+ 
+A) A synonym has an object number. 
+B) All private synonym names must be unique in the database. 
+C) A synonym can be created on an object in a package. 
+D) Any user can create a PUBLIC synonym. 
+E) A synonym can have a synonym. 
+ 
+
+ 
+Quesiton 52: 
+ 
+You execute this command: 
+TRUNCATE TABLE depts; 
+ 
+Which two are true? 
+A) A FLASHBACK Table statement can be used to retrieve the deleted data. 
+B) It always retains the space used by removed rows. 
+C) It retains indexes defined on the table 
+D) A ROLLBACK statement can be used to retrieve the deleted data. 
+E) It retains the integrity defined on the table 
+F) It drops any trigger defined on the table 
+ 
+
+ 
+Question 53: 
+Examine the data in the EMPLOYEES table: 
+EMPLOYEE_ID  
+LAST_NANE 
+ 
+MONTHLY_SALARY 
+MONTHLY_COMMISSION_PCT 
+------------- 
+------- 
+ 
+----------  
+---------------------- 
+101 Kochhar 	 	 	24000  	 	 	<NULL> 
+102 Ernst  	 	 	17000  	 	 	.5 
+103 Rajs  	 	 	21000  	 	 	.2 
+104 Lorentz 	 	 	25000  	 	 	<NULL> 
+105 Morris 	 	 	12000  	 	 	<NULL> 
+ 
+Which statement will compute the total annual compensation for each employee? 
+ 
+A) SELECT last_name, (monthly_salary * 12) + (monthly_salary * 12 * monthly_commission_pct) as annual_comp FROM EMPLOYEES 
+B) SELECT last_name, (monthly_salary * 12) + (monthly_commission_pct * 12) as annual_comp FROM employees; 
+C) SELECT last_name, (monthly_salary * 12) + (monthly_salary * 12 * 
+NVL(monthly_commission_pct,0)) as annual_comp; 
+D) SELECT last_name, (monthly_salary + montly_salary + monthly_commission_pct) *12 as annual_comp FROM employees; 
+ 
+
+ 
+Question 54: 
+ 
+Examine this command: 
+ 
+TRUNCATE TABLE test; 
+ 
+Which two are true? 
+ 
+A) All the indexes on the TEST table are dropped. 
+B) The structure on the TEST table is removed. 
+C) All the constraints on the TEST table are dropped. 
+D) All the rows in the TEST table are removed 
+E) Removed rows can not be recovered by using the ROLLBACK command. 
+ 
+
+ 
+Question 55: 
+Examine the data in the PRODUCTS table: 
+PROD_ID 	 	PROD_NANE  	PROD_LIST  	CATEGORY_ID 
+------------- 	------- 	 	----------  	------------- 
+101 Plate  	 	 	10  	 	 	1 
+102 Cup  	 	 	20  	 	 	1 
+103 Saucer 	 	 	20  	 	 	1 
+104 Knife  	 	 	30  	 	 	1 
+105 Fork  	 	 	30  	 	 	1 
+ 
+Examine these queries: 
+1. SELECT prod_name, prod_list FROM products WHERE prod_list NOT IN (10,20) AND category_id=1; 
+2. SELECT prod_name, prod_list FROM products WHERE prod_list <> ANY (10,20) AND category_id=1; 
+3. SELECT prod_name, prod_list FROM products WHERE prod_list <> ALL (10,20) AND category_id=1; Which queries generate the same output? 
+A) 2 and 3 
+B) 1 and 3 
+C) 1, 2, and 3 
+D) 1 and 2 
+ 
+
+ 
+Question 56: 
+Which three statements are true about the DESCRIBE command? 
+A) It displays the NOT NULL constraint for any columns that have that constraint. 
+B) It can be used to display the structure on an existing view. 
+C) It displays the PRIMARY KEY constraint for any column or columns that have that constraint. 
+D) It can be used from SQL Developer. 
+E) It can be used only from SQL*Plus. 
+F) It displays all constraints that are defined for each column. 
+
+ 
+Question 57: 
+Table EMPLOYEES contains columns including EMPLOYEE_ID, JOB_ID and SALARY. 
+ 
+Only the EMPLOYEE_ID column is indexed. 
+ 
+Rows exist for employees 100 and 200. 
+Examine this statement: 
+ 
+UPDATE employees 
+ 	SET (job_id, salary) = 
+ 	(SELECT job_id, salary 
+FROM employees 
+WHERE employee_id=200) 
+WHERE employee_id=100; 
+ 
+A) Employee 200 will have SALARY set to the same value as the SALARY oy employee 100. 
+B) Employee 100 will have JOB_ID set to the same value as the JOB_ID of employee 200. 
+C) Employees 100 and 200 will have the same SALARY as before the update command. 
+D) Employee 100 will have SALARY set to the same value as the SALARY of employee 200. 
+E) Employees 100 and 200 will have the same JOB_ID as before the update command. 
+F) Employee 200 will have JOB_ID set to the same value as the JOB_ID of employee 100. 
+ 
+
+ 
+Question 58: 
+ 
+You execute this query: 
+ 
+SELECT TO_CHAR(NEXT_DAY(LAST_DAY(SYSDATE), 'MON'), 'dd “Monday for” fmMonth rrrr') FROM DUAL; 
+ 
+What is the result? 
+ 
+A) It executes successfully but does not return any result. 
+B) It returns the date for the last Monday of the current month. 
+C) It returns the date for the first Monday of the next month. 
+D) It generates an error. 
+ 
+
+ 
+Question 59: 
+Which three are true about multi-table INSERT statements? 
+ 
+A) They can be performed on relational tables. 
+B) They can performed on external table using SQL*Loader C) They can insert each computed row into more than one table 
+D) They can be performed in views. 
+E) They can be performed on remote tables. 
+F) They can be performed only by using a subquery. 
+ 
+
+ 
+Question 60: 
+ 
+Which three statements are true about Structured Query Language (SQL)? 
+ 
+A) It is used to define encapsulation and polymorphism for a relational table. 
+B) It required that data be contained in hierarchical data storage. 
+C) It provides independence for logical data structures being manipulated from the underlying physical data storage. 
+D) It best supports relational databases. 
+E) It guaranteed atomicity, consistency, isolation and durability (ACID) features. 
+F) Is is the only language that can be used for both relational and object-oriented databases. 
+ 
+
+ 
+Question 61: 
+ 
+The ORDERS table has a column ORDER_DATE of data type DATE. 
+ 
+The default display format for a date id DD-MON-RR. 
+ 
+Which two WHERE conditions demonstrate the correct usage of conversion functions? 
+ 
+A) WHERE order_date > TO_DATE ('JUL 10 2018', 'MON DD YYYY'); 
+B) WHERE order_date IN (TO_DATE('Oct 21 2018', 'Mon DD YYYY'), TO_CHAR('Nov 
+21 2018', 'Mon DD YYYY')); 
+C) WHERE TO_CHAR(order_date, 'MON DD YYYY') = 'JAN 20 2019'; 
+D) WHERE order_date > TO_DATE (ADD_MONTHS(SYSDATE, 6), 'Mon DD YYYY'); 
+E) WHERE order_date > TO_CHAR(ADD_MONTHS(SYSDATE, 6), 'MON DD YYYY'); 
+ 
+
+ 
+Question 62: 
+Which two are true about queries using set operators (UNION, UNION ALL, INTERSECT and MINUS)? 
+ 
+A) There must be an equal number of columns in each SELECT list. 
+B) The name of each column in the first SELECT list must match the name of the corresponding column in each subsequent SELECT list. 
+C) None of the set operators can be used when selecting CLOB columns. 
+D) Each SELECT statement on the query can have an ORDER BY clause. 
+E) The FOR UPDATE clause cannot be specified. 
+ 
+
+Question 63: 
+Which three statements are true about built-in data types? 
+A) A BLOB stores unstructured binary data within the database. 
+B) The default length for a CHAR column is always one character. 
+C) A VARCHAR2 blank-pads column values only if the data stored is non-numeric and contains no special characters. 
+D) A BFILE store unstructured binary data in operation system files. 
+E) A CHAR column definition does not require the length to be specified. 
+F) A VARCHAR2 column definition does not require the length to be specified. 
+ 
+
+ 
+Question 64: 
+ 
+Which three statements are true about performing DML operations on a view with no INSTEAD OF triggers defined? 
+ 
+A) Views cannot be used to add or modify rows in an underlying table if the query of the view contains the DISTINCT keyword. 
+B) DELETE statements can always be done on a table through a view. 
+C) Views cannot be used to add rows to an underlying table if the table has columns with NOT NULL constraint lacking default values which are not referenced in the defining query of the view. D) Insert statements can always be done on a table through a view. 
+E) Views cannot be used to query rows from an underlying table if the table has a PRIMARY KEY and the PRIMARY KEY columns are not referenced in the defining query of the view. 
+F) The WITH CHECK clause has no effect when deleting rows from the underlying table through the view. 
+
+ 
+Question 65: 
+ 
+Which two statements about INVISIBLE indexes are true? 
+ 
+A) You use ALTER INDEX to make an INVISIBLE index VISIBLE 
+B) You can only create on INVISIBLE index on the same column list. 
+C) The query optimizer never considers INVISIBLE indexes when determining execution plans. 
+D) All INSERT, UPDATE and DELETE statements maintain entries in the index. E) An INVISIBLE index consumes no storage 
+ 
+
+ 
+Question 66: 
+ 
+Which is the default column or columns for sorting output from compound queries SET operators such as INTERSECT in a SELECT statement? 
+ 
+A) the first column in the last SELECT of the compound query 
+B) the first VARCHAR2 column in the first SELECT of the compound query 
+C) the first NUMBER or VARCHAR2 column in the last SELECT of the compound query 
+D) the first column in the first SELECT of the compound query 
+E) the first NUMBER column in the first SELECT of the compound query 
+ 
+
+ 
+Question 67: 
+ 
+Evaluate these commands which execute successfully: 
+ 
+CREATE SEQUENCE ord_seq 
+ 	INCREMENT BY 1 
+ 	START WITH 1 
+ 	MAXVALUE 100000 
+ 	CYCLE 
+ 	CACHE 5000; 
+ 
+CREATE TABLE ord_items ( 
+ 	ord_no 	 	NUMBER(4) DEFAULT ord_seq.NEXTVAL NOT NULL 
+	, item_no  	NUMBER(3) 
+	, qty  	 	NUMBER(3) 
+	, expire_date 	DATE 
+, CONSTRAINT it_pk PRIMARY KEY (ord_no, item_no) 
+, CONSTRAINT ord_fk FOREIGN KEY (ord_no) REFERENCES orders (ord_no) ); 
+ 
+Which two statements are true about the ORD_ITEMS table and the ORD_SEQ sequence? 
+ 
+A) Sequence ORD_SEQ cycles back to 1 after every 5000 numbers and can cycle 20 times. 
+B) Column ORD_NO gets the next number for sequence ORD_SEQ whenever a row is inserted into ORD_ITEM and no explicit value is given for ORD_NO. 
+C) Sequence ORD_SEQ is guaranteed not to generate duplicate numbers. 
+D) If sequence ORD_SEQ is dropped then the default value for column ORD_NO will be NULL for rows inserted into ORD_ITEMS. 
+E) Any user inserting rows into table ORD_ITEMS must have been granted access to sequence ORD_SEQ. 
+ 
+
+ 
+Question 68: 
+ 
+You have the privileges to create any type of synonym. 
+ 
+Which statement will create a synonym called EMP for the HCM.EMPLOYEE_RECORDS table that is accessible to all users? 
+ 
+A) CREATE PUBLIC SYNONYM emp FOR hcm.employee_records; 
+B) CREATE SYNONYM PUBLIC emp FOR hcm.employee_records; 
+C) CREATE SYNONYM SYS.emp FOR hcm.employee_records; 
+D) CREATE GLOBAL SYNONYM emp FOR hcm.employee_records; 
+E) CREATE SYNONYM emp FOR hcm.employee_records; 
+ 
+
+ 
+Question 69: 
+ 
+Which two statements are true about substitution variables? 
+ 
+A) A substitution variable used to prompt for a column name must be enclosed in double quotation marks. 
+B) A substitution variable can be used only in a SELECT statement. 
+C) A substitution variable used to prompt for a column name must be enclosed in single quotation 
+marks. 
+D) A substitution variable can be used with any clause in a SELECT statement. 
+E) A substitution variable prefix with & always prompts only once for a value in a session. 
+F) a substitution variable prefixed with && prompts only once for a value in a session unless it is set to undefined in the session. 
+ 
+
+ 
+Question 70: 
+ 
+Which two statements are true about an Oracle database? 
+ 
+A) A table can have multiple primary keys. 
+B) A column definition can specify multiple data types. 
+C) A VARCHAR2 column without data has a NULL value. 
+D) A table can have multiple foreign keys. 
+E) A NUMBER column without data has a zero value. 
+ 
+
+ 
+Question 71: 
+Examine these statements and results: 
+ 
+SQL> SELECT COUNT(*) FROM emp; 
+ 
+COUNT(*) 
+-------- 
+14 
+ 
+SQL> CREATE GLOBAL TEMPORARY TABLE t_emp as SELECT * FROM emp; Table created. 
+ 
+SQL> INSERT INTO t_emp SELECT * FROM emp; 14 rows created. 
+ 
+SQL> COMMIT; Commit complete. 
+ 
+SQL> INSERT INTO t_emp SELECT * FROM emp; 14 rows created. 
+ 
+SQL> SELECT COUNT(*) FROM t_emp; 
+ 
+How many rows are retrieved by the last query? 
+ 
+A) 14 
+B) 28 
+C) 42 
+D) 0 
+
+ 
+Question 72: 
+ 
+Which statement is true about TRUNCATE and DELETE? 
+ 
+A) You can never DELETE rows from a table if foreign key constraint will be violated. 
+B) For large tables TRUNCATE is faster than DELETE. 
+C) You can never TRUNCATE a table if foreign key constraint will be violated. 
+D) For table with multiple indexes and triggers DELETE is faster than TRUNCATE. 
+ 
+
+ 
+Question 73: 
+ 
+Which four statements are true about constraints on Oracle tables? 
+A) A PRIMARY KEY constraint can de added after a table has been created and populated. 
+B) A UNIQUE constraint can use a pre-existing index on the constrained column or columns 
+C) A UNIQUE constraint permits NULLs. 
+D) A CHECK constraint can refer to values in other rows. 
+E) A column can have only one CHECK constraint. 
+F) A NOT NULL constraint can defined at the table level. 
+G) A FOREIGN KEY column can contain NULLs. 
+ 
+
+ 
+Question 74: 
+ 
+Examine this statement: 
+ 
+SELECT 1 AS id, 'John' as first_name 
+FROM DUAL 
+UNION 
+SELECT 1, 'John' as name 
+FROM DUAL 
+ORDER BY 1; 
+ 
+What is returned upon execution? 
+ 
+A) an error 
+B) 1 row 
+C) 0 rows 
+D) 2 rows 
+ 
+
+ 
+Question 75: 
+ 
+Which statement is true about the INTERSECT operator used in compound queries? 
+ 
+A) It processes NULLS in the selected columns 
+B) Multiple INERSECT operates are not possible in the same SQL statement. 
+C) INSTERSECT is of lower precedence than UNION or UNION ALL. 
+D) It ignores NULLs. 
+ 
+
+ 
+Question 76: 
+ 
+Examine this partial statement: 
+ 
+SELECT * 
+FROM employees 
+WHERE salary =(<subquery>); 
+ 
+Which is true? 
+ 
+A) The query can select any number of rows, but the subquery can select only zero rows or one row. 
+B) Both the query and the subquery can select any number of rows. 
+C) The query can select only zero rows or one row, but the subquery can select any number of rows. 
+D) Both the query and the subquery can select only zero rows or one row. 
+ 
+
+ 
+Question 77: 
+ 
+Examine this data in the EMPLOYEES table: 
+ 
+ID  	LAST_NANE  	 	SALARY 	 	DEPT_ID 
+------ 	------- 	 	 	------ 	 	------- 
+1 Smith  	 	 	1000  	 	 	10 
+2 Jones  	 	 	2000  	 	 	10 
+3 Markham 	 	 	1500  	 	 	20 
+4 Black  	 	 	1300  	 	 	20 
+ 
+Which statement will execute successfully? 
+ 
+A) SELECT dept_id, MAX(last_name), SUM(salary) FROM employees GROUP BY dept_id; 
+B) SELECT dept_id, STDDEV(last_name), SUM(salary) FROM employees GROUP BY dept_id; 
+C) SELECT dept_id, INSTR(last_name, 'A'), SUM(salary) FROM emplyoees GROUP BY dept_id; 
+D) SELECT dept_id, LENGTH(last_name), SUM(salary) FROM employees GROUP BY dept_id; 
+ 
+
+ 
+Question 78: 
+ 
+Examine the description of the PRODUCT_INFORMATION table: 
+ 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+PROD_ID 	 
+NOT NULL 
+ 
+NUMBER(2) 
+PROD_NAME  
+ 	 
+ 
+VARCHAR2(10) 
+LIST_PRICE  
+ 	 
+ 
+NUMBER(6,2) 
+ 
+Which query retrieves the number of products with a null list price? 
+ 
+A) SELECT COUNT (NVL(list_price,0)) FROM product_inormation WHERE list_price IS NULL; 
+B) SELECT COUNT(list_price) FROM product_information WGERE list_price = NULL; 
+C)SELECT COUNT(DISTINCT list_price) FROM product_information WHERE list_price IS NULL; 
+D) SELECT COUNT(list_price) FROM product_information WHERE list_price IS NULL; 
+ 
+
+ 
+Question 79: 
+ 
+Which three are true about granting object privileges on tables, views and sequences? 
+ 
+A) SELECT can be granted only on tables and views. 
+B) UPDATE can be granted only on tables and views. 
+C) REFERENCES can be granted only on tables and views. 
+D) DELETE can be granted on tables, views and sequences. 
+E) INSERT can be granted on tables, views and sequences. 
+F) ALTER can be granted only on tables and sequences 
+ 
+
+ 
+Question 80: 
+ 
+Which two are true about using the FOR UPDATE clause in SELECT statement? 
+ 
+A) The statement skips rows locked by other transactions. 
+B) It can be used with SET operators (UNION, INTERSECT) 
+C) It cannot be used with the DISTINCT keyword. 
+D) If NOWAIT clause is added, the statement will automatically acquire lock from their transactions and not wait. 
+E) It can be used with joins. 
+ 
+
+ 
+Question 81: 
+ 
+Which two statements will return the three employees with the lowest salary? 
+ 
+A) SELECT last_name, salary 
+FROM (SELECT * FROM HR.EMPLOYEES ORDER BY salary ) 
+WHERE ROWNUM<=3 
+ 
+B) SELECT last_name, salary 
+FROM HR.EMPLOYEES  
+ORDER BY salary 
+FETCH FIRST 3 ROWS ONLY; 
+ 
+C) SELECT last_name, salary 
+FROM HR.EMPLOYEES  
+FETCH FIRST 3 ROWS ONLY 
+ORDER BY salary; 
+ 
+D) SELECT last_name, salary, rownum 
+FROM HR.EMPLOYEES  
+WHERE rownum<=3 
+ORDER BY salary; 
+ 
+E) SELECT last_name, salary 
+FROM HR.EMPLOYEES 
+WHERE ROWNUM<=3 
+ORDER BY (SELECT salary FROM hr.employees); 
+ 
+
+ 
+Question 82: 
+ 
+Which two statements are true? 
+A) DECODE is a function and CASE is not. 
+B) All conditions evaluated using CASE also be evaluated using DECODE. 
+C) Both CASE and DECODE are functions. 
+D) CASE is a function DECODE is not. 
+E) Neither CASE or DECODE is a function. 
+F) All conditions evaluated using DECODE can also be evaluated using CASE. 
+ 
+
+ 
+Question 83: 
+Examine the business rule: 
+Each student can work on multiple projects and each project can have multiple students. You must design an Entiy-Realtionship(ER) model for optimal data storage and allow for generating reports in this format: 
+STUDENT_ID, FIRST_NAME, LAST_NAME, PROJECT_ID, PROJECT_NAME, PROJECT_TASK 
+ 
+Which two statements are true? 
+ 
+A) PROJECT_ID must be the primary key in the PROJECTS entity and foreign key in the STUDENTS entity. 
+B) STUDENT_ID must be the primary key in the STUDENTS entity and foreign key in the PROJECTS entity. 
+C) The ER must have a 1-to-many relationship between the STUDENTS and PROJECTS entities. 
+D) An associate table must be created with a composite key of STUDNT_ID and PROJECT_ID, which is the foreign key linked to the STUDENTS and PROJECTS entities. 
+E) The ER must have a many-to-many relationship between the STUDENTS and PROJECTS entities that must be resolved into 1-to-many relationships. 
+ 
+
+ 
+Question 84: 
+ 
+Which two queries execute successfully? 
+ 
+A) SELECT INTERVAL '1' DAY – SYSDATE FROM DUAL; 
+B) SELECT INTERVAL '1' DAY – INTERVAL'1' MINUTE FROM DUAL; 
+C) SELECT INTERVAL '1' DAY + INTERVAL '1' MONTH FROM DUAL; 
+D) SELECT SYSTIMESTAMP + INTERVAL '1' DAY FROM DUAL; 
+E) SELECT SYSDATE + INTERVAL '1' DAY FROM DUAL; 
+ 
+
+ 
+Question 85: 
+ 
+Examine these statements and the result: 
+ 
+CREATE SEQUENCE customer_seq CACHE 10; 
+ 
+SELECT customer_seq.NETVAL FROM DUAL; 
+ 
+NEXTVAL 
+------- 
+ 	1 
+ 
+Now examine this command: 
+ 
+ALTER SEQUENCE customer_seq <MISSING CLAUSE> 
+ 
+What must replace MISSING CLAUSE for customer_seq.NEXTVAL returned 11? 
+ 
+A) MINVALUE 11 
+B) INCREMENT BY 10 
+C) CYCLE 11 
+D) NOCACHE 
+E) START WITH 1 
+ 
+
+ 
+ 
+Question 86: 
+ 
+Examine this list of queries: 
+ 
+1. SELECT ROUND(TRUNC(15.193,1)) "Result" FROM DUAL; 
+2. SELECT ROUND(15.193,-1) "Result" FROM DUAL; 
+3. SELECT TRUNC(15.193,-1) "Result" FROM DUAL; 
+4. SELECT TRUNC(ROUND(15.193,1)) "Result" FROM DUAL; 
+ 
+Which two statements are true? 
+ 
+A) 1 and 4 give the same result. B) 2 and 3 give the same result. 
+C) 2 returns the value 20. 
+D) 3 returns an error 
+E) 1 and 4 give different results. 
+ 
+
+ 
+Question 87: 
+ 
+Which two object privileges can be restricted to a subset of columns in a table? 
+ 
+A) ALTER 
+B) UPDATE 
+C) DELETE 
+D) INSERT 
+E) INDEX 
+
+ 
+Question 88: 
+ 
+Which two are true about SAVEPOINTS? 
+A) After issuing a SAVEPOINT, you cannot roll back the complete transaction. 
+B) A ROLLBACK TO SAVEPOINT command issued before the start of a transaction returned in an error 
+C) You can commit updates done between two SAVEPOINTs without committing other updates in a current transaction 
+D) After issuing a SAVEPOINT, you can roll back to the SAVEPOINT name within the current transaction. 
+E) They make uncommitted update visible to other sessions owned by the same user. 
+F) They make uncommitted update visible to session owned by other users. 
+ 
+
+ 
+Question 89: 
+Examine these statements which execute successfully: 
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY HH24:MI:SS'; 
+ALTER SESSION SET TIME_ZONE '-5:00'; 
+ 
+SELECT DBTIMEZONE, SYSDATE FROM DUAL; 
+Examine the result: 
+DBTIMEZONE 	  
+SYSDATE 
+----------  
+------- 
++00:00 	 
+11-JUL-2019 11:00:00 
+ 
+If LOCALTIMESTAMP was selected at the same time, what would it return? 
+A) 11-JUL-2019 11.00.00.000000000 AM 
+B) 11-JUL-2019 11.00.00.000000000 AM 
+C) 11-JUL-2019 6.00.00.00000000 AM -05:00 
+D) 11-JUL-2019 6.00.00.00000000 AM 
+ 
+
+ 
+Question 90: 
+Which two statements will covert string Hello World to ello world? 
+A) SELECT LOWER(TRIM('H' FROM 'Hello World')) FROM DUAL; 
+B) SELECT LOWER(SUBSTR('Hello World', 2,1)) FROM DUAL; 
+C) SELECT SUBSTR('Hello World', 2) FROM DUAL; 
+D) SELECT LOWER(SUBSTR('Hello World', 2)) FROM DUAL; 
+E) SELECT INITCAP(TRIM('H' FROM 'Hello World')) FROM DUAL; 
+ 
+
+ 
+Question 91: 
+Which three are true about subqueries? 
+A) A subquery can be used in a HAVING clause. 
+B) =ANY can only evaluate the argument against a subquery if it returns two or more values 
+C) A subquery cannot be used in a FROM clause. 
+D) A subquery can be used in the WHERE clause. 
+E) A subquery cannot be used in the select list. 
+F) < ANY returns true if the argument is less than the highest value returned by the subquery. 
+G) < ANY returns true if the argument is less than the lowest value returned by the subquery. 
+ 
+ 
+
+ 
+Question 92: 
+You execute these commands: 
+CREATE TABLE customers (customer_id INTEGER, customer_name VARCHAR2(20)); 
+INSERT INTO customers VALUES (1, 'Customer 1'); 
+SAVEPOINT post_insert; 
+INSERT INTO customers VALUES (2, 'Customer 2'); 
+<TODO> 
+SELECT COUNT(*) FROM customers; 
+ 
+Which two, used independently, can replace <TODO> so the query returns 1? 
+ 
+A) ROLLBACK TO SAVEPOINT post_insert; 
+B) COMMIT TO SAVEPOINT post_insert; 
+C) COMMT; 
+D) ROLLBACK; 
+E) ROLLBACK TO post_insert; 
+ 
+
+ 
+ 
+Question 93: 
+ 
+Which two statements are true regarding indexes? 
+ 
+A) An update to a table can result in updates to any or all of the tables's indexes 
+B) A UNIQUE index can be altered to a non-unique. 
+C) An update to a table can result in no update to any of the tables's indexes. 
+D) When a table is dropped and is moved to the RECYCLE BIN, all indexes built on that table are permanently dropped. 
+E) A table belonging to one user cannot have an Index that belongs to a different user. 
+ 
+
+ 
+Question 94: 
+Examine the contents of the EMP table: 
+ID  	NAME  	 	Salary 
+---  	------ 	 	----------- 
+101 John  	 	 	26000 
+102 Neena  	 	 	24000 
+103 DeHahn 	 	 	12000 
+104 Lex  	 	 	17000 
+105 Bill  	 	 	18000 
+106 Daniel 	 	 	26000 
+107 Ben  	 	 	12000 
+108 George 	 	 	25000 
+ 
+SELECT id, name, salary 
+FROM emp 
+ORDER BY salary 
+FETCH FIRST 5 ROWS WITH TIES; 
+ 
+What is the result? 
+ 
+A) It will return the five employees earning the lowest salaries, in ascending order. 
+B) It will return the six employees earning the highest salaries, in descending order. 
+C) It will return the five employees earning the highest salaries, in descending order. 
+D) It will return the six employees earning the lowest salaries, in ascending order. 
+
+Question 95: 
+Which two statements are true about Oracle synonyms? A) Synonyms cannot be created for synonyms. 
+B) Synonyms cannot be created for sequences. 
+C) Synonyms can be created for roles. 
+D) Users must have the DBA role to create public synonyms. 
+E) Synonyms can be created for packages. 
+F) User must have the required privileges on the underlaying object to use public synonyms. 
+ 
+
+ 
+Question 96: 
+Which three statements are true about Data Manipulation Language (DML)? 
+A) UPDATE statements can have different subqueries to specify the values each updated column. 
+B) DML statements require a primary key defined on a table. 
+C) DELETE statements can remove multiple rows base on multiple conditions. 
+D) INSERT statements can insert NULLs explicit into a column. 
+E) INSERT … INTO … SELECT …. FROM statements automatically commit. 
+ 
+
+ 
+Question 97: 
+Examine this description of the PRODUCTS table: 
+Name  	 
+NULL?  
+ 
+TYPE 
+---------  
+-------- 
+ 
+------- 
+PROD_ID 	 
+NOT NULL 
+ 
+VARCHAR2(6) 
+QUANTITY  
+ 	 
+ 
+NUMBER(8,2) 
+PRICE  	 
+ 	 
+ 
+NUMBER(10,2) 
+EXPIRE_DATE  
+ 	 
+ 
+DATE 
+ 
+Rows exist in this table with data in all the columns. You set the PRODUCTS table in read only mode. 
+ 
+Which three commands execute successfully on Products? 
+ 
+A) ALTER TABLE products DROP UNUSED COLUMNS; 
+B) CREATE INDEX price_idx ON products (price); 
+C) ALTER TABLE products SET UNUSED (expire_date); 
+D) TRUNCATE TABLE products; 
+E) ALTER TABLE products DROP COLUMN expire_date; 
+F) DROP TABLE products; 
+ 
+
+ 
+Question 98: 
+Which two statements are true about INTERVAL data types? 
+A) INTERVAL YEAR TO MONTH columns only support monthly intervals within a single year 
+B) The Year field in an INTERVAL YEAR TO MONTH column must be a positive value. 
+C) INTERVAL YEAR TO MONTH columns only support monthly intervals with a range of years. 
+D) INTERVAL DAY TO SECOND columns support fractions of seconds. 
+E) The value in an INTERVAL DAY TO SECOND column can be copied into an INTERVAL YEAR TO MONTH column. 
+F) INTERVAL YEAR TO MONTH columns support yearly intervals. 
+ 
+
+ 
+Question 99: 
+Examine the data in the CUST_NAME column of the CUSTOMERS table: 
+CUST_NAME 
+------------------ 
+Renske Ladwig 
+Jason Mallin 
+Samuel McCain 
+Allan MCEwen 
+Irene Mikkilineni 
+Julia Nayer 
+ 
+You want to display the CUST_NAME values where the last name starts with Mc or MC. 
+ 
+Which two WHERE clauses give the required result? 
+A) WHERE INITCAP(SUBSTR(cust_name, INSTR(cust_name, ' ') +1 )) IN ('MC%', 'MC%'); 
+B) WHERE UPPER(SUBSTR(cust_name, INSTR(cust_name, ' ') + 1 )) LIKE UPPER('MC%'); 
+C) WHERE SUBSTR(cust_name, INSTR(cust_name, ' ') + 1) LIKE 'MC%' OR  'MC%'; 
+D) WHERE INITCAP(SUBSTR(cust_name, INSTR(cust_name, ' ') + 1 )) LIKE 'Mc%'; 
+E) WHERE SUBSTR(cust_name, INSTR(cust_name, ' ') + 1) LIKE 'Mc%'; 
+ 
+
+Question 100: 
+Examine the description of the ORDER_ITEMS table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+ORDER_ID  
+NOT NULL 
+ 
+NUMBER(38) 
+PRODUCT_ID  
+ 	 
+ 
+NUMBER(38) 
+QUANTITY  
+ 	 
+ 
+NUMBER(38) 
+UNIT_PRICE  
+ 	 
+ 
+NUMBER(10,2) 
+ 
+Examine this incomplete query: 
+ 
+SELECT DISTINCT quantity * unit_price total_paid 
+FROM order_items 
+ORDER BY <caluse> 
+ 
+Which two can replace <clause> so the query completes successfully? 
+ 
+A)quantity * unit_price 
+B) total_paid 
+C) quantity 
+D) quantity, unit_price 
+E) product_id 
+ 
+
+Question 101: 
+Examine the description of the EMPLOYEES table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+EMPLOYEE_ID  
+NOT NULL 
+ 
+NUMBER(38) 
+DEPARTMENT_ID 
+NOT NULL 
+ 
+NUMBER(38) 
+MANAGER_ID  
+ 	 
+ 
+NUMBER(38) 
+Which two queries return rows for employees whose manager works in a different department? 
+A) SELECT emp.* 
+ 	FROM employees emp 
+ 	LEFT JOIN employees mgr 
+ 	ON emp.manager_id=mgr.employee_id 
+ 	AND emp.department_id <> mgr.department_id; 
+ 
+B) SELECT emp.* 
+ 	FROM employees emp 
+ 	JOIN employees mgr 
+ 	ON emp.manager_id=mgr.employee_id 
+ 	AND emp.department_id <> mgr.department_id; 
+C) SELECT emp.* 
+ 	FROM employees emp 
+ 	WHERE NOT EXISITS ( 
+SELECT NULL  
+FROM emplployees mgr 
+WHERE emp.manager_id=mgr.employee_id 
+AND emp.department_id <> mgr.department_id 
+);  
+D)SELECT emp.* 
+ 	FROM employees emp 
+ 	WHERE MANAGER_ID NOT IN (SELECT mgr.employee_id  
+FROM employees mgr 
+WHERE emp.department_id <> mgr.department_id); 
+E) SELECT emp.* 
+ 	FROM employees emp 
+ 	RIGHT JOIN employees mgr 
+ 	ON emp.manager_id=mgr.employee_id 
+AND emp.department_id<>mgr.department_id 
+WHERE emp.employee_id IS NOT NULL; 
+ 
+Question 102: 
+ 
+Examine this list of requirements for a sequence: 
+1. Name: EMP_SEQ 
+2. First value returned: 1 
+3. Duplicates are never permitted. 
+4. Provide values to be inserted into the EMPLOYEES.EMPLOYEE_ID column. 
+5. Reduce the chances of gaps in the values. 
+ 
+Which two statements will satisfy these requirements? 
+ 
+A) CREATE SEQUENCE emp_seq START WITH 1 INREMENT BY 1 NOCACHE; 
+B) CREATE SEQUENCE emp_seq START WITH 1 INCREMENT BY 1 CYCLE; 
+C) CREATE SEQUENCE emp_seq NOCACHE; 
+D) CREATE SEQUENCE emp_seq; 
+E) CREATE SEQUENCE emp_seq START WITH 1 INCREMENT BY 1 CACHE; 
+F) CREATE SEQUENCE emp_seq START WITH 1 CACHE; 
+ 
+
+ 
+Question 103: 
+ 
+Which statement will execute successfully? 
+ 
+A) SELECT 1, 2 FROM DUAL 
+ 	 	UNION 
+ 	SELECT 3, 4 FROM DUAL 
+ 	ORDER BY 1, 2; 
+ 
+B) SELECT 3 FROM DUAL 
+ 	 	UNION 
+ 	SELECT 4 FROM DUAL 
+ORDER BY 3; 
+ 
+C) SELECT 1 FROM DUAL 
+ 	 	UNION 
+ 	SELECT 2 FROM DUAL 
+ 	ORDER BY 1, 2; 
+D) SELECT 1, 2 FROM DUAL 
+ 	 	UNION 
+ 	SELECT 3, 4 FROM DUAL 
+ 	ORDER BY 3, 4; 
+
+ 
+Question 104: 
+Which two statements are true about TRUNCATE and DELETE? 
+A) The result of a TRUNCATE can be undone by issuing a ROLLBACK. 
+B) TRUNCATE can use a WHERE clause to determine which row(s) should be removed. 
+C) TRUNCATE leaves any indexes on the table in an UNUSALBE state. 
+D) DELETE ca use a WHERE clause to determine which row(s) should be removed. 
+E) The result of a DELETE can be undone by issuing a ROLLBACK. 
+
+Question 105: 
+Examine the description of the EMPLOYEES table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+EMPLOYEE_ID  
+NOT NULL 
+ 
+NUMBER(38) 
+FIRST_NAME  
+ 	 
+ 
+VARCHAR2(20) 
+LAST_NAME  
+NOT NULL 
+ 
+VARCHAR2(25) 
+SALARY 	 
+ 	 
+ 
+NUMBER(8,2) 
+HIREDATE  
+ 	 
+ 
+DATE 
+Department_id 	 	 	 	NUMBER(4) 
+ 
+Which two statements will insert a row into the EMPLOYEES table? 
+A) INSERT INTO employees VALUES (101, 'John', 'Smith', 10, 12000, SYSDATE); 
+B) INSERT INTO employees (employee_id, salary, first_name, hiredate, last_name) VALUES (101, 12000, 'John', SYSDATE, 'Smith'); 
+C) INSERT INTO employees VALUES (101, 'John', 'Smith', 12000, SYSDATE) 
+D) INSERT INTO employees (employee_id, first_name, last_name, salary, hiredate) VALUES ((SELECT 
+101, 'John', 'Smith', 12000, SYSDATE FROM DUAL)); 
+E) INSERT INTO employess VALUES (101,'John', '', 12000, SYSDATE, 10); 
+F) INSERT INTO employees SELECT 101, 'John', 'Smith', 12000, (SELECT SYSDATE FROM DUAL), 10 FROM DUAL; 
+
+Question 106: 
+You need to allow user Andrew to: 
+1. Modify the TITLE and ADDRESS columns of your CUSTOMERS table. 
+2. GRANT that permission to other users. 
+ 
+Which statement will do this? 
+ 
+A) GRANT UPDATE ON customers.title, customers.address TO andrew WITH GRANT OPTION; 
+B) GRANT UPDATE on customers.title, customers.address TO andrew WITH ADMIN OPTION; 
+C) GRANT UPDATE (title, address) ON CUSTOMERS TO andrew WITH GRANT OPTION; 
+D) GRANT UPDATE(title, address) ON customers To andrew; 
+E) GRANT UPDATE (title, address) ON CUSTOMERS to andrew WITH ADMIN OPTION; F) GRANT UPDATE ON customers.title, customers, address TO andrew; 
+ 
+
+ 
+Question 107: 
+Which three are true about scalar subquery expressions? 
+ 
+A) They cannot be used in the VALUES clause of an INSERT statement. 
+B) A scalar subquery expression that returns zero rows evaluates to NULL. 
+C) They cannot be used in GROUP BY clauses 
+D) They can be used as default values for columns in a CREATE TABLE statement. 
+E) They can be nested. 
+F) A scalar subquery expression that returns zero rows evaluates to zero. 
+ 
+Question 108: 
+ 
+Which two are true to create an index in your own schema for a table owned by another schema? 
+ 
+A) You must have the UNLIMITED TABLESPACE privilege. 
+B) You must have the CRATE ANY INDEX privilege. 
+C) You must have either the SELECT privilege on the table or the SELECT ANY TABLE privilege. 
+D) You have either the INDEX privilege on the table or the CREATE ANY INDEX privilege. 
+E) You have the UNLIMITED TABLESPACE privilege or sufficient quota for the tablespace to contain the index. 
+ 
+
+ 
+Question 109: 
+ 
+Examine this statement, which executes successfully: 
+ 
+SELECT d.department_name, ROUND(AVG(NULLIF(e.salary,0))) as avgsal, MAX(e.salary) AS maxsal FROM employees e 
+JOIN departments d 
+ 	ON (e.department_id=d.department_id) 
+GROUP BY d.department_name 
+ORDER BY 2; 
+ 
+In which order are the rows displayed? 
+ 
+A) sorted by MAXSAL 
+B) sorted by DEPARTMENT_NAME 
+C) sorted by DEPARTMENT_NAME and MAXSAL 
+D) sorted by AVGSAL 
+E) sorted by DEPARTMENT_NAME and AVGSAL 
+ 
+Question 110: 
+ 
+Examine the description of the CUSTOMERS table: 
+ 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+Customer_ID 	 
+NOT NULL 
+ 
+NUMBER(38) 
+CUSTOMER_NAME 
+NOT NULL 
+ 
+VARCHAR2(100) 
+INSERT_DATE  
+NOT NULL 
+ 
+DATE 
+ 
+Which two statements will do an implicit conversion? 
+ 
+A) SELECT * FROM customers WHERE customer_id= '0001'; 
+B) SELECT * FROM customers WHERE customer_id=0001; 
+C) SELECT * FROM customers WHERE insert_date = DATE '2019-01-01'; 
+D) SELECT * FROM customers WHERE TO_CHAR(customer_id) = '0001'; 
+E) SELECT * FROM customers WHERE insert_date = '01-JAN-19'; 
+ 
+
+ 
+Question 111: 
+ 
+Which three statements are true about inner and outer joins? 
+ 
+A) A full outer join returns matched and unmatched rows. 
+B) Outer joins can be used when there are multiple join conditions on two tables. 
+C) A full outer join must use Oracle syntax. 
+D) Outer joins can only be used between two tables per query. 
+E) An inner join returns matched rows 
+F) A left or right outer join returns only unmatched rows. 
+
+Question 112: 
+Examine the data in the emp table: 
+ENO  	ENAME  	 	SAL  	DEPTNO 
+-----  	---------  	----  	----------- 
+1001 John  	 	12000  	 	10 
+1002 Sam  	 	40000  	 	20 
+1003 Daniel 	 	12000  	 	20 
+1004 Andrea 	 	5000  	 	10 
+ 
+You execute this query: 
+SELECT deptno as "Department", AVG(sal) as AverageSalary, MAX(sal) as "Max 
+Salary" 
+FROM emp 
+WHERE sal >=12000 
+GROUP BY "Department" 
+ORDER BY AverageSalary; 
+ 
+Why does an error occur? 
+ 
+A) An alias name must not be used in an ORDER BY clause. 
+B) An alias name must always be specified in quotes. 
+C) An alias name must not contain space characters. 
+D) An alias name must not be used in a GROUP BY clause. 
+ 
+
+ 
+Question 113: 
+ 
+Examine these statements: 
+CREATE TABLE alter_test (c VARCHAR2(10), c2 NUMBER(10)); 
+INSERT INTO alter_test VALUES ('123', 123); 
+COMMIT; 
+ 
+Which is true about modifying the columns in ALTER_TEST? 
+ 
+A) C2 can be changed to NUMBER(5) but C1 cannot be changed to VARCHAR(5). 
+B) C2 can be changed to VARCHAR2(10) but C1 cannot be changed to NUMBER(10). 
+C) C1 can be changed to VARCHAR(5) and C2 can be changed to NUMBER(10,2). 
+D)C1 can be changed to NUMBER(10) and C2 can be changed to VARCHAR(10). 
+E) C1 can be changed to NUMBER(10) and C2 cannot be changed to VARCHAR2(10). 
+ 
+
+ 
+Question 114: 
+Examine the description of the EMPLOYEE table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+EMPLOYEE_ID  
+NOT NULL 
+ 
+NUMBER(3) 
+FIRST_NAME 	 
+ 	 
+ 
+VARCHAR2(15) 
+LAST_NAME 	 
+NOT NULL 
+ 
+VARCHAR(15) 
+SALARY  	 
+ 	 
+ 
+NUMBER(6,2) 
+ 
+Which two statements will run successfully? 
+ 
+A) SELECT 'The first_name is' || first_name || '' FROM employees; 
+B) SELECT 'The first_name is ''' || first_name || '''' FROM employees; 
+C) SELECT 'The first_name is ''' || first_name || ''' FROM employees; 
+D) SELECT 'The first_name is '' || first_name || '' FROM employees; 
+E) SELECT 'The first_name is \'' || first_name || '\'' FROM employees; 
+
+ 
+Question 115: 
+ 
+Which two are true about using the FOR UPDATE clause in a SELECT statement? 
+ 
+A) If the NOWAIT clause is added, the statement will automatically acquire locks from their owning transactions and not wait. 
+B) It can be used with joins. 
+C) It cannot be used with the DISTINCT keyword. 
+D) The statement skips rows locked by other transactions. 
+E) It can be used with SET operators (UNION, INTERSECT etc.). 
+
+ 
+Question 116: 
+Which three statements are true about GLOBAL TEMPORARY TABLES? 
+A) A TRUNCATE command issued in a session causes all rows in a GLOBAL TEMPORARY TABLE for the issuing session to be deleted. 
+B) GLOBAL TEMPORARY TABLE space allocation occurs at session start. 
+C) A GLOBAL TEMPORARY TABLE'S definition is available to multiple sessions. 
+D) Any GLOBAL TEMPORARY TABLE rows existing as session termination will be deleted. 
+E) A DELETE command on a GLOBAL TEMPORARY TABLE cannot be rolled back. 
+F) GLOBAL TEMPORARY TABLE rows inserted by a session are available to any other session whose user as been granted select on the table. 
+
+ 
+Question 117: 
+Which two statements are true about the SET VERIFY ON command? 
+A) It displays values for variables used only in the WHERE clause of a query. 
+B) It can be used only in SQL*Plus. 
+C) It displays values for variables prefixed with &&. 
+D) It displays values for variables created by the DEFINE command. 
+E) It can be used in SQL Developer and SQL*Plus. 
+ 
+
+Question 118: 
+Examine this query: 
+SELECT employee_id, first_name, salary 
+FROM employees 
+WHERE hire_date > '&1'; 
+ 
+Which two methods should you use to prevent prompting for a hire date value when this query is executed? 
+A) Replace '&1' with '&&1' in then query. 
+B) Use the UNDEFINE command before executing the query. 
+C) Store the query in a script and pass the substitution value to the script when executing it. 
+D) Use the DEFINE command before executing the query. 
+E) Execute the SET VERIFY OFF command before executing the query. 
+F) Execute the SET VERIFY ON command before executing the query. 
+ 
+
+ 
+Question 119: 
+Examine the description of the EMPLOYEES table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+EMPLOYEE_ID  
+NOT NULL 
+ 
+NUMBER(4) 
+EMPLOYEE_NAME 
+NOT NULL 
+ 
+VARCHAR2(100) 
+SALARY 	 
+NOT NULL 
+ 
+NUMBER(6,2) 
+DEPARTMENT_ID 
+NOT NULL 
+ 
+NUMBER(4) 
+ 
+Which statement will fail? 
+A) SELECT department_id, COUNT(*) 
+ 	FROM employees 
+WHERE department_id <> 90 
+HAVING COUNT(*) >=3 
+GROUP BY department_id; 
+ 
+B) SELECT department_id, COUNT(*) 
+ 	FROM employees 
+ 	HAVING department_id <> 90 
+ 	AND COUNT(*) >=3 
+ 	GROUP BY department_id; 
+ 
+C) SELECT department_id, COUNT(*) 
+ 	FROM employees 
+ 	WHERE department_id <> 90 
+ 	GROUP BY department_id 
+ 	HAVING COUNT(*) >=3; 
+ 
+D) SELECT department_id, COUNT(*) 
+FROM employees 
+WHERE department_id <> 90 
+AND COUNT(*) >=3 
+GROUP BY department_id; 
+ 
+
+ 
+Question 120: 
+ 
+Examine this SQL statement: 
+ 
+UPDATE orders o 
+ 	SET customer_name = 
+ 	(SELECT cust_last_name 
+FROM customers 
+WHERE customer_id=o.customer_id); 
+ 
+Which two are true?  
+A) The subquery is not a correlated subquery. 
+B) The subquery is executed for every updated row in the ORDERS table. 
+C) The subquery is executed before the UPDATE statement is executed. 
+D) The UPDATE statement executes successfully even if the subquery selects multiple rows. 
+E) All existing rows in the ORDERS table are updated. 
+
+Question 121: 
+Examine the Data in the NEW_EMPLOYEES table: 
+EMPLOYEE_ID NAME  	DEPARTMENT_ID  	MANAGER_ID 	JOB_ID  	Salary 
+--------- ------ 	-----------  	-------- -----  	------ 
+101 David  	 	20  	 	120 SA_REP 	14000 
+102 Sam  	 	10  	 	105 CLERK  	12500 
+103 Andrew 	 	20  	 	120 FIN_ADMIN 14200 
+104 Adrian 	 	30  	 	108 MAR_CLERK 12500 
+105 Maria  	 	30  	 	108 FIN_ADMIN 15000 
+106 Tracy  	 	40  	 	110 AD_ASST 	13000 
+108  	Kate  	 	30  	 	110 FIN_DR 	16500 
+110  	Anne  	 	40  	 	120 EX_DIR 	16000 
+120  	Fran  	 	20  	 	110 SQ_DIR 	16500 
+Examine the data in the EMPLOYEES table: 
+EMPLOYEE_ID  	NAME  	JOB_ID 	Salary 
+---------  	------ 	-----  	------ 
+101 David  	CLERK  	14000 
+102 Sam  	SA_REP 	11500 
+104  	 	Adrian 	MAR_CLERK 12500 
+108  	 	Kate  	FIN_DIR 	16500 
+110  	 	Annie  	EX_DIR 	18000 
+You want to: 
+1. Update existing emplloyees details in the EMPLOYEES table with data from the NEW_EMPLOYEES table. 
+2. Add new employees details from the NEW_EMPLOYEES table to the EMPLOYEES table. 
+ 
+Which statement will do this? 
+A) MERGE INTO employees e 
+ 	USING new_employees ne 
+ 	WHERE e.employees_id=ne.employees_id 
+ 	WHEN MATCHED THE UPDATE SET s.name = ne.name, e.job_id=ne.job_id, e.salary=ne.salary 
+ 	WHEN NOT MATCHED THEN INSERT VALUES (ne.employee_id, ne.name, ne.job_id, ne.salary); 
+ 
+B) MERGE INTO employees e 
+ 	USING new_employees ne 
+ 	ON (e.employee_id=ne.employee_id) 
+ 	WHEN MATCHED THEN UPDATE SET e.name=ne.name, e.job_id=ne.job_id, e.salary=ne.salary 
+ 	WHEN NOT MATCHED THEN INSERT VALUES (ne.employee_id, ne.name, ne.job_id, ne.salary); 
+ 
+C) MERGE INTO employees e 
+ 	USING new_employees ne 
+ 	WHERE e.employee_id=ne.employee_id 
+ 	WHEN FOUND THEN UPDATE SET e.name=ne.name, e.job_id=ne.job_id, e.salary=ne.salary 
+ WHEN NOT FOUND INSERT VALUES (ne.employee_id, ne.name, ne.job_id, ne.salary); 
+ 
+D) MERGE INTO employees e 
+ 	USING new_employees ne 
+ 	ON (e.employee_id=ne.employee_id) 
+ 	WHEN FOUND THEN UPDATE SET e.name=ne.name, e.job_id=ne.job_id, e.salary=ne.salary 
+ 	WHEN NOT FOUND THEN INSERT VALUES (ne.employee_id, ne.name, ne.job_id, ne.salary); 
+
+Question 122: 
+Examine these SQL statements which execute successfully: 
+CREATE TABLE emp 
+ 	(emp_no NUMBER CONSTRAINT emp_emp_no_pk PRIMARY KEY, 
+ 	ename VARCHAR2(15),  	salary NUMBER(8,2), 
+ 	mgr_no NUMBER(8)); 
+ 
+ALTER TABLE emp ADD CONSTRAINT emp_mgr_fk 
+ 	FOREIGN KEY (mgr_no) 
+ 	REFERNCES emp(emp_no) 
+ 	ON DELETE SET NULL; 
+ 
+ALTER TABLE emp  
+DISABLE CONSTRAINT emp_emp_no_pk CASCADE; 
+ 
+ALTER TABLE emp 
+ENABLE CONSTRAINT emp_emp_no_pk; 
+ 
+Which two statements are true after execution? 
+ 
+A) The foreign key constraint will be enabled and IMMEDIATE. 
+B) The primary key constraint will be enabled and DEFERRED. 
+C) The foreign key constraint will be enables and DEFERRED. 
+D) The foreign key will be disables. 
+E) The primary key constraint will be enabled and IMMEDIATE. 
+
+Question 123: 
+Examine this partial command: 
+CREATE TABLE cust( cust_id NUMBER(2), credit_limit NUMBER(10) 
+) 
+ORGANIZATION EXTERNAL 
+Which two clauses are required for this command to execute successfully? 
+ 
+A) the ACCESS PARAMETERS clause 
+B) the REJECT LIMIT clause 
+C) the LOCATION clause 
+D) the access driver TYPE clause 
+E) the DEFAULT DIRECTORY clause 
+ 
+
+Question 124: 
+Which two statements are true about a full outer join? 
+A) It includes rows that are returned by a Cartesian product. 
+B) It returns matched and unmatched rows from both tables being joined. 
+C) The Oracle join operator (+) must be used on both sides of the join condition in the WHERE clause. 
+D) It returns only unmatched rows from both tables being joined. 
+E) It includes rows that are returned by an inner join. 
+
+Question 125: 
+You want to write a query that prompts for two column names and the WHERE condition each time it is executed in a session but only prompts for the table name the first time it is executed. 
+The variables used in your query are never undefined in your session. 
+Which query can be used? 
+A) SELECT &&col1, &&col2 
+ 	FROM &table 
+ 	WHERE &&condition; 
+ 
+B) SELECT &&col1, &&col2 
+ 	FROM &table 
+ 	WHERE &&condition = &&cond; 
+ 
+C) SELECT &col1, &col2 
+ 	FROM &&table 
+ 	WHERE &condition; 
+ 
+D) SELECT &col1, &col2 
+ 	FROM "&table" 
+ 	WHERE &condition; 
+ 
+E) SELECT '&&col1', '&&col2' 
+ 	FROM &table 
+ 	WHERE '&&condition' = '&cond'; 
+ 
+
+ 
+Question 126: 
+ 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+EMPLOYEE_ID  
+NOT NULL 
+ 
+NUMBER(3) 
+FIRST_NAME  
+ 	 
+ 
+VARCHAR2(15) 
+LAST_NAME  
+NOT NULL 
+ 
+VARCHAR2(15) 
+SALARY 	 
+ 	 
+ 
+NUMBER(6,2) 
+ 
+Which statement will execute successfully, returning distinct employees with non-null first names? 
+ 
+A) SELECT DISTINCT * FROM employees WHERE first_name <> NULL; 
+B) SELECT first_name, DISTINCT last_name FROM employees WHERE first_name IS NOT NULL; 
+C) SELECT DISTINCT * FROM employees WHERE first_name IST NOT NULL; 
+D) SELECT first_name, DISTINCT last_name FROM employees WHERE first_name <> NULL; 
+ 
+
+ 
+QUESTION 127: 
+ 
+Which two statements are true about the ORDER BY clause when used with a SQL statement containing a SET operator such as UNION? 
+ 
+A) Each SELECT statement in the compound query can have is own ORDER BY clause. 
+B) Each SELECT statement in the compound query must have its own ORDER BY clause. 
+C) Column position must be used in the ORDER BY clause. 
+D) The first column in the first SELECT of the compound query with the UNION operator is used by default to sort output in the absence of ab ODER BY clause. 
+E) Only column names from the first SELECT statement in the compound query are recognized. 
+
+Question 128: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+EMPLOYEE_ID  
+NOT NULL 
+ 
+NUMBER(3) 
+FIRST_NAME  
+ 	 
+ 
+VARCHAR2(15) 
+LAST_NAME  
+NOT NULL 
+ 
+VARCHAR2(15) 
+SALARY 	 
+ 	 
+ 
+NUMBER(6,2) 
+Which two queries will result in an error? 
+A) SELECT last_name, 12* salary as annual_salary 
+ 	FROM employees 
+WHERE 12 * salary > 10000 
+ORDER BY annual_salary; 
+ 
+B) SELECT last_name, 12 * salary as annual_salary 
+ 	FROM EMPLOYEES 
+ 	WHERE annual_salary > 100000 
+ 	ORDEr BY 12*salary 
+ 
+C) SELECT first_name last_name 
+ 	FROM EMPLOYEES; 
+D) SELECT last_name, 12*salary as annual_salary 
+ 	FROM employees 
+ 	WHERE annual_salary > 100000 
+ 	ORDER BY annual_salary; 
+ 
+E) SELECT last_name, 12*salary as annual_salary 
+ 	FROM employees 
+ 	WHERE 12*salary > 100000 
+ 	ORDER BY 12* salary; 
+ 
+F) SELECT first_name, last_name 
+ 	FROM EMPLOYEES; 
+ 
+
+ 
+Question 129: 
+ 
+Which is true about the ROUND, TRUNC and MOD functions? 
+ 
+A) ROUND (MOD(25,3), -1) is invalid. 
+B) ROUND(MOD(25,3), -1) AND TRUNC (MOD(25,3), -1) are both valid and give the same result. 
+C) TRUNC (MOD(25,3), -1) is invalid. 
+D) ROUND MOD(25,3), -1) and TRUNC(MOD(25,3), -1) are both valid but give different results. 
+ 
+
+ 
+Question 130: 
+Which two statements are true about the results of using the INTERSECT operator in compound queries? 
+ 
+A) INTERSECT returns rows common to both sides of the compound query. 
+B) Reversing the order of intersected tables ca sometimes affect the output. 
+C) INTERSECT ignores NULLs. 
+D) COLUMN name in each SELECT in the compound query can be different. 
+E) The number of columns in each SELECT in the compound query can be different. 
+ 
+
+ 
+Question 131: 
+You want to return the current date and time from the user session, with a datatype of TIMESTAMP WITH TIME ZONE. 
+Which function will do this? 
+A) LOCALTIMESTAMP 
+B) CURRENT_TIMESTAMP 
+C) SYSDATE 
+D) CURRENT_DATE 
+
+ 
+Question 132: 
+You have been tasked to create a table for a banking application. 
+One of the columns must meet three requirements: 
+1) Be stored on a format supporting date arithmetic without using conversion functions 
+2) Store a loan period of up to 10 years 
+3) Be used for calculating interest for the number of days the loan remains unpaid. 
+ 
+Which data type should you use? 
+ 
+A) TIMESTAMP WITH LOCAL TIMEZONE 
+B) TIMESTAMP WITH TIMEZONE 
+C) INTERVAL YEAR TO MONTH 
+D) TIMESTAMP 
+E) INTERVAL DAY TO SECOND 
+
+ 
+Question 133: 
+Examine these two queries and their output: 
+SELECT depno, dname FROM dept; 
+DEPTNO 	 	DNAME 
+--------  	------- 10  	 	ACCOUNTING 
+20  	 	RESEARCH 
+30  	 	SALES 
+40  	 	OPERATIONS 
+ 
+SELECT ename, job, deptno FROM emp ORDER BY deptno; 
+ 
+ENAME  
+ 
+JOB  
+ 
+DEPTNO 
+-------- 
+ 
+-------- 
+ 
+-------- 
+CLARK  
+ 
+MANAGER 
+ 
+10 
+KING  
+ 
+PRESIDENT 
+ 
+10 
+MILLER 
+ 
+CLERK  
+ 
+10 
+JONES  
+ 
+MANAGER 
+ 
+20 
+FORD  
+ 
+ANALYST 
+ 
+20 
+ADAMS  
+ 
+CLERK  
+ 
+20 
+SMITH  
+ 
+CLERK  
+ 
+20 
+SCOTT  
+ 
+ANALYST 
+ 
+20 
+WARD  
+ 
+SALESMAN 
+ 
+30 
+TURNER 
+ 
+SALESMAN 
+ 
+30 
+ALLEN  
+ 
+SALESMAN 
+ 
+30 
+JAMES  
+ 
+CLERK  
+ 
+30 
+BLAKE  
+ 
+MANGER 
+ 
+30 
+MARTIN 
+ 
+SALESMAN 
+ 
+30 
+ 
+Now examine this query: 
+ 
+SELECT ename, dname 
+ 	FROM emp CROSS JOIN dept 
+ 	WHERE job='MANAGER' 
+ 	AND dept.deptno IN (10,20); 
+ 
+How many rows will be displayed? 
+ 
+A) 6 
+B) 3 
+C) 12 
+D) 64 
+
+Question 134: 
+Examine the description of the EMPLOYEES table: 
+Name  	 	Null?  	 	Type 
+------ 	 	------- 	 	------ 
+EMPLOYEE_ID  	NOT NULL  	NUMBER(3) 
+EMPLOYEE_NAME 	NOT NULL  	VARCHAR(20) 
+SALARY 	 	NOT NULL  	NUMBER 
+DEPARTMENT_ID 	NOT NULL  	NUMBER(4) 
+Which two queries return all rows for employees whose salary is grater than the average salary in their department? 
+A) SELECT * 
+FROM employees  
+WHERE salary > ANY (SELECT AVG(salary) FROM employees GROUP BY department_id); 
+ 
+B) SELECT * 
+ 	FROM employees e1 WHERE salary > ( 
+ 	SELECT AVG(salary) from employees e2 
+ 	WHERE e1.department_id=e2.department_id);  
+C) SELECT *  
+ 	FROM (SELECT e.*, AVG(salary) OVER (PARTITION BY department_id) avg_sal FROM employees e) 
+WHERE salary > avg_sal; 
+ 
+D) SELECT * 
+ 	FROM employees 
+WHERE salary > (SELECT AVG(salary) FROM employees GROUP BY department_id); 
+E) SELECT * 
+ 	FROM EMPLOYEES  
+ 	WHERE salary > AVG(salary) OVER (PARTITION BY department_id);  
+
+ 
+Question 135: 
+Which two are true about the precedence of operators and conditions? 
+A) AND and OR have the same order of precedence in a condition. 
+B) || has a higher order of precedence than +(addition) 
+C) NOT has a higher order of precedence than AND and OR in condition. 
+D) +(addition) has a higher order of precedence than * (multiplication) 
+E) Operators are evaluated before conditions. 
+ 
+
+Question 136: 
+Which three statements are true about views in an Oracle Database? 
+A) Rows inserted into a table using a view are retained in the table if the view is dropped. 
+B) Views have no object number. 
+C) A SELECT statement cannot contain a WHERE clause when querying a view containing a WHERE clause in its defining query. 
+D) A View can be created that refers to a non-existent table in its defining query 
+E) Views can join tabled only if they belong to the same schema. 
+F) Views have no segment. 
+ 
+
+Question 137: 
+An Oracle Database session has an uncommitted transaction in progress which updated 5000 rows in a table. 
+In which three situations does the transaction complete thereby committing the updates? 
+A) when a DBA issues a successful SHUTDOWN TRANSACTIONAL statement and the user the issued a COMMIT. 
+B) when a COMMIT statement is issued by the same user from another session in the same database instance 
+C) when a DBA issues a successful SHUTDOWN IMMEDIATE statement and the user then issues a COMMIT 
+D) when a CRETAE INDEX statement is executed successfully in the same session. 
+E) when a CREATE TABLE AS SELECT statement is issued in the same session but fails with a syntax error 
+F) when the session logs out successfully. 
+ 
+
+Question 138: 
+Which two statements are true about an Oracle database? 
+A) A table can have multiple primary keys. 
+B) A column definition can specify multiple data types. 
+C) A table can have multiple foreign keys. 
+D) A VARCHAR2 column without data has a NULL value. 
+E) A NUMBER column without data has a zero value. 
+
+Question 139: 
+Table EMPLOYEES contains columns including EMPLOYEE_ID, JOB_ID and SALARY. 
+ONLY the EMPLOYEE_ID COLUMN is indexed. 
+Rows exist for employees 100 and 200. 
+Examine this statement: 
+UPDATE employees 
+SET (job_id, salary) = 
+ 	(SELECT job_id, salary 
+FROM employees 
+WHERE employee_id=200) 
+WHERE employee_id=100;  
+Which two statements are true? 
+A) Employee 100 will have SALARY set to the same value as the SALARY of employee 200. 
+B) Employee 100 will have JOB_ID set to the same value as the JOB_ID of employee 200. 
+C) Employee 200 will have SALARY set to the same value as the SALARY of employee 100. 
+D) Employee 200 will have JOB_ID set to the same value as the JOB_ID of employee 100. 
+E) Employee 100 and 200 will have the same SALARY as before the update command. 
+F) Employees 100 and 200 will have the same JOB_ID as before the update command. 
+ 
+
+ 
+Question 140: 
+You create a table named 123. 
+Which statement runs successfully? 
+A) SELECT * FROM "123"; 
+B) SELECT * FORM \'123\'; 
+C) SEELCT * FROM TABLE (123); 
+D) SELECT * FROM '123'; 
+ 
+
+ 
+Question 141: 
+Which two are true about using constraints? 
+A) PRIMARY KEY and FOREIGN KEY constraints can be specified at the column and at the table level. 
+B) A table can have only one PRIMARY KEY and one FOREIGN KEY constraint. 
+C) A table can have only one PRIMARY Key but may have multiple FOREIGN KEY constraints. 
+D) A FOREIGN KEY column in a child table and the referenced PRIMARY KEY column in the parent table must have the same names. 
+E) NOT NULL can be specified at the column and at the table level. 
+F) A table can have multiple PRIMARY KEY and multiple FOREIGN KEY constraints. 
+ 
+
+Question 142: 
+No user-defined locks are used in your database. 
+Which three are true about Transaction Control Language? 
+ 
+A) COMMIT end the transaction and makes all its changes permanent. 
+B) ROLLBACK without the TO SAVEPOINT clause undoes all the transaction's changes but does not erase its savepoints. 
+C) ROLLBACK TO SAVEPOINT undoes the transaction's changes made since the named savepoint and then ends the transaction. 
+D) COMMIT erases all the transaction's savepoints and releases its locks. 
+E) ROLLBACK without the TO SAVEPOINT clause undoes all the transaction's changes but does not release its locks. 
+F) ROLLBACK without the TO SAVEPOINT clause undoes all the transaction's changes, releases its locks, and erases all its savepoints. 
+ 
+
+Question 143: 
+Examine this partial query: 
+SELECT ch.channel_type, t.month, co.country_code, SUM(s.amount_sold) SALES 
+FROM sales s, times t, channels ch, countries co 
+WHERE s.time_id = t.time_id 
+AND s.country_id = co.country_is 
+AND s.channel_id = ch.channel_id 
+AND ch.channel_type IN ('Direct Sales', 'Internet') 
+AND t.month IN ('2000-09', '2000-10') 
+AND co.country_code IN('GB', 'US') 
+ 
+Examine this output: 
+ 
+CHANNEL_TYPE 
+ 
+MONTH 
+ 
+CO 
+SALES 
+--------------------  
+ 
+------------- 
+ 
+------ 
+--------- 
+Internet 
+ 
+ 
+2000-09 
+ 
+GB 
+16569 
+Internet 
+ 
+ 
+2000-09 
+ 
+US 
+124224 
+Internet 
+ 
+ 
+2000-09 
+ 
+ 
+140793 
+Internet 
+ 
+ 
+2000-10 
+ 
+GB 
+14539 
+Internet 
+ 
+ 
+2000-10 
+ 
+US 
+137057 
+Internet 
+ 
+ 
+2000-10 
+ 
+ 
+151593 
+Internet 
+ 
+ 
+ 	 
+ 
+ 
+292387 
+Direct Sales 
+ 
+ 
+2000-09 
+ 
+GB 
+85223 
+Direct Sales 
+ 
+ 
+2009-09 
+ 
+US 
+638201 
+Direct Sales 
+ 
+ 
+2000-09 
+ 
+ 
+723424 
+Direct Sales 
+ 
+ 
+2000-10 
+ 
+GB 
+91925 
+Direct Sales 
+ 
+ 
+2000-10 
+ 
+US 
+682297 
+Direct Sales 
+ 
+ 
+2000-10 
+ 
+ 
+774222 
+Direct Sales 
+ 
+ 
+2000-10 
+ 
+ 
+1497646 
+ 
+Which GROUP BY clause must be added so the query returns the result shown? 
+ 
+A) GROUP BY CUBE(ch.channel_type, t.month, co.country_code); 
+B) GROUP BY ch.channel_type, t.month, ROLLUP(co.country_code); 
+C) GROUP BY ch.channel_type, t.month, co.country_code; 
+D) GROUP BY ch.channel_type, ROLLUP(t.month, co.country_code); 
+ 
+
+ 
+Question 144: 
+ 
+You start a session and execute these commands successfully: 
+CREATE GLOBAL TEMPORARY TABLE invoices_gtt ( customer_id INTEGER 
+ 	 	 	 	 	 	, invoice_total NUMBER(10,2) 
+ 	 	 	 	 	 	) ON COMMIT PRESERVE ROWS; 
+INSERT INTO invoices_gtt VALUES (1,100); 
+COMMIT; 
+ 
+Which two are true? 
+ 
+A) You can add a foreign key to the table. 
+B) When you terminate your session, the row will be deleted. C) To Drop the table in this session, you must first truncate it. 
+D) You can add a column to the table in this session. 
+E) Other sessions can view the committed row. 
+ 
+
+Question 145: 
+Examine this statement: 
+SELECT 1 as id, 'John' as first_name, NULL as commission 
+FROM DUAL 
+INTERSECT 
+SELECT 1, 'John', NULL 
+FROM DUAL 
+ORDER BY 3; 
+ 
+What is returned upon execution? 
+A) 2 rows 
+B) 0 rows 
+C) an error 
+D) 1 row 
+ 
+
+Question 146: 
+Examine the description of the PROMOTIONS table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+PROMO_ID  
+NOT NULL 
+ 
+NUMBER(6) 
+PROMO_NAME  
+NOT NULL 
+ 
+VARCHAR2(30) 
+PROMO_CATEGORY 
+NOT NULL 
+ 
+VARCHAR2(30) 
+PROMO_COST  
+NOT NULL 
+ 
+NUMBER(10,2) 
+ 
+ 
+You want to display the unique promotion costs in each promotion category. 
+Which two queries can be used? 
+A) SELECT promo_category, DISTINCT promo_cost FROM promotions ORDER BY 2; 
+B) SELECT DISTINCT promo_category, promo_cost FROM promotions ORDER BY 1; 
+C) SELECT promo_cost, promo_categoriy FROM promotions ORDER BY 1; 
+D) SELECT DISTINCT promo_cost || ' in ' || DISTINCT promo_category FROM PROMOTIONS ORDER BY 1; 
+E) SELECT DISTINCT promo_category || ' has ' || promo_cost AS COSTS FROM promotions ORDER BY 
+1; 
+ 
+
+ 
+Question 147: 
+Which two are true about the NVL, NVL2, and COALESCE functions? 
+ 
+A) The first expression in NVL2 is never returned. 
+B) COALESCE stop evaluating the list of expressions when it finds the first null value. 
+C) COALESCE stop evaluating the list of expressions when it finds the first non-null value. 
+D) NVL2 can have any number of expressions in the list. 
+E) NVL can have any numbers of expressions in the list. 
+F) NVL must have expressions of the same data type. 
+ 
+
+ 
+Question 148: 
+Which three statements are true about single-row functions? A) They can accept only one argument. 
+B) The argument can be a column name, variable, literal or an expression. 
+C) They can be used only in the WHERE clause of a SELECT statement. 
+D) They return a single result per table. 
+E) They can be nested to any level. 
+F) The data type returned can be different from the data type of the argument. 
+ 
+
+Question 149: 
+The INVOICE table has a QTY_SOLD column of data type NUMBER and an INVOICE_DATE od data type DATE. 
+Which two are true about data type conversions involving these columns in query expressions? 
+A) invoice_date = '15-march-2019' : uses implicit conversion 
+B) qty_solg BETWEEN '101' AND '110': uses implicit conversion 
+C) CONCAT(qty_sold, invoice_date) : requires explicit conversion 
+D) qty_sold = '0554982': requires explicit conversion 
+E) invoice_date > '01-02-2019' : uses implicit conversion 	 
+
+Question 150: 
+Examine the description of the BRICKS table: 
+Name  
+ 
+Null?  
+ 
+Type 
+------ 
+ 
+------- 
+ 
+------ 
+BRICK_ID 
+ 
+ 	 
+ 
+NUMBER(38) 
+SHAPE  
+ 
+ 	 
+ 
+VARCHAR2(30) 
+COLOR  
+ 
+ 	 
+ 
+VARCHAR2(30) 
+WEIGHT 
+ 
+ 	 
+ 
+NUMBER 
+ 
+Examine the description of the BRICKS_STAGE table: 
+Name  
+ 
+Null?  
+ 
+Type 
+------ 
+ 
+------- 
+ 
+------ 
+WEIGHT 
+ 
+ 	 
+ 
+NUMBER 
+SHAPE  	 	 	 	 	VARCHAR2(30) 
+COLOR  	 	 	 	 	VARCHAR2(30) 
+ 
+Which two queries execute successfully? 
+ 
+A) SELECT shape, color FROM BRICKS 
+MINUS  
+SELECT color, shape FROM bricks_stage; 
+ 
+B) SELECT shape, color FROM bricks 
+MINUS 
+SELECT weight, color FROM bricks_stage; 
+ 
+C) SELECT brick_id, shape FROM bricks 
+MINUS 
+SELECT weight, color FROM bricks_stage; 
+ 
+D) SELECT shape, color, weight FROM bricks 
+MINUS 
+SELECT * FROM bricks_stage; 
+ 
+E) SELECT * FROM bricks 
+MINUS 
+SELECT * FROM bricks_stage; 
+ 
+
+ 
+Question 151: 
+Examine the description of the EMPLOYEES table: 
+Name  
+ 
+Null?  
+ 
+Type 
+------ 
+ 
+------- 
+ 
+------ 
+EMP_NO 
+ 
+NOT NULL 
+ 
+NUMBER(4) 
+LAST_NAME 
+ 
+ 	 
+ 
+VARCHAR2(10) 	 	 
+HIRE_DATE 
+ 
+ 	 
+ 
+DATE 
+SALARY 
+ 
+ 	 
+ 
+NUMBER(6,2) 
+ 
+For each employee in department 90 you want to display: 
+1. Their last name 
+2. The number of complete weeks they have been employed 
+The output must be sorted by the number of weeks, starting with the longest serving employee first. 
+Which statement will accomplish this? 
+A) SELECT last_name, ROUND((SYSDATE – hire_date) / 7) as tenure 
+ 	FROM employees 
+ 	WHERE department_id=90 
+ORDER BY tenure DESC; 
+ 
+B) SELECT last_name, TRUNC((SYSDATE – hire_date) / 7) as tenure 
+ 	FROM employees 
+ 	WHERE department_id=90 
+ORDER BY tenure; 
+ 
+C) SELECT last_name, TRUNC((SYSDATE – hire_date) / 7) as tenure 
+ 	FROM employees 
+ 	WHERE department_id=90 ORDER BY tenure DESC; 
+ 
+D) SELECT last_name, ROUND((SYSDATE – hire_date) / 7) as tenure 
+ 	FROM employees 
+ 	WHERE department_id=90 ORDER BY tenure; 
+ 
+
+Question 152: 
+Which two statements execute successfully? 
+A) SELECT TO_DATE(TO_CHAR('2019-DEC-25 03:00', 'YYYY-MON-DD HH12:MI'))FROM DUAL; 
+B) SELECT TO_CHAR('2019-DEC-25 15:30', 'YYYY-MON-DD HH24:MI') FROM DUAL; 
+C) SELECT TO_DATE('2019-DEC-25 15:30', 'YYYY-MON-DD HH24:MI', 'NLS_DATE_LANGUAGE=AMERICAN') FROM DUAL; 
+D) SELECT TO_CHAR(TO_DATE('2019-DEC-25 03:30', 'YYYY-MON-DD HH12:MI)) FROM DUAL; 
+E) SELECT TO_CHAR('2019-DEC-25 15:30', 'YYYY-MON-DD HH24:MI', NLS_DATE_LANGUAGE=AMERICAN') FROM DUAL; 
+ 
+
+Question 153: 
+The STORE table has a column START_DATE od data type DATE, containing the date the row was inserted. 
+You want to display details of rows where START_DATE is within the last 25 months. 
+Which WHERE clause can be used? 
+A) WHERE TO_NUMBER(start_date – SYSDATE) <=25; 
+B) WHERE MONTHS_BETWEEN(start_date, SYSDATE) <=25; 
+C) WHERE ADD_MONTHS(start_date, 25) <= SYSDATE; 
+D) WHERE MONTHS_BETWEEN(SYSDATE, start_date) <= 25; 
+ 
+
+Question 154: 
+Which three statements about roles are true? 
+A) Roles are assigned to roles using the ALTER ROLE statement. 
+B) A single user can be assigned multiple roles. 
+C) Privileges are assigned to a role using the ALTER ROLE statement. 
+D) Privileges are assigned to a role using the GARNT statement. 
+E) A role is a named group of related privileges that can only be assigned to a user. 
+F) A single role can be assigned to multiple users. 
+G) Roles are assigned to users using the ALTER USER statement. 
+ 
+
+ 
+Question 155: 
+Which two are true about granting object privileges on tables, views and sequences? 
+A) DELETE can be granted on tables, views and sequences 
+B) REFERENCES can be granted only on tables. 
+C) ALTER can be granted on tables and sequences. 
+D) INSERT can be granted only on tables and sequences. 
+E) SELECT can be granted on tables, views and sequences. 
+ 
+
+Question 156: 
+Examine the description of the MEMBERS table: 
+Name  
+ 
+Null?  
+ 
+Type 
+------ 
+ 
+------- 
+ 
+------ 
+MEMBER_ID 
+ 
+NOT NULL 
+ 
+VARCHAR2(6) 
+FIRST_NAME 
+ 
+ 	 
+ 
+VARCHAR2(50) 
+LAST_NAME 
+ 
+NOT NULL 
+ 
+VARCHAR2(50) 
+ADDRESS 
+ 
+ 	 
+ 
+VARCHAR2(50) 
+CITY 	 
+ 
+ 	 
+ 
+VARCHAR2(25) 
+ 
+Examine the partial query: 
+SELECT city, last_name as lname FROM members …; 
+You want to display all cities that contain the string AN. The cities must returned in ascending order, with the last names further sorted in descending order. 
+Which two clauses must you add to the query? 
+A) WHERE city LIKE '%AN%' 
+B) WHERE CITY IN ('%AN%') 
+C) ORDER BY 1, 2 
+D)ORDER BY last_name DESC, city ASC 
+E) WHERE city='%AN%' 
+F) ORDER BY 1, lname DESC 
+
+Question 157: 
+BOOK_SEQ is an existing sequence in your schema. 
+Which two CREATE TABLE commands are valid? 
+A) CREATE TABLE bookings ( bk_id  NUMBER(4)  NOT NULL PRIMARY KEY, start_date DATE  NOT NULL, end_date DATE  DEFAULT SYSDATE); 
+B) CREATE TABLE bookings ( bk_id  	NUMBER(4)  DEFAULT book_seq.NEXTVAL PRIMARY KEY, 
+start_date DATE  DEFAULT SYSDATE, end_date DATE  DEFAULT SYSDATE NOT NULL); 
+ 
+C) CREATE TABLE bookings ( bk_id  	NUMBER(4)  DEFAULT book_seq.CURRVAL, start_date DATE  	DEFAULT SYSDATE, end_date DATE  	DEFAULT start_date); 
+ 
+D) CREATE TABLE bookings ( 
+	bk_id  	NUMBER(4), 
+	start_date DATE  	DEFAULT SYSDATE, 
+	end_date DATE  	DEFAULT (end_date >=start_date)); 
+ 
+E) CREATE TABLE bookings ( bk_id  	NUMBER(4) NOT NULL DEFAULT book_seq.CURRVAL, 
+start_date DATE  	NOT NULL, end_date DATE  	DEFAULT SYSDATE); 
+ 
+
+Question 158: 
+Which two statements are true about *_TABLES views? 
+A) You must have ANY_TABLE system privileges, or be granted object privileges on the table, to view a table DBA_TABLES. 
+B) ALL users can query DBA_TABLES successfully. 
+C) USER_TABLES displays all tables owned by the current user. 
+D) ALL_TABLES displays all tables owned by the current user. 
+E) You must have ANY_TABLE system privileges, or be granted object privileges on the table, to view a table USERS_TABLES. 
+F) You must have ANY_TABLE system privileges, or be granted object privileges on the table, to view a table ALL_TABLES. 
+
+Question 159: 
+Which three statements are true about Structured Query Language (SQL)? 
+A) It provides independence for logical data structures being manipulated from the underlying physical data storage. 
+B) It guarantees atomicity, consistency, isolation and durability (ACID) features. 
+C) It is used to define encapsulation and polymorphism for a relational table. 
+D) It requires that data be contained in hierarchical data storage. 
+E) It is the only language that can be uses for both relational an object-oriented databases. 
+F) Is best supports relational databases. 
+ 
+
+Question 160: 
+Which two statements are true about conditional INSERT ALL? A) It cannot have an ELSE clause. 
+B) Each WHEN condition is tested for each row returned by the subquery. 
+C) The total number of rows inserted is always equal to the number of rows returned by the subquery. 
+D) A single WHEN condition can be used for multiple INTO clauses. 
+E) Each row returned by the subquery can be inserted into only single target table. 
+
+Question 161: 
+Which three actions can you perform on an existing table containing data? A) Change a DATE column containing data to a NUMBER data type. 
+B) Increase the width of a numeric column. 
+C) Add a new NOT NULL column with a DEFAULT value. 
+D) Define a default value that is automatically inserted into a column containing nulls. 
+E) Change the default value of a column. 
+F) Add a new column as the table's first column. 
+
+Question 162: 
+Which two are true about unused columns? 
+A) A foreign key column cannot be set to unused. 
+B) The DESCRIBE command displays unused columns. 
+C) Unused columns retain their data until they are dropped. 
+D) A query can return data from unused columns, but no DML is possible on those columns. 
+E) A primary key column cannot be set to unused. 
+F) Once a column has been set to unused, anew column with the same name can be added to the table.  
+
+Question 163: 
+Which three statements are true about multiple row subqueries? A) They can contain HAVING clauses. 
+B) They can return multiple columns. 
+C) Two or more values are always returned from the subquery. 
+D) They cannot contain a subquery. 
+E) They can contain GROUP BY clauses. 
+
+Question 164: 
+What is true about non-equijoin statement performance? 
+A) The join syntax used makes no difference to performance. 
+B) The BETWEEN condition always performs better than using the >= and <= conditions. 
+C) Table aliases can improve performance. 
+D) The Oracle join syntax performs better than the SQL:1999 compliant ANSI join syntax. 
+E) The BETWEEN condition always performs less well than using the >= and <= conditions. 
+ 
+
+Question 165: 
+You own table DEPARTMENTS, referenced by views, indexes and synonyms. 
+Examine this command which executes successfully: 
+DROP TABLE departments PURGE; 
+ 
+Which three statements are true: 
+A) It will remove the DEPARTMENTS table from the database. 
+B) It will delete all rows from DEPARTMENTS table, but retain the empty table. 
+C) It will remove all synonyms for the DEPARTMENTS table. 
+D) It will remove all views that are based on the DEPARTMENTS table. 
+E) It will drop all indexes on the DEPARTMENTS table 
+F) Neither can it be rolled back nor can the DEPARTMENTS table be recovered. 
+
+Question 166: 
+Examine this statement: 
+CREATE TABLE orders 
+ 	(serial_no NUMBER UNIQUE 
+, order_id NUMBER PRIMARY KEY 
+, order_date DATE NOT NULL 
+, status VARCHAR2(10) CHECK (status IN ('CREDIT', 'CASH')) ,product_id NUMBER REFERENCES products (product_id), order_total NUMBER); 
+ 
+On which two columns of the table will an index be crated automatically? 
+A) ORDER_DATE 
+B) STATUS 
+C) ORDER_TOTAL 
+D) PRODUCT_ID 
+E) SERIAL_NO 
+F) ORDER_ID 
+
+Question 167: 
+Which three statements are true about Oracle synonyms? A) Any user can drop a PUBLIC synonym. 
+B) A synonym cannot be created for a PL/SQL package. 
+C) A SEQUENCE can have a synonym. 
+D) A synonym created by one user can refer to an object belonging to another user. 
+E) A synonym can be available to all users. 
+
+Question 168: 
+Which two statements are true about selecting related rows from two tables based on an Entity Relationship Diagram (ERD)? 
+A) Rows from unrelated tables cannot be joined. 
+B) An inner join related rows within the same table. 
+C) Implementing a relationship between two tables might require joining additional tables. 
+D) Every relationship between the two tables must be implemented in a join condition. 
+E) Relating data from table with data from the same table is implemented with a self-join. 
+
+Question 169: 
+The SALES taböe has columns PROD_ID and Quantity_Sold of data type NUMBER. 
+Which two queries execute successfully? 
+A) SELECT prod_id FROM sales WHERE quantity_sold > 55000 GROUP BY prod_id HAVING COUNT(*) > 10; 
+B) SELECT COUNT(prod_id) FROM sales WHERE quantity_sold > 55000 GROUP BY prod_id; 
+C) SELECT COUNT(prod_id) FROM sales GROUP BY prod_id WHERE quantity_sold > 55000; 
+D) SELECT prod_id FROM sales WHERE quantity_sold > 55000 AND COUNT(*) < 10 GROUP BY prod_id HAVING COUNT(*) > 10; 
+E) SELECT prod_id FROM sales WHERE quantity_sold > 55000 AND COUNT(*) > 10 GROUP BY COUNT(*) > 10; 
+ 
+
+Question 170: 
+Examine the description of the EMPLOYEES table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+EMPLOYEE_ID  
+NOT NULL 
+ 
+NUMBER(4) 
+EMPLOYEE_NAME 
+NOT NULL 
+ 
+VARCHAR2(100) 
+SALARY 	 
+NOT NULL 
+ 
+NUMBER(6,2) 
+MANAGER_ID  
+ 	 
+ 
+NUMBER(4) 
+ 
+ 
+Examine these requirements: 
+1. Display the manager id and salary of the lowest paid employee for that manager 
+2. Exclude anyone whose manager is not known. 
+3. Exclude any managers where the minimum salary is 600 or less. 
+4. Sort the output by minimum salary with the highest salary shown first. 
+Which statements will do this? 
+A) SELECT manager_id, MIN(salary)  
+FROM employees 
+HAVING MIN(salary) > 6000 
+WHERE manager_id IS NOT NULL 
+GROUP BY manager_id 
+ORDER BY MIN(SALARY) DESC; 
+ 
+B) SELECT manager_id, MIN(salary) FROM employees 
+WHERE manager_id IS NOT NULL 
+GROUP BY manager_id 
+ORDER BY MIN(salary) DESC; 
+ 
+C) SELECT manager_id, MIN(salary) 
+FROM employees 
+WHERE manager_id IS NOT NULL 
+HAVING MIN(salary) > 6000 
+GROUP BY manager_id 
+ORDER BY MIN(salary) DESC; 
+ 
+D) SELECT manager_id, MIN(salary) 
+FROM employees 
+WHERE manager_id IS NOT NULL 
+GROUP BY manager_id 
+HAVING MIN(salary) > 6000 
+ORDER BY MIN(salary); 
+ 
+
+Question 171: 
+Which two are true about multi-table INSERT statements? 
+A) They can transform a row from a source table into multiple rows in a target table. 
+B) The conditional INSERT ALL statement inserts rows into a single table by aggregating source rows. 
+C) They always use subqueries. 
+D) The conditional INSERT FIRST statement always inserts a row into a single table. 
+E) The unconditional INSERT ALL statement must have the same number of columns in both the source and target tables. 
+
+Question 172: 
+Examine this statement: 
+SELECT cust_id, cust_last_name "Last Name" 
+FROM customers 
+WHERE country_id=10 
+UNION 
+SELECT cust_id CUST_NO, cust_last_name 
+FROM customers 
+WHERE country_id=30; 
+ 
+Identify three ORDER BY clauses, any one of which will complete the query successfully. 
+A) ORDER BY "Last Name" 
+B) ORDER BY "CUST_NO" 
+C) ORDER BY CUST_NO 
+D) ORDER BY 2, cust_id 
+E) ORDER BY 2, 1 
+
+Question 173: 
+Examine the description of the PRODUCTS table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+PRODUCT_ID  
+NOT NULL 
+ 
+NUMBER(2) 
+PRODUCT_NAME 
+ 	 
+ 
+VARCHAR2(10) 
+UNIT_PRICE  
+ 	 
+ 
+NUMBER(3) 
+SURCHARGE  
+ 	 
+ 
+VARCHAR2(2) 
+EXPIRE_DATE  
+ 	 
+ 
+DATE 
+DELIVERY_DATE 
+ 	 
+ 
+DATE 
+ 
+Which three queries use valid expressions? 
+A) SELECT product_id, unit_price, 5 "Discount", unit_price + surcharge – discount FROM products; 
+B) SELECT product_id,  (expire_date - delivery_date) * 2 FROM products; 
+C) SELECT product_id, expire_date * 2 FROM products; 
+D) SELECT product_id (unit_price * 0.15 / (4.75 + 552.25)) FROM products; 
+E) SELECT product_id, unit_price, unit_price + surcharge FROM products; 
+F) SELECT product_id, unit_price || 5 "Discount", unit_price + surcharde - discount FROM products; 
+ 
+
+Question 174: 
+Examine the description of the ORDERS table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+ORDER_ID  
+ 	 
+ 
+NUMBER(38) 
+ORDER_DATE  
+ 	 
+ 
+DATE 
+ 
+Examine the description of the INVOICES table: 
+Name  	 
+Null?  
+ 
+Type 
+------ 	 
+------- 
+ 
+------ 
+INVOICE_ID  
+ 	 
+ 
+NUMBER(38) 
+INVOICE_DATE 
+ 	 
+ 
+DATE 
+ 
+Which three statements execute successfully? 
+A) SELECT order_id invoice_id, order_date FROM orders MINUS 
+SELECT invoice_id, invoice_date FROM invoices ORDER BY invoice_id; 
+ 
+B) SELECT order_id, order_date FROM orders UNION ALL 
+SELECT invoice_id, invoice_date FROM invoices ORDER BY order_id; 
+ 
+C) SELECT * FROM orders ORDER BY order_id INTERSECT 
+SELECT * FROM invoices PRDER BY order_id; 
+ 
+D) SELECT order_id, order_date FROM orders INTERSECT 
+SELECT invoice_id, invoice_date FROM invoices ORDER BY invoice_id; 
+ 
+E) (SELECT * FROM orders UNION ALL 
+SELECT * FROM invoices) ORDER BY order_id; 
+ 
+F) SELECT * FROM orders ORDER BY order_id UNION  
+SELECT * FROM invoices; 
+G) SELECT * FROM orders MINUS 
+SELECT * FROM invoices ORDER BY 1; 
+ 
+
+ 
+Question 175: 
+ 
+Which three statements are true about GLOBAL TEMPORARY TABLES? 
+ 
+A) A GLOBAL TEMPORARY TABLE can be referenced in the defining query of a view. 
+B) A GLOBAL TEMPORARY TABLE can have only one index. 
+C) A GLOBAL TEMPORARY TABLE can have multiple indexes. 
+D) A GLOBAL TEMPORARY TABLE cannot have a PUBLIC SYNONYM. 
+E) DML on GLOBAL TEMPORARY TABLES generates no REDO. F) A trigger can be created on a GLOBAL TEMPORARY TALBE. 
+
+Question 176: 
+Which two are true? 
+A) LAST_DAY returns the date of the last day of the previous month only. 
+B) LAST_DAY returns the date of the last day of the month for the date argument passed to the function. 
+C) CEIL returns the largest integer less than or equal to a specified number. 
+D) ADD_MONTHS adds a number of calendar months to a date. 
+E) CEIL requires an argument which is a numeric data type. 
+F) LAST_DAY returns the date of the last day of the current month only. 
+
+ 
+Question 177: 
+Which three statements are true about external tables? A) They can be used in queries containing joins. 
+B) They can be temporary tables. 
+C) They can be used in queries containing sorts. 
+D) Their metadata is stored in the database. 
+E) DML statements can modify them. 
+F) They can be indexed. 
+
+Question 178: 
+The EMPLOYEES table contains columns EMP_ID of data type NUMBER and HIRE_DATE of data type DATE.  
+You want to display the date of the first Monday after the completion of six months since hiring. 
+The NLS_TERRITORY parameter is set to AMERICA in the session an therefore Sunday is the first day of the week. 
+Which query can be used? 
+A) SELECT emp_id, NEXT_DAY(ADD_MONTHS(hire_date, 6), 'MONDAY') FROM employees; 
+B) SELECT emp_id, NEXT_DAY(ADD_MONTHS(hire_date,6), 1) FROM employees; 
+C) SELECT emp_id, ADD_MONTHS(hire_date, 6), NEXT_DAY('MONDAY') FROM employees; D) SELECT emp_id, NEXT_DAY(MONTHS_BETWEEN (hire_date, SYSDATE), 6) FROM employees; 
+
+Question 179: 
+Which two statements are true about Oracle databases and SQL? 
+A) The database guarantees read consistency at select level on user-created tables. 
+B) Updates performed by a database user can be rolled back by another user by using the ROLLBACK command. 
+C) A query can access only tables within the same schema. 
+D) A user cab be the owner of multiple schemas in the same database. 
+E) When you execute an UPDATE statement, the database instance locks each updated row. 
+
+Question 180: 
+Which two statements are true regarding the UNION and UNION ALL operators? A) The number of columns selected in each SELECT statement must be identical. 
+B) The output is sorted by the UNION ALL operator. 
+C) NULLS are not ignored during duplicate checking. 
+D) Duplicates are eliminated automatically by the UNION ALL operator. 
+E) The names of columns selected in each SELECT statement must be identical. 
+ 
+
+Question 181: 
+Which statement is true about the date functions? 
+A) LOCALTIMESTAMP returns the current date in the session time zone. 
+B) CURRENT_DATE and CURREMT_TIMESTAMP return the current date as per the Oracle Database server time zone. 
+C) CURREMT_DATE and SYSDATE return the current date in the session time zone. 
+D) CURRENT_TIMESTAMP returns the current date as per the Oracle Database server time zone. 
+E) CURRENT_DATE and SYSDATE return the current date as per the Oracle Database server time zone. 
+
+Question 182: 
+Which two statements cause changes to the data dictionary? 
+A) DELETE FROM scott.emp; 
+B) ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY'; 
+C) GRANT UPDATE ON scott.emp TO fin_manager; 
+D) TRUNCATE TABLE emp; E) SELECT * FROM user_tab_privs; 
+
+Question 183: 
+Which two statements are true about the rules of precedence for operators? A) NULLS influence the precedence of operators in an expression. 
+B) The concatenation operator || is always evaluated before addition and subtraction expression. 
+C) Multiple parentheses can be used to override the default precedence of operators in an expression. 
+D) The + binary operator has the highest precedence in an expression in a SQL statement. 
+E) Arithmetic operators with equal precedence are evaluated from left to right within an expression. 
+
+Question 184: 
+Examine the description of the EMPLOYEES table: 
+Name  	 	Null?  	 	Type 
+------ 	 	------- 	 	------ 
+EMPLOYEE_ID  	NOT NULL  	NUMBER(4) 
+LAST_NAME  	NOT NULL  	VARCHAR2(100) 
+SALARY 	 	NOT NULL  	NUMBER(6,2) DEPARTMENT_ID 	NOT NULL  	NUMBER(4) 
+ 
+Examine this query: 
+1 SELECT e.last_name, 
+2 e.salary, 
+3 a.avg_sal 
+4 FROM employees e 
+5 WHERE e.salary > (SELECT AVG(a.salary) AS avg_sal 
+6 FROM employees a 
+7 WHERE a.department_id = re.department_id) 
+8 ORDER BY e.last_name; 
+ 
+Which line produces an error? 
+A) Line 5 
+B) Line 8 
+C) Line 3 
+D) Line 7 
+
+Question 185: 
+Examine the data in the ORDERS table: 
+ORDER_ID  	ORDER_DATE 
+--------  	----------- 
+1 <null> 
+2 <null> 
+3 01-JAN-2019 
+4 01-FEB-2019 
+5 01-MAR-2019 
+ 
+Examine the data in the INVOICES table: 
+INVOICE_ID  	ORDER_ID  	ORDER_DATE 
+----------  	--------  	---------- 
+1 1 	 	<null> 
+2 2 	 	01-JAN-2019 
+3 3 	 	<null> 
+4 4 	 	01-FEB-2019 
+5 5 	 	<null> 
+ 
+Examine this query: 
+SELECT order_id, order_date FROM orders 
+ 	MINUS 
+SELECT order_id, order_date FROM invoices; 
+ 
+Which three roes will it return? 
+A) 1 <null> 
+B) 2 <null> 
+C) 4 01-FEB-2019 
+D) 3 <null> 
+E) 5 <null> 
+F) 5 01-MAR-2019 
+G) 3 01-JAN-2019 
+
+Question 186: 
+Which statement will return a comma-separated list of employees names in alphabetical order for each department in the EMP table? 
+A) SELECT deptno, LISTAGG(ename, ',') WITHIN GROUP (GROUP BY deptno) AS employee_list FROM emp ORDER BY ename; 
+B) SELECT deptno, LISTAGG(ename, ',') WITHIN GROUP AS employee_list FROM emp GROUP BY deptno ORDER BY ename; 
+C) SELECT deptno, LISTAGG(ename, ',') WITHIN GROUP (ORDER BY ename) as employee_list FROM emp GROUP BY deptno; 
+D) SELECT deptno, LISTAGG(ename, ',') WITHIN GROUP As employee_list FROM emp GROUP BY deptno; 
+
+Question 187: 
+User HR has CREATE SESSION, CREATE ANY TABLE and UNLIMITED TABLESPACE privileges. 
+User SCOTT has CREATE SESSION, CREATE TABLE and UNLIMITED TABLESPACE privileges. 
+HR successfully executes this statement: 
+CREATE TABLE scott.products (  prod_id NUMBER(2),  prod_name VARCHAR2(20)); 
+ 
+HR attempts to exceute: 
+1. INSERT INTO scott.products VALUES (1, 'LAPTOP'); 
+ 
+SCOTT attempts to execute: 
+2.SELECT * FROM products; 
+3.INSERT INTO scott.products VALUES (2, 'HDD'); 
+4.CREATE SYNONYM prod FOR products; 
+ 
+Which will execute successfully? 
+A) 1, 3 and 4 
+B) 1, 2 and 3 
+C) 2 and 3 only 
+D) 1 only 
+
+Question 188: 
+Examine this query and its outout: 
+SELECT * FROM products; 
+ 
+PROD_ID 	 
+PROD_NANE 
+ 
+PROD_LIST 
+------------- 
+------- 
+ 
+---------- 
+101  
+Plate  
+ 
+ 	10 
+102  
+Cup  
+ 
+ 	20 
+103  
+Saucer 
+ 
+ 	20 
+104  
+Knife  
+ 
+ 	30 
+105  
+Fork  
+ 
+ 	30 
+ 
+Examine this query with an inclomplete WHERE clause: 
+SELECT prod_name 
+FROM products 
+WHERE prod_list <operator> (SELECT prod_list FROM products); 
+ 
+Which two are true about operators that can be used in the WHERE clause? A) Using NOT IN or <> ALL will give the same result. 
+B) Using <> ANY will display all the products names. 
+C) Using NOT IN or <> ANY will give the same result 
+D) Using IN will display all the products names. 
+E) Using <> ANY will display all the products names except the product named Fork. 
+ 
+
+Question 189: 
+Which two queries execute successfully? 
+A) SELECT NULLIF(100, 'A') FROM DUAL; 
+B) SELECT NULLIF (NULL, 100) FROM DUAL; 
+C) SELECT COALESCE(100, 'A') FROM DUAL; 
+D) SELECT NULLIF(100,100) FROM DUAL; E) SELECT COALESCE(100,NULL, 200) FROM DUAL; 
+
+Question 190: 
+Examine this query: 
+SELECT SUBSTR(SYSDATE, 1, 5) "Result" FROM DUAL; 
+ 
+Which statement is true? 
+A) It executes successfully with an implicit data type conversion. 
+B) It fails unless the expression is modified to TO_CHAR(SUBSTR(SYSDATE, 1, 5)). C) It fails unless the expression is modified to SUBSTR(TO_CHAR(SYSDATE), 1, 5). 
+D) It fails unless the expression is modified to SUNSTR(TO_CHAR(TRUNC(SYSDATE)), 1, 5). 
+
+Question 191: 
+Examine the description of the EMPLOYEES table: 
+Name  	 
+NULL?  
+ 
+Type 
+------------ 
+------- 
+ 
+---------- 
+EMP_ID 	 
+NOT NULL 
+ 
+NUMBER 
+EMP_NAME  
+ 	 
+ 
+VARCHAR2(40) 
+DEPT_ID 	 
+ 	 
+ 
+NUMBER(2) 
+SALARY 	 
+ 	 
+ 
+NUMBER(8,2) 
+JOIN_DATE  
+ 	 
+ 
+DATE 
+ 
+Which query is valid? 
+A) SELECT dept_id, MAX(AVG(salary)) FROM EMPLOYEES GROUP BY dept_id; 
+B) SELECT dept_id, join_date, SUM(salary) FROM employees GROUP BY dept_id, join_date; 
+C) SELECT dept_id, AVG(MAX(salary)) FROM employees GROUp BY dept_id; 
+D) SELECT dept_id, join_date, SUM(salary) from employees GROUP BY dept_id; 
+ 
+
+Question 192: 
+You need to calculate the number of days from 1st January 2019 until today.  
+Dates are stored in the default format of DD-MON-RR. 
+Which two queries give the required output? 
+A) SELECT ROUND(SYSDATE – TO_DATE('01/JANUARY/2019')) FROM DUAL; 
+B) SELECT SYSDATE - TO_DATE('01-JANUARY-2019') FROM DUAL; 
+C) SELECT ROUND (SYSDATE - '01-JAN-2019') FROM DUAL; 
+D) SELECT TO_CHAR(SYSDATE, 'DD-MON-YYYY') – '01-JAN-2019' FROM DUAL; E) SELECT TO_DATE(SYSDATE, 'DD/MONTH/YYYY') – '01/JANUARY/2019' FROM DUAL; 
+
+Question 193: 
+Examine this statement which returns the name of each employee and their manager: 
+SELECT e.last_name AS emp, m.last_name AS mgr 
+FROM employees e 
+JOIN manger m 
+ON e.manager_id=m.employee_id 
+ORDER BY emp; 
+ 
+You want to extend the query to include managers with no employees. What must you add before JOIN to do this? 
+A) LEFT OUTER 
+B) CROSS 
+C) FULL OUTER 
+D) RIGHT OUTER 
+
+Question 194: 
+Table HR.EMPLOYEES contains a row where the EMPLOYEE_ID is 109. 
+User ALICE has no privileges to access HR.EMPLOYEES. 
+User Alice start a session. 
+User HR starts a session and successfully executes these statements: 
+GRANT DELETE ON employees TO alice; 
+UPDATE employees SET salary = 24000 WHERE employee_id=109; 
+ 
+In her exsiting session ALICE then executes: 
+DELETE FROM hr.employees WHERE emplpyee_id=109; 
+ 
+What is the result? 
+A) The DELETE command will wait for HR's transaction to end then return an error. 
+B) The DELETE command will immediately delete the row. 
+C) The DELETE command will wait for HR's transaction to end then delete the row. 
+D) The DELETE command will immediately return an error. 
+
+Question 195: 
+Your Session NLS_DATE_FORMAT is set to DD-MM-RR. 
+Which two queries display the year as for digits? 
+A) SELECT TO_DATE(TO_CHAR(SYSDATE, 'MM/DD/YYYY'), 'MM/DD/YYYY') FROM DUAL; 
+B) SELECT TO_CHAR(ADD_MONTHS(SYSDATE, 4)) FROM DUAL; 
+C) SELECT TO_CHAR(ADD_MONTHS(SYSDATE,4), 'dd-mon-yyyy') FROM DUAL; 
+D) SELECT TO_CHAR(SYSDATE, 'MM/DD/YYYY') FROM DUAL; 
+E) SELECT TO_DATE(SYSDATE, 'RRRR-MM-DD') FROM DUAL; 
+F) SELECT TO_DATE(ADD_MONTHS(SYSDATE, 4), 'dd-mon-yyyy') FROM DUAL; 
+
+Question 196: 
+Which two are true about self joins? A) They have no join condition. 
+B) They can use INNER JOIN and LEFT JOIN. 
+C) They require the EXISTS operator in the join condition. 
+D) They require the NOT EXISTS operator in the join condition. 
+E) They are always eqijoins. 
+F) They require table aliases. 
+
+Question 197: 
+Examine these statements which execute successfully: 
+SELECT d* --, e.avg_sal 
+FROM departments d 
+ORDER BY (SELECT AVG(e.salary) as avg_sal FROM employees e 
+WHERE e.department_id=d.department_id); 
+SELECT d.* --, e.avg_sal 
+FROM departments d 
+JOIN (SELECT department_id, AVG(SALARY) as avg_sal 
+FROM employees 
+GROUP BY department_id) e 
+ON e.department_id = d.department_id 
+ORDER BY e.avg_sal; 
+ 
+Both statements display departments ordered by their average salaries. 
+Which two are true? 
+A) Only the first statement will execute successfully if you add E.AVG_SAL to the select list. 
+B) Only the second statement will execute successfully if you add E.AVG_SAL to the select list. 
+C) Only the first statement will display departments with no employees. 
+D) Both statements will execute successfully if you add E. AVG_SAL to the select list. 
+E) Only the second statement will display departments with no employees.  
+F) Both statements will display departments with no employees. 
+ 
+
+Question 198: 
+Examine this statement: 
+CREATE TABLE orders 
+(serial_no   
+NUMBER UNIQUE, 
+order_id   
+NUMBER PRIMARY KEY 
+order_date   
+DATE NOT NULL, 
+status  	 
+VARCHAR2(10) CHECK (status IN ('CREDIT', 'CASH')), 
+product_id   
+NUMBER REFERENCES products (product_id), 
+order_total  
+NUMBER); 
+ 
+On which two columns of the table will an index be created automatically? 
+A) ORDER_TOTAL 
+B) STATUS 
+C) PRODUCT_ID 
+D) ORDER_ID 
+E) SERIAL_NO 
+F) ORDER_DATE 
+
+Question 199: 
+Which two are true about constraints? 
+A) A column with a FOREIGN KEY constraint can never contain a NULL value. 
+B) All constraints can be defined at the table or column level. 
+C) A column with a UNIQUE constraint can contain a NULL value. 
+D) Constraints are enforced only during INSERT operations. 
+E) A constraint can be disabled even if the constrained column contains data. 
+
+Question 200: 
+Examine the description of the CUSTOMERS table: 
+Name  	 	 
+Null?  
+ 
+Type 
+-----------  	 
+-------- 
+ 
+------------- 
+CUST_ID 	 	 
+NOT NULL 
+ 
+NUMBER 
+CUST_FIRST_NAME  
+NOT NULL 
+ 
+VARCHAR2(20) 
+CUST_LAST_NAME  
+NOT NULL 
+ 
+VARCHAR2(30) 
+CUST_INCOME_LEVEL  
+ 	 
+ 
+VARCHAR2(30) 
+CUST_CREDIT_LIMIT  
+ 	 
+ 
+NUMBER 
+ 
+For customers whose income level has a value you want to display the first name and due amount as 5% of their credit limit. Customers whose due amount is null should bit be displayed. 
+Which query should you used? 
+A) SELECT cust_first_name, cust_credit_limit * .05 AS due_amount  
+ 	FROM customers 
+ 	WHERE cust_income_level != NULL 
+ 	AND due_amount != NULL; 
+ 
+B) SELECT cust_first_name, cust_credit_limit * .05 AS due_amount  
+ 	FROM customers 
+ 	WHERE cust_incloe_level IS NOT NULL 
+ 	AND due_amount IS NOT NULL; 
+ 
+C) SELECT cust_first_name, cust_credit_limit * .05 AS due_amount  
+ 	FROM customers 
+ 	WHERE cust_income_level IS NOT NULL 
+ 	AND cust_credit_limit IS NOT NULL; 
+ 
+D) SELECT cust_first_name, cust_credit_limit * .05 AS due_amount  
+ 	FROM customers 
+ 	WHERE cust_income_level !=NULL 
+ 	AND cust_credit_level != NULL; 
+ 
+E) SELECT cust_first_name, cust_credit_limit * .05 AS due_amount  
+ 	FROM customers 
+ 	WHERE cust_income_level <> NULL 
+ 	AND due_amount <> NULL; 
+ 
+
+ 
+Question 201: 
+Which statement fails to execute successfully? 
+ 
+A) SELECT *  
+FROM employees e 
+JOIN departments d 
+ON d.department_id=90 
+WHERE e.department_id =d.department_id; 
+ 
+B) SELECT * 
+FROM employee e 
+JOIN departments d 
+ON e.department_id = d.department_id 
+WHERE d.department_id=90; 
+ 
+C) SELECT * 
+FROM employees e 
+JOIN departments d 
+WHERE e.department_id=d.department_id 
+AND d.department_id=90; 
+ 
+D) SELECT * 
+FROM employees e 
+JOIN departments d 
+ON e.department_id=d.department_id 
+AND d.department_id=90; 
+ 
+
+ 
+Question 202: 
+Which three statements are true about dropping and unused columns ion an Oracle database? A) A DROP COLUMN command can be rolled back. 
+B) A primary key column referenced by another column as a foreign key can be dropped if using the CASCADE option. 
+C) An UNUSED column's space is reclaimed automatically when the row containing that column is next queried. 
+D) An USUSED column's space is reclaimed automatically when the block containing tat column is next queried. 
+E) A column that is set to UNUSED still counts towards the limit of 1000 columns per table. 
+F) Partition key columns cannot be dropped. 
+
+Question 203: 
+Which two statements are true about dropping views? 
+A) The creator of a view to be dropped must have the DROP ANY VIEW privilege. 
+B) CASCADE CONSTRAINTS must be specified when referential integrity constraints on other object refer to primary or unique keys in the view to be dropped. C) Read only views cannot be dropped. 
+D) Views referencing a dropped view become invalid. 
+E) Data selected by a view's defining query us deleted from its underlaying tables when the view is dropped. 
+
+Question 204: 
+Which three statements are true about defining relations between tables in a relational database? A) Every foreign key value must refer to a matching primary or unique key value. 
+B) Every primary or unique key value must refer to a matching foreign key value. 
+C) Primary key columns allow null values. 
+D) Foreign Key columns allow null values. 
+E) Unique key columns allow null values. 
+
+Question 205: 
+ 

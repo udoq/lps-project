@@ -11,12 +11,12 @@ export class NavigatorComponent implements OnInit {
 
   allQuestions: MyDataStructur[] = [];
   aktuelleFrage: number = 0;
+  anzFragen: number = 0;
+  progress: string = "0";
 
-  bLernen: boolean = true;
-  bSelbstest: boolean = false;
-  bPruefung: boolean = false;
+  anzBeantworteteFragen: number = 0;
 
-  numModus: number = 2;
+  numModus: number = 1;
 
   constructor(private myService: QuestionsIOService) { }
 
@@ -26,7 +26,9 @@ export class NavigatorComponent implements OnInit {
   getAllQuestions() {
     this.myService.getData()
     .subscribe(res=>{
+      console.log(res);
       this.allQuestions = res;
+      this.anzFragen = this.allQuestions.length;
     })
   }
 
@@ -45,11 +47,12 @@ export class NavigatorComponent implements OnInit {
 
   report (success: boolean) {
     if (success) {
-      console.log('Das war gut')
-      alert('Super');
+      // Popup mit Erfolgsmeldung
     } else {
-      console.log('Das war wohl nichts')
+      // Popup mit aufmunternden Worten
     }
+    this.anzBeantworteteFragen++;
+    this.progress = (this.anzBeantworteteFragen * 100 / this.anzFragen).toString();
   }
 
 }

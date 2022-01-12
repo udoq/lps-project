@@ -1,23 +1,52 @@
-<div class="flex max-w-sm w-full mx-auto ">
-  <div class=" rounded-xl ">
+<div class="flex max-w-sm w-full mx-auto">
+  <div class="rounded-xl">
 
-
-    <div *ngFor="let answer of answers, let i = index" >
-        <ul class="w-full mt-4 text-left bg-white ">
+    <ng-container *ngIf="anzahlRichtigeAntwortenSoll > 1">
+      <div *ngFor="let answer of answers; let i = index">
+        <ul class="w-full mt-4 text-left bg-white">
           <li class="">
-            <input (change)="gotAnswer(answer, $event)" class=" " type="checkbox" name="answers" id="{{ 'answer' + i }}">
+            <input (change)="gotAnswer(answer, $event)" class=" " type="checkbox" name="answers"
+              id="{{ 'answer' + i }}" />
             <label [ngClass]="{ 'bg-green-100': answer.correct && bShowAnswers }"
-
-              lass="p-2 w-full cursor-pointer focus:outline-none hover:bg-purple-400 " for="{{ 'answer' + i }}">
-              {{answer.text}}
+              class="p-2 w-full cursor-pointer focus:outline-none hover:bg-purple-400 " for="{{ 'answer' + i }}">
+              {{ answer.text }}
             </label>
           </li>
         </ul>
-    </div>
-
-    <div class="pt-8">
-      <button [ngClass]="{ 'hidden': modus==1 }" [disabled]="click" class="my-4 px-4 py-2 block w-full text-white bg-blue-500 hover:bg-blue-700 rounded" (click)="onSubmitClick()"> Submit </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="anzahlRichtigeAntwortenSoll == 1">
+      <div *ngFor="let answer of answers; let i = index">
+        <ul class="w-full mt-4 text-left bg-white">
+          <li class="">
+            <input (change)="gotAnswer(answer, $event)" class=" " type="radio" name="answers" id="{{ 'answer' + i }}" />
+            <label [ngClass]="{ 'bg-green-100': answer.correct && bShowAnswers }"
+              class="p-2 w-full cursor-pointer focus:outline-none hover:bg-purple-400 " for="{{ 'answer' + i }}">
+              {{ answer.text }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="anzahlRichtigeAntwortenSoll == 0">
+      <div *ngFor="let answer of answers; let i = index">
+        <ul class="w-full mt-4 text-left bg-white">
+          <li class="">
+            <input (change)="gotAnswer(answer, $event)" class=" " type="checkbox" name="answers"
+              id="{{ 'answer' + i }}" />
+            <label [ngClass]="{ 'bg-green-100': answer.correct && bShowAnswers }"
+              class="p-2 w-full cursor-pointer focus:outline-none hover:bg-purple-400 " for="{{ 'answer' + i }}">
+              {{ answer.text }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+    <div class="pt-8 pl-4">
+      <button [ngClass]="{ hidden: modus == 1 }" [disabled]="click"
+        class="my-4 px-4 py-2 block w-full text-white bg-blue-500 hover:bg-blue-700 rounded" (click)="onSubmitClick()">
+        Submit
+      </button>
     </div>
   </div>
 </div>
-

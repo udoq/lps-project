@@ -1,17 +1,34 @@
 <div>
-  <div class="bg-white w-full text-left">
-    <app-question class="w-full" [question]="allQuestions[aktuelleFrage].fragentext"></app-question>
+
+  <div *ngIf="progress != '0'" class="w-full bg-gray-200 rounded-full">
+    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full"
+      [ngStyle]="{'width': progress + '%'}"> {{progress | number: '1.0-0'}}</div>
   </div>
 
+
+
   <div class="bg-white w-full text-left">
-    <app-answer [answers]="allQuestions[aktuelleFrage].antworten" [modus]="numModus" (eSuccess)="report($event)"></app-answer>
+    <app-question class="w-full"
+      [question]="allQuestions[aktuelleFrage].fragentext"></app-question>
+  </div>
+
+  <div class="bg-white w-full text-left pl-5">
+    <app-answer [answers]="allQuestions[aktuelleFrage].antworten" [modus]="numModus" (eSuccess)="report($event)">
+    </app-answer>
   </div>
 
   <div>
-    <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }" class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none" (click)="onClickFirst()">First</button>
-    <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }" class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none" (click)="onClickPrev()">Prev</button>
-    <button [ngClass]="{ 'hidden': false }" class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none" (click)="onClickNext()">Next</button>
-    <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }" class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none" (click)="onClickLast()">Last</button>
+    <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }"
+      class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+      (click)="onClickFirst()">First</button>
+    <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }"
+      class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+      (click)="onClickPrev()">Prev</button>
+    <button [ngClass]="{ 'hidden': false }"
+      class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+      (click)="onClickNext()">Next</button>
+    <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }"
+      class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+      (click)="onClickLast()">Last</button>
   </div>
 </div>
-

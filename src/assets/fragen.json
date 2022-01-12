@@ -1,79 +1,64 @@
 [
   {
-    "id": 1,
-    "fragentext": "Was ist   gelb?",
+    "fragentext": "Choose the best answer. \n <br> In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. There are 86400 seconds in a day. \n Examine this result: \n <br> DATE \n ------------------ \n 02-JAN-2020",
     "antworten": [
-      {"text": "Tomaten", "correct": false},
-      {"text": "Bananen", "correct": true},
-      {"text": "Birnen", "correct": false},
-      {"text": "Zitronen", "correct": true}
-    ]
-  },
-  {
-    "id": 2,
-    "fragentext": "Choose the **best** answer. \n\n In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. There are 86400 seconds in a day. \n Examine this result: \n\n DATE \n\n 02-JAN-2020",
-    "antworten": [
-      {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3'MONTH + INTERVAL '7'DAY –INTERVAL '360' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": false},
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3'MONTH + INTERVAL '7'DAY –INTERVAL '360' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": false},
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '5'DAY –INTERVAL '86410' SECOND, 'DD-MM-YYYY') AS \\“date\\” FROM DUAL;", "correct": false},
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '4'DAY –INTERVAL '120' SECOND, 'DD-MM-YYYY') AS \\“date\\” FROM DUAL;", "correct": false},
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '6'DAY –INTERVAL '120' SECOND, 'DD-MM-YYYY') AS \\“date\\” FROM DUAL;", "correct": false},
-      {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '5'DAY –INTERVAL '120' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": true},
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '2'MONTH + INTERVAL '5'DAY –INTERVAL '120' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": true}
     ]
   },
   {
-    "id": 3,
-    "fragentext": "Was ist blau?",
+    "fragentext": "Choose the best answer. \n <br> You must find the number of employees whose salary is lower than employee 110. Which statement fails to do this?",
     "antworten": [
-      {"text": "Bäume", "correct": false},
-      {"text": "Wiesen", "correct": true},
-      {"text": "Meer", "correct": true},
-      {"text": "Himmel", "correct": true}
+      {"text": "SELECT COUNT(*) FROM employees e \n JOIN employees a \n ON e.salary < a.salary \n WHERE a.employee_id=110;", "correct": false},
+      {"text": "SELECT COUNT(*) \n FROM employees e \n WHERE e.salary < (SELECT a.salary FROM employees a WHERE \n e.employee_id=110); ", "correct": true},
+      {"text": "SELECT COUNT(*) \n FROM employees \n WHERE salary < (SELECT salary FROM employees WHERE employee_id=110);", "correct": false},
+      {"text": "SELECT COUNT(*) \n FROM employees e \n JOIN (SELECT salary FROM employees WHERE employee_id=110) a \n ON e.salary < a.salary;", "correct": false}
     ]
   },
   {
-    "id": 4,
-    "fragentext": "Examine the Bricks table: \n\n Color | Shape | Weight \n -----|-----|----- \n red | cube | 5 \n red | zylinder | 10 \n blue | cube | 15  \n  blue | cylinder | 20  \n\n\n You write this query: \n SELECT * \n FROM bricks b1 CROSS JOIN bricks b2 \n WHERE b1.weight < b2.weight; \n\n How many rows will the query return?",
+    "fragentext": "Examine the Bricks table: \n<br> Color | Shape | Weight \n -----|-----|----- \n red | cube | 5 \n red | zylinder | 10 \n blue | cube | 15  \n  blue | cylinder | 20  \n\n\n You write this query: \n SELECT * \n FROM bricks b1 CROSS JOIN bricks b2 \n WHERE b1.weight < b2.weight; \n<br> How many rows will the query return?",
 
     "antworten": [
       {"text": "0", "correct": false},
-      {"text": "4", "correct": true},
-      {"text": "10", "correct": true},
+      {"text": "4", "correct": false},
+      {"text": "10", "correct": false},
       {"text": "6", "correct": true},
-      {"text": "16", "correct": true},
-      {"text": "1", "correct": true}
+      {"text": "16", "correct": false},
+      {"text": "1", "correct": false}
     ]
   },
   {
-    "id": 5,
-    "fragentext": "Was ist rot?",
+    "fragentext": "Which two statements are true about Entity Relationships?",
     "antworten": [
-      {"text": "Kirschen", "correct": true},
-      {"text": "Orangen", "correct": false},
-      {"text": "Birnen", "correct": false},
-      {"text": "Trauben", "correct": false},
-      {"text": "Himbeeren", "correct": true}
+      {"text": "A relationship can be mandatory for both entities.", "correct": false},
+      {"text": "A table name can be specified just once when selecting data from a table having a selfreferencing relationship.", "correct": true},
+      {"text": "A many-to-many relationship can be implemented only using foreign keys.", "correct": false},
+      {"text": "A one-to-many relationship in one direction is a one-to-one relationship in the other direction.", "correct": true},
+      {"text": "A one-to-one relationship is always a self-referencing relationship.", "correct": false}
     ]
   },
   {
-    "id": 6,
-    "fragentext": "Was schmeckt süß?",
+    "fragentext": "Choose Two \n Examine the description of the EMPLOYEES table: \n <br> Name | Null? | Type \n -----|-----|----- \n EMPLOYEE_ID | NOT NULL | NUMBER(6) \n SALARY | | NUMBER(8,2) \n DEPARTMENT_ID | | NUMBER(4) \n <br> Which two queries return the highest salary in the table?",
     "antworten": [
-      {"text": "Wirsing", "correct": false},
-      {"text": "Schokolade", "correct": true},
-      {"text": "Honig", "correct": true},
-      {"text": "Kartoffeln", "correct": false}
+      {"text": "SELECT MAX(salary) \n FROM employees \n GROUP BY department_id \n HAVING MAX(salary) = MAX(MAX(salary));", "correct": false},
+      {"text": "SELECT MAX(salary) \n FROM employees \n GROUP BY department_id", "correct": false},
+      {"text": "SELECT MAX(salary) \n FROM employees;", "correct": true},
+      {"text": "SELECT MAX(MAX(salary)) \n FROM employees \n GROUP BY department_id", "correct": true},
+      {"text": "SELECT department_id, MAX(salary) \n FROM employees \n GROUP BY department_id ", "correct": false}
     ]
   },
   {
-    "id": 7,
-    "fragentext": "Was schmeckt sauer?",
+    "fragentext": "Examine this Statement: \n<br> SELECT last_name \n FROM employees \n ORDER BY CASE WHEN salary = (SELECT MAX(salary) FROM employees) \n THEN 'A' \n ELSE last_name \n END, last_name DESC; \n<br> Which two statements are true? ",
     "antworten": [
-      {"text": "Erdbeeren", "correct": false},
-      {"text": "Limetten", "correct": true},
-      {"text": "Marmelade", "correct": false},
-      {"text": "Zitronen", "correct": true}
+      {"text": "All remaining employees names will appear in descending order.", "correct": false},
+      {"text": "The names of employees earning the maximum salary will appear first in descending order.", "correct": false},
+      {"text": "The Names of employees earning the maximum salary will appear first in ascending order.", "correct": false},
+      {"text": "All remaining employee name will appear in ascending order.", "correct": true},
+      {"text": "All remaining employee name will appear in an unspecified Order. ", "correct": false},
+      {"text": "The names of employees earning the maximum salary will appear first in an unspecified order.", "correct": true}
     ]
   }
 ]

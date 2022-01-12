@@ -38,22 +38,27 @@ export class AnswerComponent implements OnInit {
         this.anzahlRichtigeAntwortenSoll++;
       }
     }
-    console.log('Richtige Antworten Soll: ' + this.anzahlRichtigeAntwortenSoll);
   }
 
   gotAnswer(option: any, e: any) {
-    if (e.target.checked == option.correct) {
-      this.anzahlRichtigeAntwortenIst++;
-    } else {
-      this.anzahlRichtigeAntwortenIst--;
+    if (this.anzahlRichtigeAntwortenSoll>1) {
+      if (e.target.checked == option.correct) {
+        this.anzahlRichtigeAntwortenIst++;
+      } else {
+        this.anzahlRichtigeAntwortenIst--;
+      }
     }
-    console.log('Richtige Antworten Ist: ' + this.anzahlRichtigeAntwortenIst)
+    if (this.anzahlRichtigeAntwortenSoll==1) {
+      this.anzahlRichtigeAntwortenIst=0;
+      if (e.target.checked == option.correct) {
+        this.anzahlRichtigeAntwortenIst++;
+      }
+    }
   }
 
   onSubmitClick() {
     this.bShowAnswers = true;
     this.click = !this.click;
-    console.log('Submit Clicked');
     if (this.anzahlRichtigeAntwortenIst == this.anzahlRichtigeAntwortenSoll) {
       this.eSuccess.emit(true);
     } else {
