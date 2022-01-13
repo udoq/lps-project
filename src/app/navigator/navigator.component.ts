@@ -10,34 +10,35 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class NavigatorComponent implements OnInit {
 
-  params?: ParamMap;
   numModus: number = 0;   // 1: Lernmodus, 2: Selbsttest, 3: Prüfungsmodus
+  showSummary: boolean = true;
 
   allQuestions: MyDataStructur[] = [];
   aktuelleFrage: number = 0;
   anzFragen: number = 0;
-  progress: string = "0";
-
   anzBeantworteteFragen: number = 0;
+  anzRichtigeAnworten: number = 0;
+  anzFalscheAntworten: number = 0;
+  progressSuccess: string = '0';
+  progressFailure: string = '0';
+  progressTotal: string = '0';
 
   constructor(private myService: QuestionsIOService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllQuestions();
-    this.params = this.route.snapshot.paramMap;
-    this.numModus = Number(this.params.get('id'));
-    console.log('navigator ngOnInit-Event');
-    console.log('Modus: ' + this.numModus)
+    window.scroll(0,0);
   }
 
-
-  ngOnChange(): void {
-    this.params = this.route.snapshot.paramMap;
-    this.numModus = Number(this.params.get('id'));
-    console.log('navigator ngOnChange-Event');
-    console.log('Modus: ' + this.numModus)
+  initialize(): void {
+    this.aktuelleFrage = 0;
+    this.anzBeantworteteFragen = 0;
+    this.anzRichtigeAnworten = 0;
+    this.anzFalscheAntworten = 0;
+    this.progressSuccess = '0';
+    this.progressFailure = '0';
+    this.progressTotal = '0';
   }
-
 
   getAllQuestions() {
     this.myService.getData()
@@ -47,9 +48,36 @@ export class NavigatorComponent implements OnInit {
     })
   }
 
-  testClick() {
-    console.log('Button geklickt');
-    this.numModus++;
+
+  onClickSummary() {
+    this.numModus = 0;
+    this.showSummary = true;
+    this.initialize();
+  }
+  onClickLearning() {
+    this.numModus = 1;
+    this.showSummary = false;
+    this.initialize();
+  }
+  onClickSelftest() {
+    this.numModus = 2;
+    this.showSummary = false;
+    this.initialize();
+  }
+
+  onClickExam() {
+    this.numModus = 3;
+    this.showSummary = false;
+    this.initialize();
+  }
+
+
+  setSingleQuestion(question: number) {
+    this.aktuelleFrage = question;
+    console.log('Einzelne Frage ausgewählt: ' + question);
+    this.numModus = 1;
+    this.showSummary = false;
+    window.scroll(0,0);
   }
 
 
@@ -72,12 +100,25 @@ export class NavigatorComponent implements OnInit {
 
   report (success: boolean) {
     if (success) {
-      // Popup mit Erfolgsmeldung
+      this.anzRichtigeAnworten++;
+      this.progressSuccess = (this.anzRichtigeAnworten * 100 / this.anzFragen).toString();
+      //ToDo: Popup mit Erfolgsmeldung
     } else {
-      // Popup mit aufmunternden Worten
+      this.anzFalscheAntworten++;
+      this.progressFailure = (this.anzFalscheAntworten* 100 / this.anzFragen).toString();
+      //ToDo: Popup mit aufmunternden Worten
     }
-    this.anzBeantworteteFragen++;
-    this.progress = (this.anzBeantworteteFragen * 100 / this.anzFragen).toString();
+    console.log('Erfolg: ' + this.progressSuccess)
+    console.log('Misserfolg: ' + this.progressFailure)
+    this.anzBeantworteteFragen = this.anzRichtigeAnworten + this.anzFalscheAntworten;
+    this.progressTotal = (this.anzBeantworteteFragen* 100 / this.anzFragen).toString();
+    if (this.numModus===3 && this.anzFalscheAntworten > 2) {
+      this.numModus = 0;
+      this.showSummary = true;
+      this.initialize();
+      window.scroll(0,0);
+      //ToDo: Popup mit Misserfolgs-Meldung
+    }
   }
 
 }

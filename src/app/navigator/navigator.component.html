@@ -1,24 +1,52 @@
 <div>
 
-  <div *ngIf="progress != '0'" class="w-full bg-gray-200 rounded-full">
-    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full"
-      [ngStyle]="{'width': progress + '%'}"> {{progress | number: '1.0-0'}}</div>
+  <div>
+    <!--Modus auswählen: 1 Lernmodus, 2 Selbsttest, 3 Prüfungsmodus-->
+    <div class="wfull">
+      <button
+        class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+        (click)="onClickSummary()">Übersicht</button>
+    </div>
+    <div class="wfull flex justify-between  pb-5">
+      <button
+        class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
+        (click)="onClickLearning()">Lernen</button>
+      <button
+        class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
+        (click)="onClickSelftest()">Selbsttest</button>
+      <button
+        class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
+        (click)="onClickExam()">Prüfung</button>
+    </div>
   </div>
 
-  <button (click)="testClick()">Test</button>
-
-
-  <div class="bg-white w-full text-left">
-    <app-question class="w-full"
-      [question]="allQuestions[aktuelleFrage].fragentext"></app-question>
+  <!--Fortschrittsbalken-->
+  <div *ngIf="progressSuccess==='0' && progressFailure==='0' && numModus>1" class="w-full bg-gray-100 flex ">Fortschritt</div>
+  <div *ngIf="numModus===2" class="w-full bg-gray-100 flex mb-5">
+    <div *ngIf="anzRichtigeAnworten > 0" class="bg-green-700  p-2" [ngStyle]="{'width': progressSuccess + '%'}"></div>
+    <div *ngIf="anzFalscheAntworten > 0" class="bg-red-600  p-2" [ngStyle]="{'width': progressFailure + '%'}"></div>
+  </div>
+  <div *ngIf="numModus===3" class="w-full bg-gray-100 flex mb-5">
+    <div *ngIf="anzBeantworteteFragen> 0" class="bg-blue-500  p-2" [ngStyle]="{'width': progressTotal + '%'}"></div>
   </div>
 
-  <div class="bg-white w-full text-left pl-5">
+  <!--Fragenübersicht anzeigen-->
+  <app-summary [ngClass]="{ 'hidden': showSummary===false }" [questions]="allQuestions"
+    (questionClicked)="setSingleQuestion($event)"></app-summary>
+
+  <!--Einzelne Frage anzeigen-->
+  <div [ngClass]="{ 'hidden': showSummary===true }" class="bg-white w-full text-left">
+    <app-question class="w-full" [question]="allQuestions[aktuelleFrage].fragentext"></app-question>
+  </div>
+
+  <!--Antworten anzeigen. Liefert true zurück, wenn die Frage richtig beantwortet wurde-->
+  <div [ngClass]="{ 'hidden': showSummary===true }" class="bg-white w-full text-left pl-5">
     <app-answer [answers]="allQuestions[aktuelleFrage].antworten" [modus]="numModus" (eSuccess)="report($event)">
     </app-answer>
   </div>
 
-  <div>
+  <!--Fragen-Navigation: Im Lernmodus kann man vor und zurück navigieren, in den Testmodi nur vorwärts-->
+  <div [ngClass]="{ 'hidden': showSummary===true }">
     <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }"
       class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
       (click)="onClickFirst()">First</button>

@@ -1,4 +1,4 @@
-<div class="flex max-w-sm w-full mx-auto">
+<div [ngClass]="{ 'hidden': modus===0 }" class="flex max-w-sm w-full mx-auto">
   <div class="rounded-xl">
 
     <ng-container *ngIf="anzahlRichtigeAntwortenSoll > 1">
@@ -45,9 +45,9 @@
         </ul>
       </div>
     </ng-container>
-    <div class="pt-8 pl-4">
+    <div class="pt-8 pl-4 flex justify-between">
       <button [ngClass]="{ hidden: modus == 1 }" [disabled]="click"
-        class="my-4 px-4 py-2 block w-full text-white bg-blue-500 hover:bg-blue-700 rounded" (click)="onSubmitClick()">
+        class="my-4 px-4 py-2 block text-white bg-blue-500 hover:bg-blue-700 rounded" (click)="onSubmitClick()">
         Submit
       </button>
     </div>

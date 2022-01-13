@@ -29,7 +29,10 @@ export class AnswerComponent implements OnInit {
       this.bShowAnswers = false;
       this.click = false;
     }
-    if (this.modus == 3) {}
+    if (this.modus == 3) {
+      this.bShowAnswers = false;
+      this.click = false;
+    }
 
     this.anzahlRichtigeAntwortenSoll = 0;
     this.anzahlRichtigeAntwortenIst = 0;
@@ -57,7 +60,9 @@ export class AnswerComponent implements OnInit {
   }
 
   onSubmitClick() {
-    this.bShowAnswers = true;
+    if (this.modus != 3) {
+      this.bShowAnswers = true;
+    }
     this.click = !this.click;
     if (this.anzahlRichtigeAntwortenIst == this.anzahlRichtigeAntwortenSoll) {
       this.eSuccess.emit(true);
