@@ -14,9 +14,7 @@ export class QuestionComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.question);
-  }
+  ngOnInit(): void {}
 
   questionSelected() {
     this.questionClicked.emit()

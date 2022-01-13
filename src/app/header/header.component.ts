@@ -8,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  lernModus: number = 1;
+  selbstTest: number = 2;
+  pruefung: number = 3
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }
 

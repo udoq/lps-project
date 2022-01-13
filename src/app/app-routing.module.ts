@@ -4,9 +4,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: 'navigator', pathMatch: "full"},
+  {path:'', redirectTo: 'navigator/1', pathMatch: "full"},
   {path: 'welcome', component: WelcomeComponent},
-  {path: 'navigator', component: NavigatorComponent}
+  {path: 'navigator/:id', component: NavigatorComponent}
+  // {path: 'navigator/:id', component: NavigatorComponent}
 ];
 
 @NgModule({

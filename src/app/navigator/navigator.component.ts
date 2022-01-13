@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MyDataStructur } from '../my-data-structur';
 import { QuestionsIOService } from '../questions-io.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-navigator',
@@ -9,6 +10,9 @@ import { QuestionsIOService } from '../questions-io.service';
 })
 export class NavigatorComponent implements OnInit {
 
+  params?: ParamMap;
+  numModus: number = 0;   // 1: Lernmodus, 2: Selbsttest, 3: Prüfungsmodus
+
   allQuestions: MyDataStructur[] = [];
   aktuelleFrage: number = 0;
   anzFragen: number = 0;
@@ -16,21 +20,38 @@ export class NavigatorComponent implements OnInit {
 
   anzBeantworteteFragen: number = 0;
 
-  numModus: number = 1;
-
-  constructor(private myService: QuestionsIOService) { }
+  constructor(private myService: QuestionsIOService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllQuestions();
+    this.params = this.route.snapshot.paramMap;
+    this.numModus = Number(this.params.get('id'));
+    console.log('navigator ngOnInit-Event');
+    console.log('Modus: ' + this.numModus)
   }
+
+
+  ngOnChange(): void {
+    this.params = this.route.snapshot.paramMap;
+    this.numModus = Number(this.params.get('id'));
+    console.log('navigator ngOnChange-Event');
+    console.log('Modus: ' + this.numModus)
+  }
+
+
   getAllQuestions() {
     this.myService.getData()
     .subscribe(res=>{
-      console.log(res);
       this.allQuestions = res;
       this.anzFragen = this.allQuestions.length;
     })
   }
+
+  testClick() {
+    console.log('Button geklickt');
+    this.numModus++;
+  }
+
 
   onClickFirst() {
     this.aktuelleFrage=0;
