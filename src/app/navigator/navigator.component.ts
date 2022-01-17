@@ -23,6 +23,7 @@ export class NavigatorComponent implements OnInit {
   progressSuccess: string = '0';
   progressFailure: string = '0';
   progressTotal: string = '0';
+  submitted: boolean = false;
 
   constructor(
     private myService: QuestionsIOService,
@@ -48,6 +49,7 @@ export class NavigatorComponent implements OnInit {
     this.myService.getData().subscribe((res) => {
       this.allQuestions = res;
       this.anzFragen = this.allQuestions.length;
+      window.scroll(0, 0);
     });
   }
 
@@ -60,24 +62,27 @@ export class NavigatorComponent implements OnInit {
     this.numModus = 1;
     this.showSummary = false;
     this.initialize();
+    this.submitted = true;
   }
   onClickSelftest() {
     this.numModus = 2;
     this.showSummary = false;
     this.initialize();
+    this.submitted = false;
   }
 
   onClickExam() {
     this.numModus = 3;
     this.showSummary = false;
     this.initialize();
+    this.submitted = false;
   }
 
   setSingleQuestion(question: number) {
     this.aktuelleFrage = question;
-    console.log('Einzelne Frage ausgewählt: ' + question);
     this.numModus = 1;
     this.showSummary = false;
+    this.submitted = true;
     window.scroll(0, 0);
   }
 
@@ -90,7 +95,12 @@ export class NavigatorComponent implements OnInit {
     window.scroll(0, 0);
   }
   onClickNext() {
-    this.aktuelleFrage++;
+    if (this.numModus === 2) {
+      this.submitted = false;
+    }
+    if (this.aktuelleFrage < this.allQuestions.length) {
+      this.aktuelleFrage++;
+    }
     window.scroll(0, 0);
   }
   onClickLast() {
@@ -99,6 +109,7 @@ export class NavigatorComponent implements OnInit {
   }
 
   report(success: boolean) {
+    this.submitted = true;
     if (success) {
       this.anzRichtigeAnworten++;
       this.progressSuccess = (
@@ -146,5 +157,12 @@ export class NavigatorComponent implements OnInit {
         this.onClickNext();
       }
     }
+    if (this.anzBeantworteteFragen >= this.anzFragen) {
+      vex.dialog.alert({
+        message:
+          'Prüfungsergebnis: Es wurden ' + this.anzRichtigeAnworten + ' richtig und ' + this.anzFalscheAntworten + ' falsch beantwortet.',
+        className: 'vex-theme-flat-attack',
+      });
+  }
   }
 }

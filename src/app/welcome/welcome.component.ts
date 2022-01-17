@@ -7,10 +7,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
+  user: any;
+
   @ViewChild('name') nameKey!: ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.user = localStorage.getItem("name");
   }
 
   setName() {

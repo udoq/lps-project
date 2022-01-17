@@ -20,7 +20,6 @@
   },
   {
     "fragentext": "Examine the Bricks table: \n --- \n | Color | Shape | Weight | \n |---|---|---| \n | red | cube | 5 | \n | red | zylinder | 10 | \n | blue | cube | 15 |  \n | blue | cylinder | 20  | \n---\n You write this query: \n SELECT * \n FROM bricks b1 CROSS JOIN bricks b2 \n WHERE b1.weight < b2.weight; \n---\n How many rows will the query return?",
-
     "antworten": [
       {"text": "0", "correct": false},
       {"text": "4", "correct": false},
@@ -92,7 +91,82 @@
     ]
   },
   {
-    "fragentext": "XXX",
+    "fragentext": "Which three are true about system and object privileges?",
+    "antworten": [
+      {"text": "Adding a foreign key constraint pointing to a table in another schema requires the REFERENCES object privilege.", "correct": true},
+      {"text": "WITH GRANT OPTION cannot used when granting an object privilege to PUBLIC", "correct": false},
+      {"text": "Revoking an object privilege that was granted with the WITH GRANT OPTION clause has a cascading effect.", "correct": true},
+      {"text": "WITH GRANT OPTION can be used when granting an object privilege to both users and roles.", "correct": false},
+      {"text": "Revoking a system privilege that was granted WITH ADMIN OPTION as a cascading effect.", "correct": false},
+      {"text": "Adding a primary key constraint to an existing table in another schema requires a system privilege.", "correct": true}
+    ]
+  },
+  {
+    "fragentext": "Examine the description of EMPLOYEES table:\n\n --- \n |Name|Null?|Type| \n |---|---|---| \n |EMPLOYEE_NAME|NOT NULL|VARCHAR(5)| \n |HIRE_DATE||DATE| \n |SALARY||NUMBER(7,2)| \n\n --- \n\n The session time zone is the same as the database server. \n\n Which two statements will list only the employees who have been working with the company for more than five years?",
+    "antworten": [
+      {"text": "SELECT employee_name FROM employees \n WHERE (SYSTIMESTAMP – hire_date) / 365 > INTERVAL '1825' DAY;", "correct": false},
+      {"text": "SELECT employee_name FROM employees \n WHERE (SYSDATE – hire_date) / 12 > 5;", "correct": false},
+      {"text": "SELECT employee_name FROM employees \n WHERE (CURRENT_DATE -hire_date ) / 12 > 5;", "correct": false},
+      {"text": "SELECT employee_name FROM employees \n WHERE (CURRENT_DATE – hire_date) / 365 > 5", "correct": true},
+      {"text": "SELECT employee_name FROM employees \n WHERE (SYSTIMESTAMP – hire_date) / 12 > INTERVAL '5' YEAR;", "correct": false},
+      {"text": "SELECT employee_name FROM employees \n WHERE (SYSDATE – hire_date) / 365 > 5", "correct": true}
+    ]
+  },
+  {
+    "fragentext": "Which two statements are true about CURRENT_TIMESTAMP?",
+    "antworten": [
+      {"text": "The time is in the time zone of DBTIMEZONE.", "correct": false},
+      {"text": "The date is in the time zone of DBTIMEZONE.", "correct": false},
+      {"text": "It always returns the same value as SYSTIMESTAMP.", "correct": false},
+      {"text": "It returns the same date as CURRENT_DATE", "correct": true},
+      {"text": "The value varies depending on the setting of SESSIONTIMEZONE.", "correct": true},
+      {"text": "It returns a value of data type TIMESTAMP.", "correct": false}
+    ]
+  },
+  {
+    "fragentext": "Which two is true about unused columns?",
+    "antworten": [
+      {"text": "A query can return data from unused columns, but no DML is possible on those columns.", "correct": false},
+      {"text": "Unused columns retain their data until they are dropped.", "correct": true},
+      {"text": "A Primary Key column cannot be set unused.", "correct": false},
+      {"text": "Once a column has been set to unused, a new column with the same name can be added to the table.", "correct": true},
+      {"text": "The DESCRIBE command displays unused columns.", "correct": false},
+      {"text": "A foreign key column cannot be set to unused.", "correct": false}
+    ]
+  },
+  {
+    "fragentext": "Which two are true about the MERGE statement?",
+    "antworten": [
+      {"text": "The WHEN NOT MATCHED clause can be used to specify the deletions to be performed.", "correct": false},
+      {"text": "The WHEN MATCHED clause can be used to specify the inserts to be performed.", "correct": false},
+      {"text": "The WHEN MATCHED clause can be used to specify the updates to be performed.", "correct": true},
+      {"text": "The WHEN NOT MATCHED clause can be used to specify the updates to be performed.", "correct": false},
+      {"text": "The WHEN NOT MATCHED clause ca be used to specify the inserts to be performed.", "correct": true}
+    ]
+  },
+  {
+    "fragentext": "You and your colleague Andrew have these privileges on the EMPLOYEE_Records table: <br> 1. SELECT \n 2. INSERT \n 3. UPDATE \n 4. DELETE \n<br> You connect to the database instance and perform an update to some of the rows in EMPLOYEE_RECORDS, but do not commit yet.\n<br> Andrew connects to the database instance and queries the table. No other user accessing the table.\n <br> Which two statements are true at this point?",
+    "antworten": [
+      {"text": "Andrew will be able to see the changes you have made.", "correct": false},
+      {"text": "Andrew will be unable to see the changes you have made.", "correct": true},
+      {"text": "Andrew Will be unable to perform any INSERTS, UPDATES, or DELETES on the table.", "correct": false},
+      {"text": "Andrew will be able to modify any rows in the table that have not been modified by your transaction.", "correct": true},
+      {"text": "Andrew will be able to SELECT from the table, but be unable to modify any existing rows.", "correct": false}
+    ]
+  },
+  {
+    "fragentext": "You currently have an active transaction in your session and have been granted SELECT access to V$TRANSACTION. \n<br> EXECUTING:\nSELECT xid, status FROM v$transaction; \n<br> in your session returns: <br><br> \n\n |XID|Status| \n |---|---| \n |0A00070000A07000|ACTIVE| \n<br> In which three situations will re-executing this query still return a row but with different XID, indicating a new transaction has started?",
+    "antworten": [
+      {"text": "after successfully executing a DML statement following a failed DML statement", "correct": false},
+      {"text": "after successfully executing a COMMIT or ROLLBACK followed by a DML statement", "correct": true},
+      {"text": "after successfully execute a CREATE TABLE as SELECT statement followed by a SELECT FOR UPDATE statement", "correct": true},
+      {"text": "after successfully executing a COMMIT or ROLLBACK followed by a SELECT statement", "correct": false},
+      {"text": "after successfully executing a CREATE TABLE statement followed by a CREATE INDEX statement", "correct": false},
+      {"text": "after successfully executing a TRUNCATE statement followed by a DML statement", "correct": true}
+    ]
+  },
+  {
+    "fragentext": "17",
     "antworten": [
       {"text": "AAA", "correct": false},
       {"text": "BBB", "correct": false},

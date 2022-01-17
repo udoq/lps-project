@@ -1,27 +1,26 @@
 <div>
-
   <div>
-    <!--Modus auswählen: 1 Lernmodus, 2 Selbsttest, 3 Prüfungsmodus-->
-    <div class="wfull">
-      <button
-        class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
-        (click)="onClickSummary()">Übersicht</button>
+    <!--Modus auswählen: 0 Fragenübersicht, 1 Lernmodus, 2 Selbsttest, 3 Prüfungsmodus-->
+    <div class="w-full">
+      <button class="bg-blue-900 px-20 py-3 mt-2 justify-center  border-2 text-white hover:bg-purple-400"
+        (click)="onClickSummary()">Fragenübersicht</button>
     </div>
-    <div class="wfull flex justify-between  pb-5">
+    <div class="w-full flex justify-center pb-5">
       <button
-        class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
+        class="bg-blue-400 px-5 py-1 mt-5 my-3   rounded-xl border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
         (click)="onClickLearning()">Lernen</button>
       <button
-        class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
+        class="bg-blue-400 px-5 py-1 mt-5 my-3   rounded-xl  border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
         (click)="onClickSelftest()">Selbsttest</button>
       <button
-        class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
+        class="bg-blue-400 px-5 py-1 mt-5 my-3   rounded-xl  border-2 text-white hover:bg-purple-400 active:bg-purple-600 "
         (click)="onClickExam()">Prüfung</button>
     </div>
   </div>
 
   <!--Fortschrittsbalken-->
-  <div *ngIf="progressSuccess==='0' && progressFailure==='0' && numModus>1" class="w-full bg-gray-100 flex ">Fortschritt</div>
+  <div *ngIf="progressSuccess==='0' && progressFailure==='0' && numModus>1" class="w-full bg-gray-100 flex ">Fortschritt
+  </div>
   <div *ngIf="numModus===2" class="w-full bg-gray-100 flex mb-5">
     <div *ngIf="anzRichtigeAnworten > 0" class="bg-green-700  p-2" [ngStyle]="{'width': progressSuccess + '%'}"></div>
     <div *ngIf="anzFalscheAntworten > 0" class="bg-red-600  p-2" [ngStyle]="{'width': progressFailure + '%'}"></div>
@@ -48,16 +47,17 @@
   <!--Fragen-Navigation: Im Lernmodus kann man vor und zurück navigieren, in den Testmodi nur vorwärts-->
   <div [ngClass]="{ 'hidden': showSummary===true }">
     <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }"
-      class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+      class="bg-blue-400 px-6 py-2 mt-10 text-white"
       (click)="onClickFirst()">First</button>
     <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }"
-      class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+      class="bg-blue-400 px-6 py-2 mt-10 text-white"
       (click)="onClickPrev()">Prev</button>
-    <button [ngClass]="{ 'hidden': numModus==3 }"
-      class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+    <button [ngClass]="{ 'hidden': numModus==3, 'bg-gray-300': !submitted, 'bg-blue-400': submitted }"
+      [disabled]="!submitted"
+      class="px-6 py-2 mt-10 text-white"
       (click)="onClickNext()">Next</button>
     <button [ngClass]="{ 'hidden': numModus==2 || numModus==3 }"
-      class="bg-blue-400 px-6 py-2 mt-10 rounded-xl border-blue-400 border-2 text-white hover:bg-purple-400 active:bg-purple-600 focus:ring focus:ring-blue-400 focus:ring-opacity-25 outline-none"
+      class="bg-blue-400 px-6 py-2 mt-10 text-white"
       (click)="onClickLast()">Last</button>
   </div>
 </div>
