@@ -28,9 +28,13 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/tailwind.css"
+              "src/tailwind.css",
+              "src/assets/css/vex.css",
+              "src/assets/css/vex-theme-flat-attack.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/vex.combined.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -96,9 +100,13 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/tailwind.css"
+              "src/tailwind.css",
+              "src/assets/css/vex.css",
+              "src/assets/css/vex-theme-flat-attack.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/vex.js"
+            ]
           }
         }
       }
