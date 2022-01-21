@@ -143,7 +143,7 @@ export class NavigatorComponent implements OnInit {
       this.anzFragen
     ).toString();
     if (this.numModus === 3) {
-      if (this.anzFalscheAntworten > 2) {
+      if (this.anzFalscheAntworten > 7) {
         this.numModus = 0;
         this.showSummary = true;
         this.initialize();
