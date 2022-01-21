@@ -175,9 +175,9 @@
     "fragentext": "17",
     "antworten": [
       {"text": "AAA", "correct": false},
-      {"text": "BBB", "correct": false},
+      {"text": "BBB", "correct": true},
       {"text": "CCC", "correct": false},
-      {"text": "DDD", "correct": false},
+      {"text": "DDD", "correct": true},
       {"text": "EEE", "correct": false}
     ]
   }
