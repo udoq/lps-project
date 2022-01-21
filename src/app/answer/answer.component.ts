@@ -57,6 +57,16 @@ export class AnswerComponent implements OnInit {
         this.anzahlRichtigeAntwortenIst++;
       }
     }
+    if (this.anzahlRichtigeAntwortenSoll==0) {
+      let val = (document.querySelector('.myInput') as HTMLInputElement).value
+      if (val == option.text) {
+        this.anzahlRichtigeAntwortenIst=0;
+        console.log(val + '==' + option.text)
+      } else {
+        this.anzahlRichtigeAntwortenIst = -1;
+        console.log(val + '!=' + option.text)
+      }
+    }
   }
 
   onSubmitClick() {

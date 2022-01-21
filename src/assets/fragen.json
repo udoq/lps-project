@@ -1,5 +1,11 @@
 [
   {
+    "fragentext": "Im Oracle-Fragenkatalog kommen keine Fill-In-Fragen vor. \n <br> Hier wird zu Demonstrationszwecken beispielhaft eine Fill-In-Frage gestellt. \n <br> Wie heißt das Javascript-Framework, mit dem diese Anwendung entwickelt wurde?",
+    "antworten": [
+      {"text": "Angular", "correct": false}
+    ]
+  },
+  {
     "fragentext": "Choose the best answer. \n <br> In your session, the NLS_DATE_FORMAT is DD-MM-YYYY. There are 86400 seconds in a day. \n Examine this result: \n <br> DATE \n --- \n 02-JAN-2020",
     "antworten": [
       {"text": "SELECT TO_CHAR(TO_DATE('29-10-2019') + INTERVAL '3'MONTH + INTERVAL '7'DAY –INTERVAL '360' SECOND, 'DD-MM-YYYY') AS \"date\" FROM DUAL;", "correct": false},

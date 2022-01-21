@@ -1,6 +1,7 @@
 <div [ngClass]="{ 'hidden': modus===0 }" class="flex max-w-sm w-full mx-auto">
   <div class="rounded-xl">
 
+    <!-- Multiple-Choice -->
     <ng-container *ngIf="anzahlRichtigeAntwortenSoll > 1">
       <div [ngClass]="{ 'text-green-600': answer.correct && bShowAnswers }"
         *ngFor="let answer of answers; let i = index">
@@ -16,6 +17,8 @@
         </ul>
       </div>
     </ng-container>
+
+    <!-- Single-Choice -->
     <ng-container *ngIf="anzahlRichtigeAntwortenSoll == 1">
       <div [ngClass]="{ 'text-green-600': answer.correct && bShowAnswers }"
         *ngFor="let answer of answers; let i = index">
@@ -30,17 +33,20 @@
         </ul>
       </div>
     </ng-container>
+
+    <!-- Fill-In -->
     <ng-container *ngIf="anzahlRichtigeAntwortenSoll == 0">
       <div [ngClass]="{ 'text-green-600': answer.correct && bShowAnswers }"
         *ngFor="let answer of answers; let i = index">
         <ul class="w-full mt-4 text-left bg-white">
           <li class="">
-            <input (change)="gotAnswer(answer, $event)" class=" " type="checkbox" name="answers"
-              id="{{ 'answer' + i }}" />
-            <label class="p-2 w-full cursor-pointer focus:outline-none " for="{{ 'answer' + i }}">
-              <!-- {{ answer.text }} -->
-              <markdown [data]="answer.text"></markdown>
+            <label class="block text-xs text-gray-600" for="{{ 'answer' + i }}">
+              Antwort:
             </label>
+            <input *ngIf="modus > 1" (change)="gotAnswer(answer, $event)"
+              class="myInput block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner "
+              type="text" name="answers" id="{{ 'answer' + i }}" />
+            <span class="mx-2" [ngClass]="{'hidden': !bShowAnswers}">{{answer.text}}</span>
           </li>
         </ul>
       </div>
